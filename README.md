@@ -1,39 +1,69 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Gungnir Shop
+The live link to the website -
 
-Welcome,
+## UX
 
-This is the Code Institute student template for Codeanywhere. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+### Color Scheme
+### Typography
+### Icons
+### Wireframes
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **May 11th, 2023**
+## Agile Development
 
-## Codeanywhere Reminders
+## Features
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+### Existing Features
+### Features left to implement
 
-`python3 -m http.server`
+## Technology 
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+- [VS Code](https://code.visualstudio.com/) - used as my primary IDE.
+- [GitHub](https://github.com/) - used as remote online storage of my code.
+- [Balsamiq](https://balsamiq.com/) - used for wireframes
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+### Front-End 
 
-`http_server`
+- HTML - base markup language
+- CSS - base cascading style sheets
+- [jQuery](https://jquery.com/) - used for JavaScript functionality
+- [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/) - used as frontend framework
+- [FontAwesome](https://fontawesome.com/) - used as icon library
+- [Google Fonts](https://fonts.google.com/) - used for project fonts
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+### Back-End
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+- [Django](https://docs.djangoproject.com/en/3.2/) - used as main framework
+- [Heroku](https://www.heroku.com/) - used as app remote hosting platform
+- [Python](https://www.python.org/) - used as backend programming language
+- [ElephantSQL](https://www.elephantsql.com/) - remote PostgreSQL database
+- [Cloudinary](https://cloudinary.com/) - used for static files as remote storage <br><br>
 
-To log into the Heroku toolbelt CLI:
+## Testing
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Responsiveness
+### Browser Compatibility
+### Bugs
+### Lighthouse
+### Validators
+- HTML
+- CSS
+- JavaScript
+- Python
+### User Stories
+"As a User I want to be able to___________________"
+- [x] - *successfully implemented*
+- [ ] - *yet to be implemented*
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+## Deployment
 
----
+The relational schema
 
-Happy coding!
+### Local Deployment
+### Heroku Deployment
+
+## Credits
+
+### Content
+### Code
+### Acknowledgment
