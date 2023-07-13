@@ -16,3 +16,8 @@ body {
     color: #800020;
 }
 
+#hero-image {
+    background: url('/media/shield-necklace.webp') no-repeat center center;
+    background-size: cover;
+    height: 300px;
+}

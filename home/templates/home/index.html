@@ -1,30 +1,84 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
-{% endblock %}
 
 {% block content %}
+
+<section class="container-fluid">
     <!-- hero image -->
+    <div class="row">
+        <div class="col">
+            <div id="hero-image"></div>
+        </div>
+    </div>
+
     <!-- announcement -->
-    <!-- categories/ collections on the left, and collapse on smaller screen (use Bootstap dropdowns) -->
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
-                <h1 class="display-4 logo-font text-black">
-                    The new collections are here
-                </h1>
-                <div class="my-5">
-                    <h4>
-                        <a href="" class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3">Shop Now</a>
-                    </h4>
-                </div>
+    <div class="row">
+        <div class="col">
+            <div id="announcement">
+                <h4 class="logo-font my-1 text-left">Announcement</h4> <!-- will have CRUD functiomallity -->
             </div>
         </div>
     </div>
+
+
+    <div class="row">
+        <!-- Collections column -->
+        <div class="col-md-3 bg-color-shop-info section-column">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="section-heading uppercase">Collections</h3>
+                </div>
+            </div>
+            <div>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Collection-1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Collection-2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Collection-3</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Collection-4</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- products column -->
+        <div class="col-9">
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <!-- card -->
+                    <div class="card h-100 border-0">
+                        <div class="card-body pb-0">
+                            <p>test content</p>
+                        </div>
+                        <div class="card-footer bg-white pt-0 border-0 text-left">
+                            <div class="row">
+                                <div class="col">
+                                    <p class="lead mb-0 text-left font-weight-bold"> price</p>
+                                    <p class="small mt-1 mb-0">collection</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- hero image -->
+<!-- announcement -->
+<!-- categories/ collections on the left, and collapse on smaller screen (use Bootstap dropdowns) -->
+
 {% endblock %}
