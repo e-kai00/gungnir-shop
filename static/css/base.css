@@ -14,6 +14,7 @@ body {
 
 .logo {
     color: #800020;
+    text-transform: uppercase;   
 }
 
 #hero-image {
@@ -21,3 +22,4 @@ body {
     background-size: cover;
     height: 300px;
 }
+

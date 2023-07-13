@@ -7,22 +7,28 @@
 <section class="container-fluid">
     <!-- hero image -->
     <div class="row">
-        <div class="col">
+        <div class="col px-0">
             <div id="hero-image"></div>
         </div>
     </div>
 
     <!-- announcement -->
-    <div class="row">
-        <div class="col">
-            <div id="announcement">
+    <div class="row my-4">
+        <div class="col-3">
+            <div class="announcement">
                 <h4 class="logo-font my-1 text-left">Announcement</h4> <!-- will have CRUD functiomallity -->
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="announcement text-left">
+                <p>Free shipping on orders over $50</p>
             </div>
         </div>
     </div>
 
 
     <div class="row">
+        <!-- categories/ collections on the left, and collapse on smaller screen (use Bootstap dropdowns) -->
         <!-- Collections column -->
         <div class="col-md-3 bg-color-shop-info section-column">
             <div class="row">
@@ -33,19 +39,19 @@
             <div>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">All</a>
+                        <a class="nav-link text-dark font-weight-bold" href="#">All</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Collection-1</a>
+                        <a class="nav-link text-dark font-weight-bold" href="#">Collection-1</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Collection-2</a>
+                        <a class="nav-link text-dark font-weight-bold" href="#">Collection-2</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Collection-3</a>
+                        <a class="nav-link text-dark font-weight-bold" href="#">Collection-3</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Collection-4</a>
+                        <a class="nav-link text-dark font-weight-bold" href="#">Collection-4</a>
                     </li>
                 </ul>
             </div>
@@ -77,8 +83,6 @@
 
 </section>
 
-<!-- hero image -->
-<!-- announcement -->
-<!-- categories/ collections on the left, and collapse on smaller screen (use Bootstap dropdowns) -->
+
 
 {% endblock %}
