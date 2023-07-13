@@ -26,11 +26,26 @@
         </div>
     </div>
 
+    <!-- collections on smaller screens -->
+    <div class="row d-lg-none">
+    <div class="dropdown col-12 d-lg-none">
+        <a class="btn btn-secondary dropdown-toggle w-100 text-left bg-white text-dark border border-dark rounded-pill" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+          All
+        </a>
+      
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Collection-1</a>
+          <a class="dropdown-item" href="#">Collection-2</a>
+          <a class="dropdown-item" href="#">Collection-3</a>
+          <a class="dropdown-item" href="#">Collection-4</a>
+          <a class="dropdown-item" href="#">Collection-5</a>
+        </div>
+      </div>
+    </div>
 
-    <div class="row">
-        <!-- categories/ collections on the left, and collapse on smaller screen (use Bootstap dropdowns) -->
+    <div class="row">        
         <!-- Collections column -->
-        <div class="col-md-3 bg-color-shop-info section-column">
+        <div class="col-12 col-md-3 d-none d-lg-block">
             <div class="row">
                 <div class="col-12">
                     <h3 class="section-heading uppercase">Collections</h3>
@@ -55,10 +70,10 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div>       
 
         <!-- products column -->
-        <div class="col-9">
+        <div class="col-12 col-md-9">
             <div class="row">
                 <div class="col-sm-6 col-md-3">
                     <!-- card -->
@@ -83,6 +98,10 @@
 
 </section>
 
+{% endblock %}
 
-
+{% block postloadjs %}   
+<script>
+    $('.dropdown-toggle').dropdown()
+</script>
 {% endblock %}
