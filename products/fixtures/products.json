@@ -1,0 +1,302 @@
+[
+    {
+      "pk":1,
+      "model":"products.product",
+      "fields":{
+         "sku":"ax2832",
+         "name":"Jade Axe Amulet Pendant",
+         "description":"Crafted with high-quality silver, this necklace is not only visually stunning but also built to last. The silver material adds a touch of elegance and enhances the overall allure of the design. Whether you're a fan of Viking culture or simply appreciate unique and meaningful jewelry, this Viking Axe Necklace is sure to make a bold statement",
+         "price":51.7,
+         "category":5,         
+         "image_url":"",
+         "image":"axe_amulet.jpg"
+        }
+    },
+    {
+        "pk":2,
+        "model":"products.product",
+        "fields":{
+           "sku":"cr3031",
+           "name":"Malachite Cross Necklace",
+           "description":"Double-sided gemstone cross pendant. A simple design featuring a solid hand-cut malachite set in a classic sterling silver. The cross pendant is crafted in such a way that stone remains visible on both sides.",
+           "price":103.70,
+           "category":3,         
+           "image_url":"",
+           "image":"cross(1).jpg"
+          }
+      },
+      {
+        "pk":3,
+        "model":"products.product",
+        "fields":{
+           "sku":"cr3032",
+           "name":"Lapis Lazuli Cross Necklace",
+           "description":"Double-sided gemstone cross pendant. A simple design featuring a solid hand-cut lapis lazuli set in a classic sterling silver. The cross pendant is crafted in such a way that stone remains visible on both sides.",
+           "price":103.70,
+           "category":3,         
+           "image_url":"",
+           "image":"cross(2).jpg"
+          }
+      },
+      {
+        "pk":4,
+        "model":"products.product",
+        "fields":{
+           "sku":"cr3033",
+           "name":"Labradorite Cross Necklace",
+           "description":"Double-sided gemstone cross pendant. A simple design featuring a solid hand-cut labradorite set in a classic sterling silver. The cross pendant is crafted in such a way that stone remains visible on both sides.",
+           "price":103.70,
+           "category":3,         
+           "image_url":"",
+           "image":"cross(3).jpg"
+          }
+      },
+      {
+        "pk":5,
+        "model":"products.product",
+        "fields":{
+           "sku":"cr3034",
+           "name":"Specular Hematite Cross Necklace",
+           "description":"Double-sided gemstone cross pendant. A simple design featuring a solid hand-cut specular hematite set in a classic sterling silver. The cross pendant is crafted in such a way that stone remains visible on both sides.",
+           "price":103.70,
+           "category":3,         
+           "image_url":"",
+           "image":"cross(4).jpg"
+          }
+      },
+      {
+        "pk":6,
+        "model":"products.product",
+        "fields":{
+           "sku":"mmax1001",
+           "name":"Mammen Style Axe Necklace with Serpantine Blade",
+           "description":"This meticulously crafted piece is an exquisite replica of the renowned Mammen Axehead, an intricately designed Viking artwork originating from the year 970 CE and discovered in Jutland, Denmark.",
+           "price":143.70,
+           "category":4,         
+           "image_url":"",
+           "image":"mammen_axe(1).jpg"
+          }
+      },
+      {
+        "pk":7,
+        "model":"products.product",
+        "fields":{
+           "sku":"mmax1002",
+           "name":"Mammen Style Axe Necklace with  Red Jasper Blade, bronze",
+           "description":"This meticulously crafted piece is an exquisite replica of the renowned Mammen Axehead, an intricately designed Viking artwork originating from the year 970 CE and discovered in Jutland, Denmark.",
+           "price":103.70,
+           "category":4,         
+           "image_url":"",
+           "image":"mammen_axe(2).jpg"
+          }
+      },
+      {
+        "pk":8,
+        "model":"products.product",
+        "fields":{
+           "sku":"mmax1003",
+           "name":"Mammen Style Axe Necklace with Red Jasper Blade, silver",
+           "description":"This meticulously crafted piece is an exquisite replica of the renowned Mammen Axehead, an intricately designed Viking artwork originating from the year 970 CE and discovered in Jutland, Denmark.",
+           "price":143.70,
+           "category":4,         
+           "image_url":"",
+           "image":"mammen_axe(3).jpg"
+          }
+      },
+      {
+        "pk":9,
+        "model":"products.product",
+        "fields":{
+           "sku":"rv2001",
+           "name":"Specular Hematite Raven Necklace",
+           "description":"Crafted by hand, this unique piece takes the form of Mjolnir - the legendary hammer of Thor - and is adorned with intricate details from Norse mythology. Two ravens, Huginn and Muninn, flank the hammer and symbolize Odin's wise and watchful presence. Between the birds, a Triskele - a powerful symbol of the sun, the afterlife, and reincarnation - adds an additional layer of meaning.",
+           "price":58.30,
+           "category":2,         
+           "image_url":"",
+           "image":"mjolnir_raven.jpg"
+          }
+      },
+      {
+        "pk":10,
+        "model":"products.product",
+        "fields":{
+           "sku":"wf2101",
+           "name":"Petrified Wood Geri and Freki Necklace",
+           "description":"This pendant is inspired by Norse mythology and takes the shape of Mjolnir, the Hammer of Thor. Along with the hammer design, it features two wolves - Geri and Freki, which are Odin's companions.",
+           "price":65.30,
+           "category":1,         
+           "image_url":"",
+           "image":"mjolnir_wolf(1).jpg"
+          }
+      },
+      {
+        "pk":11,
+        "model":"products.product",
+        "fields":{
+           "sku":"wf2102",
+           "name":"Charoite Geri and Freki Necklace",
+           "description":"This pendant is inspired by Norse mythology and takes the shape of Mjolnir, the Hammer of Thor. Along with the hammer design, it features two wolves - Geri and Freki, which are Odin's companions.",
+           "price":85.30,
+           "category":1,         
+           "image_url":"",
+           "image":"mjolnir_wolf(2).jpg"
+          }
+      },
+      {
+        "pk":12,
+        "model":"products.product",
+        "fields":{
+           "sku":"wf2103",
+           "name":"Specular Hematite Geri and Freki Necklace",
+           "description":"This pendant is inspired by Norse mythology and takes the shape of Mjolnir, the Hammer of Thor. Along with the hammer design, it features two wolves - Geri and Freki, which are Odin's companions.",
+           "price":65.30,
+           "category":1,         
+           "image_url":"",
+           "image":"mjolnir_wolf(3).jpg"
+          }
+      },
+      {
+        "pk":13,
+        "model":"products.product",
+        "fields":{
+           "sku":"rg4001",
+           "name":"Wide Celtic Ring with Snake Ornament",
+           "description":"Champlevé enamel Silver band ring with Snake ornament. Champlevé, an old enamelling technique. Dating back to ancient times, this method involves the meticulous carving of troughs into the surface of an object, which are then filled with vibrant powdered glass, known as enamel. After multiple kiln firings, the enamel fuses, creating captivating depth. This meticulous process builds layers of vibrant color and texture, resulting in a stunning work of art that embodies timeless beauty and craftsmanship.",
+           "price":93.30,
+           "category":8,         
+           "image_url":"",
+           "image":"ring.jpg"
+          }
+      },
+      {
+        "pk":14,
+        "model":"products.product",
+        "fields":{
+           "sku":"th5001",
+           "name":"Charoite Thor's Hammer Pendant",
+           "description":"With its meticulous craftsmanship and attention to detail, this unique handmade necklace is a true statement piece. Whether you're a fan of Viking culture or simply appreciate bold and meaningful accessories, our Thors Hammer Pendant with Charoite is the perfect choice for embracing your warrior spirit.",
+           "price":55.30,
+           "category":7,         
+           "image_url":"",
+           "image":"thor_hammer.jpg"
+          }
+      },
+      {
+        "pk":15,
+        "model":"products.product",
+        "fields":{
+           "sku":"wcr7001",
+           "name":"Charoite Wolf Cross Necklace",
+           "description":"This handmade piece is a copy of The Wolf Cross from Foss, Iceland. The cross pendant is hand carved out of charoite. The pendant has our workshop logo on its backside.",
+           "price":90.70,
+           "category":6,         
+           "image_url":"",
+           "image":"viking_cross(1).jpg"
+          }
+      },
+      {
+        "pk":16,
+        "model":"products.product",
+        "fields":{
+           "sku":"wcr7002",
+           "name":"Red Jasper Wolf Cross Necklace",
+           "description":"This handmade piece is a copy of The Wolf Cross from Foss, Iceland. The cross pendant is hand carved out of red jasper. The pendant has our workshop logo on its backside.",
+           "price":90.70,
+           "category":6,         
+           "image_url":"",
+           "image":"viking_cross(2).jpg"
+          }
+      },
+      {
+        "pk":17,
+        "model":"products.product",
+        "fields":{
+           "sku":"wcr7003",
+           "name":"Labradorite Wolf Cross Necklace",
+           "description":"This handmade piece is a copy of The Wolf Cross from Foss, Iceland. The cross pendant is hand carved out of labradorite. The pendant has our workshop logo on its backside.",
+           "price":90.70,
+           "category":6,         
+           "image_url":"",
+           "image":"viking_cross(3).jpg"
+          }
+      }
+]
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

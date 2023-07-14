@@ -1,0 +1,67 @@
+[
+    {
+        "pk": 1,
+        "model": "products.category",
+        "fields": {
+            "name": "wolf_mjolnir",
+            "friendly_name": "Wolf Mjolnir"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "products.category",
+        "fields": {
+            "name": "raven_mjolnir",
+            "friendly_name": "Raven Mjolnir"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "products.category",
+        "fields": {
+            "name": "cross",
+            "friendly_name": "Cross"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "products.category",
+        "fields": {
+            "name": "mammen_axe",
+            "friendly_name": "Mammen Axe"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "products.category",
+        "fields": {
+            "name": "axe_amulet",
+            "friendly_name": "Axe Amulet"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "products.category",
+        "fields": {
+            "name": "wolf_cross",
+            "friendly_name": "Wolf Cross"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "products.category",
+        "fields": {
+            "name": "thors_hammer",
+            "friendly_name": "Thors Hammer"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "products.category",
+        "fields": {
+            "name": "rings",
+            "friendly_name": "Rings"
+        }
+    }
+    
+]
