@@ -33,3 +33,13 @@ body {
 .product-price {
     font-size: 1.5rem;
 }
+
+.card-link {
+    color: #222222;
+    text-decoration: none;    
+}
+
+.card-link:hover {
+    cursor: pointer;
+    color: #222222;
+}
