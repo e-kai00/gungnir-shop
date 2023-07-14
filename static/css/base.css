@@ -1,20 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Indie+Flower&family=Raleway:wght@300;400;600&display=swap');
-/* font-family: 'Bad Script', cursive;
-font-family: 'Indie Flower', cursive;
-font-family: 'Raleway', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Ysabeau+Infant:ital,wght@1,100&family=Yuji+Boku&display=swap');
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Ysabeau Infant', sans-serif;
+font-family: 'Yuji Boku', serif; */
+
 
 html {
     height: 100%;
 }
 
 body {
-    font-family: Raleway, sans-serif;
+    font-family: Montserrat, sans-serif;
     color: #222222;
 }
 
 .logo {
     color: #800020;
-    text-transform: uppercase;   
+    text-transform: uppercase;
+    font-family: 'Yuji Boku', sans-serif;    
+    font-size: 2.7rem;
 }
 
 #hero-image {
@@ -34,6 +37,10 @@ body {
     font-size: 1.5rem;
 }
 
+.category-mute {
+    font-size: smaller;
+}
+
 .card-link {
     color: #222222;
     text-decoration: none;    
@@ -47,10 +54,10 @@ body {
 
 #footer-details {
     font-size: smaller;
-    color: #E5E5C3;
+    color: #f6f6e1;
     background-color: #800020;
 }
 
 .socials {
-    color: #E5E5C3;
+    color: #f6f6e1;
 }
