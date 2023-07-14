@@ -23,3 +23,13 @@ body {
     height: 300px;
 }
 
+/* from css-tricks.com */
+.wide-devider {  
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);   
+}
+
+.product-price {
+    font-size: 1.5rem;
+}

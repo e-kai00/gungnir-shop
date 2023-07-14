@@ -28,22 +28,23 @@
 
     <!-- collections on smaller screens -->
     <div class="row d-lg-none">
-    <div class="dropdown col-12 d-lg-none">
-        <a class="btn btn-secondary dropdown-toggle w-100 text-left bg-white text-dark border border-dark rounded-pill" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          All
-        </a>
-      
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Collection-1</a>
-          <a class="dropdown-item" href="#">Collection-2</a>
-          <a class="dropdown-item" href="#">Collection-3</a>
-          <a class="dropdown-item" href="#">Collection-4</a>
-          <a class="dropdown-item" href="#">Collection-5</a>
+        <div class="dropdown col-12 d-lg-none">
+            <a class="btn btn-secondary dropdown-toggle w-100 text-left bg-white text-dark border border-dark rounded-pill"
+                href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                All
+            </a>
+
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Collection-1</a>
+                <a class="dropdown-item" href="#">Collection-2</a>
+                <a class="dropdown-item" href="#">Collection-3</a>
+                <a class="dropdown-item" href="#">Collection-4</a>
+                <a class="dropdown-item" href="#">Collection-5</a>
+            </div>
         </div>
-      </div>
     </div>
 
-    <div class="row">        
+    <div class="row">
         <!-- Collections column -->
         <div class="col-12 col-md-3 d-none d-lg-block">
             <div class="row">
@@ -70,15 +71,16 @@
                     </li>
                 </ul>
             </div>
-        </div>       
+        </div>
 
         <!-- products column -->
         <div class="col-12 col-md-9">
             <div class="row">
                 {% for product in products %}
                 <div class="col-sm-6 col-md-3 mt-3">
-                    <!-- card -->                   
+                    <!-- card -->
                     <div class="card h-100 border">
+                        
                         <!-- {% if product.image %}
                                 <a href="">
                                     <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -88,20 +90,22 @@
                                     <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 </a>
                                 {% endif %} -->
-                        <div class="card-body pb-0">
-                            <p class="mb-0">{{ product.name }}</p>                            
-                        </div>
-                        <div class="card-footer bg-white pt-0 border-0 text-left">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="lead mb-0 text-left font-weight-bold">{{ product.price }}</p>
-                                    <p class="small mt-1 mb-0">{{ product.category }}</p>
+                        <a href="{% url 'product_detail' product.id %}">
+                            <div class="card-body pb-0">
+                                <p class="mb-0">{{ product.name }}</p>
+                            </div>
+                            <div class="card-footer bg-white pt-0 border-0 text-left">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="lead mb-0 text-left font-weight-bold">{{ product.price }}</p>
+                                        <p class="small mt-1 mb-0">{{ product.category }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </div>  
-                {% endfor %}              
+                </div>
+                {% endfor %}
 
             </div>
         </div>
@@ -111,7 +115,7 @@
 
 {% endblock %}
 
-{% block postloadjs %}   
+{% block postloadjs %}
 <script>
     $('.dropdown-toggle').dropdown()
 </script>
