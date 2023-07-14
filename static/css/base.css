@@ -43,3 +43,14 @@ body {
     cursor: pointer;
     color: #222222;
 }
+
+
+#footer-details {
+    font-size: smaller;
+    color: #E5E5C3;
+    background-color: #800020;
+}
+
+.socials {
+    color: #E5E5C3;
+}
