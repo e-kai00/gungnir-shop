@@ -35,11 +35,15 @@
             </a>
 
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Collection-1</a>
-                <a class="dropdown-item" href="#">Collection-2</a>
-                <a class="dropdown-item" href="#">Collection-3</a>
-                <a class="dropdown-item" href="#">Collection-4</a>
-                <a class="dropdown-item" href="#">Collection-5</a>
+                <a class="dropdown-item" href="{% url 'home' %}?category=wolf_mjolnir,raven_mjolnir,cross,mammen_axe,axe_amulet,wolf_cross,thors_hammer,rings">All</a>
+                <a class="dropdown-item" href="{% url 'home' %}?category=wolf_mjolnir">Wolf Mjolnir</a>
+                <a class="dropdown-item" href="{% url 'home' %}?category=raven_mjolnir">Raven Mjolnir</a>
+                <a class="dropdown-item" href="{% url 'home' %}?category=cross">Cross</a>
+                <a class="dropdown-item" href="{% url 'home' %}?category=mammen_axe">Mammen Axe</a>
+                <a class="dropdown-item" href="{% url 'home' %}?category=axe_amulet">Axe Amulet</a>
+                <a class="dropdown-item" href="{% url 'home' %}?category=wolf_cross">Wolf Cross</a>
+                <a class="dropdown-item" href="{% url 'home' %}?category=thors_hammer">Thors Hammer</a>
+                <a class="dropdown-item" href="{% url 'home' %}?category=rings">Rings</a>
             </div>
         </div>
     </div>
@@ -55,19 +59,31 @@
             <div>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link text-dark font-weight-bold" href="#">All</a>
+                        <a class="nav-link text-dark font-weight-bold" href="{% url 'home' %}?category=wolf_mjolnir,raven_mjolnir,cross,mammen_axe,axe_amulet,wolf_cross,thors_hammer,rings">All</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark font-weight-bold" href="#">Collection-1</a>
+                        <a class="nav-link text-dark font-weight-bold" href="{% url 'home' %}?category=wolf_mjolnir">Wolf Mjolnir</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark font-weight-bold" href="#">Collection-2</a>
+                        <a class="nav-link text-dark font-weight-bold" href="{% url 'home' %}?category=raven_mjolnir">Raven Mjolnir</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark font-weight-bold" href="#">Collection-3</a>
+                        <a class="nav-link text-dark font-weight-bold" href="{% url 'home' %}?category=cross">Cross</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark font-weight-bold" href="#">Collection-4</a>
+                        <a class="nav-link text-dark font-weight-bold" href="{% url 'home' %}?category=mammen_axe">Mammen Axe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark font-weight-bold" href="{% url 'home' %}?category=axe_amulet">Axe Amulet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark font-weight-bold" href="{% url 'home' %}?category=wolf_cross">Wolf Cross</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark font-weight-bold" href="{% url 'home' %}?category=thors_hammer">Thors Hammer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark font-weight-bold" href="{% url 'home' %}?category=rings">Rings</a>
                     </li>
                 </ul>
             </div>
