@@ -29,10 +29,11 @@
     <!-- collections on smaller screens -->
     <div class="row d-lg-none">
         <div class="dropdown col-12 d-lg-none">
-            <a class="btn btn-secondary dropdown-toggle w-100 text-left bg-white text-dark border border-dark rounded-pill"
-                href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                All
-            </a>
+
+            <a class="btn btn-secondary dropdown-toggle w-100 text-left bg-white text-dark border border-dark rounded-pill" 
+                href="#" role="button" data-toggle="dropdown" aria-expanded="false" id="user-selection">
+                Collections        
+            </a>        
 
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="{% url 'home' %}?category=wolf_mjolnir,raven_mjolnir,cross,mammen_axe,axe_amulet,wolf_cross,thors_hammer,rings">All</a>
@@ -49,7 +50,7 @@
     </div>
 
     <div class="row">
-        <!-- Collections column -->
+        <!-- Collections list -->
         <div class="col-12 col-md-3 d-none d-lg-block">
             <div class="row">
                 <div class="col-12">
@@ -89,8 +90,31 @@
             </div>
         </div>
 
-        <!-- products column -->
+        <!-- Products list -->
         <div class="col-12 col-md-9">
+            <div class="row mt-1 mb-2">
+                <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
+                    <div class="sort-select-wrapper w-50">
+                        <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                            <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                            <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+                            <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                            <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                            <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>                           
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 order-md-first">
+                    <p class="text-muted mt-3 text-center text-md-left">
+                        {% if search_term or current_categories or current_sorting != 'None_None' %}
+                            <span class="small"><a href="#">Products Home</a> | </span>
+                        {% endif %}
+                        {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                    </p>
+                </div>
+            </div>
+
+
             <div class="row">
                 {% for product in products %}
                 <div class="col-sm-6 col-md-3 mt-2">
@@ -116,7 +140,13 @@
                                     <a href="{% url 'product_detail' product.id %}" class="card-link">
                                         <p class="lead mb-0 text-left font-weight-bold">{{ product.price }}</p>
                                     </a>
-                                    <p class="small mt-1 mb-0 text-muted category-mute">{{ product.category }}</p>
+                                    {% if product.category %}
+                                    <p class="small mt-1 mb-0">
+                                        <a class="text-muted" href="{% url 'home' %}?category={{ product.category.name }}">
+                                            <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                                        </a>
+                                    </p>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -145,7 +175,7 @@
             function(){
                 $(this).removeClass('border').addClass('border-0');
             }
-        );
+        );      
     });
 </script>
 {% endblock %}
