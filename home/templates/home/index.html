@@ -106,11 +106,8 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6 order-md-first">
-                    <p class="text-muted mt-3 text-center text-md-left">
-                        {% if search_term or current_categories or current_sorting != 'None_None' %}
-                            <span class="small"><a href="#">Products Home</a> | </span>
-                        {% endif %}
-                        {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                    <p class="text-muted mt-3 text-center text-md-left">                        
+                        {{ products|length }} Products {% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                     </p>
                 </div>
             </div>
@@ -160,8 +157,9 @@
         </div>
     </div>
 </section>
+<!-- Scroll to Top button -->
 <div class="btt-button shadow-sm">    
-    <button type="button" class="btn btn-light btt-dark btt-link"><i class="fas fa-arrow-up text-black mx-auto my-auto"></i></button>	
+    <button type="button" class="btn btn-light btt-dark border-dark btt-link"><i class="fas fa-arrow-up text-black mx-auto my-auto"></i></button>	
 </div>
 
 
@@ -207,10 +205,18 @@
         });
 
         // scroll-to-top button
-        $('.btt-link').click(function(e) {
-			window.scrollTo(0,0)
-            
-		});
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 300) {
+                $('.btt-button').css('display', 'block');
+            } else {
+                $('.btt-button').css('display', 'none');
+            }
+        });
+
+        $('.btt-button').click(function() {
+            $("html, body").animate({ scrollTop: 0 }, "slow");
+        });
+        
     });
 </script>
 {% endblock %}
