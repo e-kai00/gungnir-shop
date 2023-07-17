@@ -87,7 +87,7 @@ body {
     color: #222222;
 }
 
-/* ------------------------------- Bootstrap toasts */
+/* ------------------------------- Toasts */
 
 .message-container {
     position: fixed;
@@ -97,11 +97,17 @@ body {
 }
 
 .custom-toast {
-    overflow: visible;
+    overflow: hidden;
 }
 
 .toast-capper {
     height: 2px;
+}
+
+.notification-wrapper {    
+    height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* --------------------Home page */
