@@ -21,7 +21,7 @@
             {% if basket_items %}
             <div class="table-responsive rounded">
                 <table class="table table-sm table-borderless">
-                    <thead class="text-black">
+                    <thead class="text-black text-center">
                         <tr>
                             <th scope="col">Product Info</th>
                             <th scope="col"></th>
@@ -38,16 +38,16 @@
                         </td>
                         <td class="py-3">
                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
+                            <p class="my-0 text-muted font-italic small">SKU: {{ item.product.sku }}</p>
                         </td>
                         <td class="py-3">
-                            <p class="my-0">${{ item.product.price }}</p>
+                            <p class="my-0 text-center">${{ item.product.price }}</p>
                         </td>
                         <!-- quantity input -->
                         <td class="py-3 w-25">
                             <form class="form update-form" method="POST" action="{% url 'update_basket' item.item_id %}">
                                 {% csrf_token %}
-                                <div class="form-group">
+                                <div class="form-group text-center">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <button class="decrement-qty btn btn-black rounded-0"
@@ -70,11 +70,12 @@
                                     </div>
                                 </div>
                             </form>
-                            <a class="update-link text-info"><small>Update</small></a>
-                            <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                            <!-- update and remove -->
+                            <a class="update-link text-info cursor"><small>Update</small></a>
+                            <a class="remove-item text-danger float-right cursor" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                         </td>
                         <td class="py-3">
-                            <p class="my-0">${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            <p class="my-0 text-center">${{ item.product.price | calc_subtotal:item.quantity }}</p>
                         </td>
                     </tr>
                     {% endfor %}
@@ -95,10 +96,11 @@
         <div class="col col-lg-4 mt-3 mt-lg-0">            
             <div class="checkout-wrapper">
                 <ul class="list-group">
-                    <li class="list-group-item">
-                        <h6><strong>Basket Total: ${{ total|floatformat:2 }}</strong></h6>
+                    <li class="list-group-item border-0 bg-light pt-4">
+                        <h6><strong>Item(s) total: ${{ total|floatformat:2 }}</strong></h6>
+                        <h6><strong>Shop discount: **coming soon</strong></h6>
                         <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
-                        <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
+                        <h5 class="mt-4"><strong>Grand total: ${{ grand_total|floatformat:2 }}</strong></h5>
                         {% if free_delivery_delta > 0 %}
                         <p class="mb-1 text-danger">
                             You could get free delivery by spending just <strong>${{ free_delivery_delta }}</strong>
@@ -107,9 +109,9 @@
                         {% endif %}
                     </li>
 
-                    <li class="list-group-item">
-                        <a href="" class="btn btn-black rounded-0 btn-lg">
-                            <span class="text-uppercase">Secure Checkout</span>
+                    <li class="list-group-item border-0 bg-light pb-4 text-center">
+                        <a href="" class="btn btn-lg rounded-pill basket-btn">
+                            <span class="">Secure Checkout</span>
                             <span class="icon">
                                 <i class="fas fa-lock"></i>
                             </span>
@@ -118,7 +120,7 @@
                             <span class="icon">
                                 <i class="fas fa-chevron-left"></i>
                             </span>
-                            <span class="text-uppercase">Keep Shopping</span>
+                            <span class="">Keep Shopping</span>
                         </a>                        
                     </li>
                 </ul>
