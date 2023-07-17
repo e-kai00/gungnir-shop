@@ -4,7 +4,6 @@
 {% block content %}
 <hr class="wide-devider">
 <div class="container-fluid">
-
     <div class="row justify-content-around">
         <!-- image -->
         <div class="col-12 col-md-6 col-lg-6">
@@ -47,18 +46,18 @@
                                     <div class="input-group-prepend">
                                         <button class="decrement-qty btn btn-black rounded-0"
                                             data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
-                                            <span class="icon">
-                                                <i class="fas fa-minus"></i>
+                                            <span class="icon-btn hvr-grow">
+                                                <i class="fa-solid fa-minus"></i>
                                             </span>
                                         </button>
                                     </div>
-                                    <input class="form-control qty_input" type="number" name="quantity" value="1"
+                                    <input class="form-control rounded-pill qty_input" type="number" name="quantity" value="1"
                                         min="1" max="99" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
                                     <div class="input-group-append">
                                         <button class="increment-qty btn btn-black rounded-0"
                                             data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
-                                            <span class="icon">
-                                                <i class="fas fa-plus"></i>
+                                            <span class="icon-btn hvr-grow">
+                                                <i class="fa-solid fa-plus"></i>
                                             </span>
                                         </button>
                                     </div>
