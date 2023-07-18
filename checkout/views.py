@@ -5,7 +5,7 @@ from .forms import OrderForm
 # Create your views here.
 def checkout(request):
 
-    basket = request.session('basket', {})
+    basket = request.session.get('basket', {})
     if not basket:
         messages.error(request, "Your basket is empty")
         redirect(reverse('home'))
