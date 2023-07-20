@@ -45,6 +45,10 @@ body {
     cursor: pointer;
 }
 
+.italic-custom {
+    font-family: 'Ysabeau Infant', sans-serif;    
+}
+
 /* --------------------Buttons */
 /* Scroll-to-top */
 .btt-button {    
