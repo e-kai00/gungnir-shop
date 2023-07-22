@@ -4,11 +4,11 @@ font-family: 'Ysabeau Infant', sans-serif;
 font-family: 'Yuji Boku', serif; */
 
 
-html {
-    height: 100%;
+html {    
+    min-height: 100vh;    
 }
 
-body {
+body {       
     font-family: Montserrat, sans-serif;
     color: #222222;
 }
