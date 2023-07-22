@@ -6,7 +6,7 @@ from .forms import UserProfileForm
 def profile(request):
 
     profile = get_object_or_404(UserProfile, user=request.user)
-    form = UserProfileForm(isinstance=profile)
+    form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
 
     template = 'profiles/profile.html'

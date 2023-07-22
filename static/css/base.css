@@ -131,6 +131,24 @@ body {
     font-size: 1.5rem;
 }
 
+
+/* --------------------User Profile */
+#profile-update-form .form-control {
+    color: #222222;
+}
+
+#id_default_country,
+#id_default_country option:not(:first-child) {
+    color: #222222;
+}
+
+#id_default_country option:first-child {
+    color: #6c757d;
+}
+
+
+
+
 /* --------------------Allauth */
 .allauth-form-inner-content label:not([for='id_remember']) {
     display: none;
