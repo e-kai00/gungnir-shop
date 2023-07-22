@@ -131,6 +131,37 @@ body {
     font-size: 1.5rem;
 }
 
+/* --------------------Allauth */
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content button,
+.allauth-form-inner-content input[type='submit'] {
+	/* btn */
+	display: inline-block;    
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #800020;    
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 20px;
+    border: none;    
+}
+
+.allauth-form-inner-content button:hover {
+background-color: white;
+border: 1px solid #800020;
+border-radius: 20px;
+color: #222222;
+}
+
 
 /* --------------------Footer */
 #footer-details {
