@@ -146,6 +146,10 @@ body {
     color: #6c757d;
 }
 
+.order-history {
+    max-height: 416px;
+    overflow-y: auto;
+}
 
 
 
