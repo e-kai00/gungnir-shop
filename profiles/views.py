@@ -22,7 +22,7 @@ def profile(request):
     context = {
         'form': form,
         'orders': orders,
-        'on_profile_page': True
+        'on_profile_page': True,
     }
 
     return render(request, template, context)
@@ -34,10 +34,10 @@ def order_history(request, order_number):
 
     messages.info(request, f'This order has been made on {order.date}')
 
-    template = 'checkout/checkout.html'
+    template = 'checkout/checkout_success.html'
     context = {
         'order': order,
-        'from_profile': True
+        'from_profile': True,
     }
 
     return render(request, template, context)
