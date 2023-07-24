@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product
+from .forms import ProductForm
 
-# Create your views here.
 
 def product_detail(request, product_id):
     """ A view to show individual product details """
@@ -13,3 +13,14 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'products/product_detail.html', context)
+
+
+def add_product(request):
+    """ Add a product to the store """
+    form = ProductForm()
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
