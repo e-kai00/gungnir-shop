@@ -8,6 +8,10 @@ from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from basket.contexts import basket_contents
 import stripe
+# send confirmation email
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.conf import settings
 
 
 def checkout(request):
@@ -70,7 +74,7 @@ def checkout(request):
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing.')
 
-    # use default delivery information to pre-fill the form
+    # use default delivery info to pre-fill the form
     if request.user.is_authenticated:
         try:
             profile = UserProfile.objects.get(user=request.user)
@@ -90,7 +94,7 @@ def checkout(request):
 
     else:
         order_form = OrderForm()
-        
+
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
@@ -101,11 +105,30 @@ def checkout(request):
     return render(request, template, context)
 
 
+def send_confirmation_email(order):
+
+    customer_email = order.email
+    subject = render_to_string(
+        'checkout/confirmation_emails/confirmation_email_subject.txt',
+        {'order': order}
+    )
+    body = render_to_string(
+        'checkout/confirmation_emails/confirmation_email_body.txt',
+        {'order': order, 'contact email': settings.DEFAULT_FROM_EMAIL}
+    )
+    send_mail(
+        subject,
+        body,
+        settings.DEFAULT_FROM_EMAIL,
+        [customer_email]
+    )
+
+
 def checkout_success(request, order_number):
 
     save_info = request.session.get('save-info')
     order = get_object_or_404(Order, order_number=order_number)
-
+    
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         # attach order to user
@@ -135,9 +158,13 @@ def checkout_success(request, order_number):
     if 'basket' in request.session:
         del request.session['basket']
 
+    send_confirmation_email(order)
+
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
     }
 
     return render(request, template, context)
+
+
