@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Product
-from .forms import ProductForm
+from .models import Product, Reviews
+from .forms import ProductForm, ReviewsForm
 
 
 def product_detail(request, product_id):
@@ -81,3 +81,15 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted.')
     return redirect(reverse('home'))
+
+
+def submit_review(request, product_id):
+
+    form = ReviewsForm()
+    
+    template = 'products/product_detail.html'
+    context = {
+        'form': form
+    }
+
+    return render(request, template, context)

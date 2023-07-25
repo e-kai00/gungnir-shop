@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 {% block content %}
 <hr class="wide-devider">
 <div class="container-fluid">
@@ -87,6 +88,35 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="row">
+        <div class="col-7">
+            <h3>Customer Reviews</h3>
+            <form method="POST" action="{% url 'submit_review' product.id %}" class="form">
+                {% csrf_token %}
+                
+                <div>
+                    <!-- stars -->
+                
+                Review:
+                <textarea name="review" rows="4" class="form-control"></textarea>
+                <br>
+                <input type="submit" value="Submit review" class="btn basket-btn rounded-pill">
+                </div>
+            
+            <!-- <a href="#" class="btn basket-btn rounded-pill">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="">Leave your review</span>
+            </a> -->
+            
+            <!-- <p>Please log in to leave a review.</p> -->            
+            </form>
+           
         </div>
     </div>
 </div>
