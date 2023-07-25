@@ -26,7 +26,6 @@ class Order(models.Model):
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
 
     def _generate_order_number(self):
-
         return uuid.uuid4().hex.upper()
 
     def update_total(self):
