@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Product, Reviews
-from .forms import ProductForm, ReviewsForm
+from .forms import ProductForm
 
 
 def product_detail(request, product_id):
@@ -84,6 +84,9 @@ def delete_product(request, product_id):
 
 
 def submit_review(request, product_id):
+     
+    if not request.user.is_authenticated:
+        return redirect(reverse('account_login'))
 
     user = request.user
     product = get_object_or_404(Product, pk=product_id)

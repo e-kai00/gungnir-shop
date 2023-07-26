@@ -20,10 +20,4 @@ class ProductForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'rounded-0'
 
-
-class ReviewsForm(forms.ModelForm):
-
-    class Meta:
-        model = Reviews
-        fields = ['comment', 'rating']
         
