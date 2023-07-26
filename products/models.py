@@ -27,6 +27,19 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_rating(self):
+        """ Calculate average product rating """
+        total_rating = 0
+
+        for review in self.reviews.all():
+            total_rating += review.rating
+
+        if total_rating > 0:
+            return total_rating / self.reviews.count()
+        else:
+            return 0
+
 
 
 class Reviews(models.Model):

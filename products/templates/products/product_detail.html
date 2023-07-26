@@ -37,6 +37,10 @@
                     </a>
                 </p>
                 {% endif %}
+
+                {% if product.get_rating > 0 %}
+                <p class="mt-3">Rating: {{ product.get_rating }}</p>
+                {% endif %}
                 <p class="mt-3">{{ product.description }}</p>
 
                 {% if request.user.is_superuser %}
@@ -116,13 +120,18 @@
                 Review:
                 <textarea name="review" rows="4" class="form-control"></textarea>
                 <br>
+                {% if user.is_authenticated %}
                 <input type="submit" value="Submit review" class="btn basket-btn rounded-pill">
+                {% else %}
+                <p>Please log in to leave a review. <span><a href="{% url 'account_login' %}">Login</a> now.</span></p>
+                {% endif %}
                 </div>                       
             </form>          
             {% for review in product.reviews.all %} 
             <div class="row">
                 <div class="col-7">
                     <strong>Author:</strong> {{ review.created_by }}<br>
+                    <strong>Date:</strong> {{ review.created_on|date:"d M Y" }}<br>
                     <strong>Ratings:</strong> {{ review.rating }}<br>
                     <strong>Comment:</strong> {{ review.comment }}<br>
                 </div>
