@@ -103,14 +103,14 @@
                 
                 <div>
                 <!-- stars -->
-                <label>How do you rate this product?</label>
+                <p>How do you rate this product?</p>
                 <br>
                 <div class="rate">
-                    <input type="radio" class="rating" id="rating5" value="5" required><label for="rating5" title="5"></label>
-                    <input type="radio" class="rating" id="rating4" value="4" required><label for="rating4" title="4"></label>
-                    <input type="radio" class="rating" id="rating3" value="3" required><label for="rating3" title="3"></label>
-                    <input type="radio" class="rating" id="rating2" value="2" required><label for="rating2" title="2"></label>
-                    <input type="radio" class="rating" id="rating1" value="1" required><label for="rating1" title="1"></label>
+                    <input type="radio" name="rating" class="rating" id="rating5" value="5" required><label for="rating5" title="5"></label>
+                    <input type="radio" name="rating" class="rating" id="rating4" value="4" required><label for="rating4" title="4"></label>
+                    <input type="radio" name="rating" class="rating" id="rating3" value="3" required><label for="rating3" title="3"></label>
+                    <input type="radio" name="rating" class="rating" id="rating2" value="2" required><label for="rating2" title="2"></label>
+                    <input type="radio" name="rating" class="rating" id="rating1" value="1" required><label for="rating1" title="1"></label>
                 </div>
                 <br>
                 Review:
@@ -118,7 +118,16 @@
                 <br>
                 <input type="submit" value="Submit review" class="btn basket-btn rounded-pill">
                 </div>                       
-            </form>           
+            </form>          
+            {% for review in product.reviews.all %} 
+            <div class="row">
+                <div class="col-7">
+                    <strong>Author:</strong> {{ review.created_by }}<br>
+                    <strong>Ratings:</strong> {{ review.rating }}<br>
+                    <strong>Comment:</strong> {{ review.comment }}<br>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>

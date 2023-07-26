@@ -85,11 +85,41 @@ def delete_product(request, product_id):
 
 def submit_review(request, product_id):
 
-    form = ReviewsForm()
+    user = request.user
+    product = get_object_or_404(Product, pk=product_id)
+    review = Reviews.objects.filter(created_by=user, product=product).first()
+
+    if request.method == 'POST':
+        rating = request.POST.get('rating', 5)
+        comment = request.POST.get('review', '')
+
+        if review:
+            review.rating = rating
+            review.comment = comment
+            review.save()
+            messages.success(request, 'Your feedback has been updated.')
+
+        else:
+            Reviews.objects.create(
+                product=product,
+                comment=comment,
+                rating=rating,
+                created_by=user
+            )
+            messages.success(request, 'Thank you for your feedback!')
+        
+        return redirect(reverse('product_detail', args=[product_id]))
     
     template = 'products/product_detail.html'
     context = {
-        'form': form
+        'product': product,
     }
-
+    
     return render(request, template, context)
+        
+    
+    
+    
+    
+   
+
