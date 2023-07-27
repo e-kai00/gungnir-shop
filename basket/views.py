@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, HttpResponse, get_object
 from django.contrib import messages
 from products.models import Product
 
-# Create your views here.
+
 def view_basket(request):
 
     return render(request, 'basket/basket.html')
@@ -58,3 +58,5 @@ def remove_from_basket(request, item_id):
     except Exception as e:
         messages.error(f'Error removing item: {e}')
         return HttpResponse(status=500)
+    
+

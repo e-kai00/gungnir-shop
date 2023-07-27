@@ -30,7 +30,7 @@ class Order(models.Model):
 
     def update_total(self):
       
-        # overide default behaviour - add a new field to the query set called lineitem_total__sum.
+        # overide default behaviour - add a new field to the queryset called lineitem_total__sum.
         # Which we can then get and set the order total to that.
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:

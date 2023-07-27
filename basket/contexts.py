@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404
 from products.models import Product
 
 
+
 def basket_contents(request):
 
     basket_items = []
@@ -23,7 +24,7 @@ def basket_contents(request):
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)  # remove later
-        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
+        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total        
     else:
         delivery = 0
         free_delivery_delta = 0
@@ -37,7 +38,7 @@ def basket_contents(request):
         'delivery': delivery,
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
-        'grand_total': grand_total,
+        'grand_total': grand_total,        
     }
 
     return context

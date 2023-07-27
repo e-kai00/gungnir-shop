@@ -113,6 +113,16 @@
                         {% endif %}
                     </li>
 
+                    <!-- coupon apply -->
+                    <li class="list-group-item border-0 bg-light pt-4">
+                        <h6>Apply shop coupon code</h6>
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <input type="submit" value="Apply" class="btn basket-btn rounded-pill float-right">
+                        </form>
+                    </li>
+
+                    <!-- buttons -->
                     <li class="list-group-item border-0 bg-light pb-4 text-center">
                         <a href="{% url 'checkout' %}" class="btn rounded-pill px-5 basket-btn">
                             <span class="">Secure Checkout</span>
