@@ -102,7 +102,7 @@
                 <ul class="list-group">
                     <li class="list-group-item border-0 bg-light pt-4">
                         <h6><strong>Item(s) total: ${{ total|floatformat:2 }}</strong></h6>
-                        <h6><strong>Shop discount: **coming soon</strong></h6>
+                        <h6><strong>Shop discount: ${{ discount|floatformat:2 }}</strong></h6>
                         <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
                         <h5 class="mt-4"><strong>Grand total: ${{ grand_total|floatformat:2 }}</strong></h5>
                         {% if free_delivery_delta > 0 %}
@@ -116,8 +116,10 @@
                     <!-- coupon apply -->
                     <li class="list-group-item border-0 bg-light pt-4">
                         <h6>Apply shop coupon code</h6>
-                        <form method="post" action="">
+                        <form method="post" action="{% url 'apply_coupon' %}">
                             {% csrf_token %}
+                            {{ apply_coupon_form }}
+                            
                             <input type="submit" value="Apply" class="btn basket-btn rounded-pill float-right">
                         </form>
                     </li>

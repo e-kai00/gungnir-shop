@@ -2,6 +2,8 @@ from django.conf import settings
 from decimal import Decimal
 from django.shortcuts import get_object_or_404
 from products.models import Product
+from coupons.models import Coupon
+from coupons.forms import ApplyCouponForm
 
 
 
@@ -11,6 +13,7 @@ def basket_contents(request):
     total = 0 
     product_count = 0
     basket = request.session.get('basket', {})
+    coupon_id = request.session.get('coupon_id')
 
     for item_id, quantity in basket.items():
         product = get_object_or_404(Product, pk=item_id)
@@ -29,7 +32,18 @@ def basket_contents(request):
         delivery = 0
         free_delivery_delta = 0
     
-    grand_total = delivery + total
+    if coupon_id:
+        coupon = Coupon.objects.get(id=coupon_id)
+        discount = total * (coupon.value / Decimal(100))
+        total_with_coupon = total - discount        
+        grand_total = delivery + total_with_coupon
+    else:
+        coupon = None
+        discount = 0
+        grand_total = delivery + total + discount
+
+    
+    apply_coupon_form = ApplyCouponForm()
 
     context = {
         'basket_items': basket_items,
@@ -38,7 +52,10 @@ def basket_contents(request):
         'delivery': delivery,
         'free_delivery_delta': free_delivery_delta,
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
-        'grand_total': grand_total,        
+        'coupon': coupon,
+        'discount': discount,        
+        'apply_coupon_form': apply_coupon_form,
+        'grand_total': grand_total,     
     }
 
     return context
