@@ -52,6 +52,7 @@ def checkout(request):
                 order.coupon = coupon
                 order.discount = coupon.value
             order.save()
+            del request.session['coupon_id']
             
             for item_id, quantity in basket.items():
                 try:
