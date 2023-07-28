@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse
+from django.contrib import messages
 from django.utils import timezone
 from .models import Coupon
 from .forms import ApplyCouponForm
@@ -22,6 +23,8 @@ def apply_coupon(request):
                 request.session['coupon_id'] = coupon.id
             except Coupon.DoesNotExist:
                 request.session['coupon_id'] = None
+                messages.info(request, 'This coupon code does not exist.')
+                
     else:
         coupon_form = ApplyCouponForm()
     return redirect(reverse('view_basket'))
