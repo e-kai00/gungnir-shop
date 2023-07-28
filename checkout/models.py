@@ -1,11 +1,14 @@
 from django.db import models
 import uuid
+from decimal import Decimal
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django_countries.fields import CountryField
 from products.models import Product
 from profiles.models import UserProfile
+from coupons.models import Coupon
 
 
 class Order(models.Model):
@@ -24,6 +27,8 @@ class Order(models.Model):
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    coupon = models.ForeignKey(Coupon, related_name='orders', on_delete=models.SET_NULL, null=True, blank=True)
+    discount = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
 
     def _generate_order_number(self):
         return uuid.uuid4().hex.upper()
@@ -37,7 +42,7 @@ class Order(models.Model):
             self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
         else:
             self.delivery_cost = 0
-        self.grand_total = self.order_total + self.delivery_cost
+        self.grand_total = self.order_total + self.delivery_cost - (self.order_total * (self.discount / Decimal(100)))
         self.save()
 
     def save(self, *args, **kwargs):

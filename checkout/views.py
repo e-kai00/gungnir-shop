@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from products.models import Product
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from basket.contexts import basket_contents
+from coupons.models import Coupon
 import stripe
 # send confirmation email
 from django.core.mail import send_mail
@@ -22,6 +24,16 @@ def checkout(request):
     # post method
     if request.method == 'POST':
         basket = request.session.get('basket', {})
+        coupon_id = request.session.get('coupon_id')
+        coupon = None
+        try:
+            if coupon_id:
+                coupon = Coupon.objects.get(id=coupon_id)
+            else:
+                coupon_id = None
+        except ObjectDoesNotExist:
+            coupon_id = None
+
         form_data = {            
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -35,7 +47,12 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)        
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            if coupon:
+                order.coupon = coupon
+                order.discount = coupon.value
+            order.save()
+            
             for item_id, quantity in basket.items():
                 try:
                     product = Product.objects.get(id=item_id)
