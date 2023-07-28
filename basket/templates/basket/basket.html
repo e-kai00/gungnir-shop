@@ -113,14 +113,15 @@
                         {% endif %}
                     </li>
 
-                    <!-- coupon apply -->
+                    <!-- apply coupon -->
                     <li class="list-group-item border-0 bg-light pt-4">
-                        <h6>Apply shop coupon code</h6>
+                        <h6><i class="fa-solid fa-tag fa-rotate-90 text-muted"></i> Apply shop coupon code</h6>
                         <form method="post" action="{% url 'apply_coupon' %}">
                             {% csrf_token %}
-                            {{ apply_coupon_form }}
-                            
-                            <input type="submit" value="Apply" class="btn basket-btn rounded-pill float-right">
+                            <div class="apply-coupon">
+                                {{ apply_coupon_form }}                            
+                                <input type="submit" value="Apply" class="btn float-right ml-1">
+                            </div>
                         </form>
                     </li>
 

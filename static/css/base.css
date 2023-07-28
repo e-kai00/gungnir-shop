@@ -225,3 +225,26 @@ color: #222222;
 }
 
 
+/* --------------------Coupon */
+.apply-coupon {    
+    display: flex;
+    flex-direction: row;    
+}
+
+.apply-coupon > .btn {
+    border: 1px solid #222222;
+    border-radius: 0;
+    font-size: .8rem;
+    
+}
+
+.apply-coupon > .btn:hover {
+    background-color: #222222;
+    color: #f6f6e1;
+    opacity:1;
+}
+
+.coupon_form {
+    border: 1px solid #222222;    
+}
+
