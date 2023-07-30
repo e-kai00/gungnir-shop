@@ -7,8 +7,7 @@
 <hr class="wide-devider">
 <div class="container mb-2">
     <div class="row">
-        <div class="col">
-           
+        <div class="col">           
             <h2 class="logo-font mb-4">Basket</h2>
             <hr>
         </div>
@@ -94,7 +93,24 @@
                 <span class="text-uppercase">Keep Shopping</span>
             </a>
             {% endif %}
+
+               <!-- shipping methods -->
+        <div class="row">
+            <div class="col">                
+                <!-- {% include "shipping/shipping.html" %}  -->
+                 
+                <form method="post" action="{% url 'shipping_options'%}">
+                    {% csrf_token %}
+                    <div class="apply-coupon">
+                        {{ shipping_form }}                            
+                        <input type="submit" value="Choose" class="btn float-right ml-1">
+                    </div>
+                </form>
+                            
+            </div>
         </div>
+        </div>
+     
 
         <!-- Checkout -->
         <div class="col col-lg-4 mt-3 mt-lg-0">            

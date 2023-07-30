@@ -12,7 +12,7 @@ class Shipping(models.Model):
 
 
     def __str__(self):
-        return self.method
+        return f"${self.price} {self.method}"
 
 
     def estimated_delivery(self):  

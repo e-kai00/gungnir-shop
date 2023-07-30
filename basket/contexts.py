@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404
 from products.models import Product
 from coupons.models import Coupon
 from coupons.forms import ApplyCouponForm
+from shipping.forms import ShippingForm
 
 
 
@@ -51,6 +52,7 @@ def basket_contents(request):
 
     
     apply_coupon_form = ApplyCouponForm()
+    shipping_form = ShippingForm()
 
     context = {
         'basket_items': basket_items,
@@ -63,6 +65,7 @@ def basket_contents(request):
         'discount': discount,        
         'apply_coupon_form': apply_coupon_form,
         'grand_total': grand_total,     
+        'shipping_form': shipping_form,
     }
 
     return context
