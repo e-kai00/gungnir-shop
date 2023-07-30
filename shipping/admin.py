@@ -7,7 +7,8 @@ class ShippingAdmin(admin.ModelAdmin):
     list_display = (
         'method',
         'price',
-        'delivery_time',
+        'delivery_time_min',
+        'delivery_time_max',
         'processing_time',
     )
 
