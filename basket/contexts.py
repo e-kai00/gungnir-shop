@@ -80,6 +80,7 @@ def basket_contents(request):
         'apply_coupon_form': apply_coupon_form,
         'grand_total': grand_total,     
         'shipping_form': shipping_form,
+        'shipping': shipping
     }
 
     return context

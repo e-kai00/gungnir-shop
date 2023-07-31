@@ -21,7 +21,7 @@ class Shipping(models.Model):
         
         min_estimated_delivery = today + timedelta(days=self.delivery_time_min + self.processing_time)
         max_estimated_delivery = today + timedelta(days=self.delivery_time_max + self.processing_time)
-        estimated_delivery_range = f'{min_estimated_delivery} - {max_estimated_delivery}'
+        estimated_delivery_range = f'{min_estimated_delivery.strftime("%d %B")} - {max_estimated_delivery.strftime("%d %B")}'
 
         return estimated_delivery_range
 
