@@ -131,6 +131,18 @@ body {
     font-size: 1.5rem;
 }
 
+.delivery-date {
+    font-size: .8rem;
+    font-weight: bold;
+}
+
+
+.delivery-text {
+    font-size: .8rem;    
+    text-decoration: underline dashed #222222;
+    text-decoration-thickness: .2px;
+}
+
 
 /* --------------------User Profile */
 #profile-update-form .form-control {
