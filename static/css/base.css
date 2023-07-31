@@ -260,3 +260,21 @@ color: #222222;
     border: 1px solid #222222;    
 }
 
+/* --------------------Shippig */
+
+.shipping-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.shipping-form-wrapper p {
+    font-size: .85rem;
+    font-weight: bold;
+}
+
+.shipping-form {
+    padding-left: 3rem;
+    padding-right: 3rem;   
+}
+

@@ -9,4 +9,8 @@ class ShippingForm(forms.Form):
         empty_label=None
     )
 
-    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].label = False
+            self.fields[field].widget.attrs['class'] = 'shipping-form'

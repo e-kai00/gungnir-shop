@@ -62,7 +62,7 @@ def basket_contents(request):
             coupon = Coupon.objects.get(id=coupon_id)
             discount = total * (coupon.value / Decimal(100))
             total_with_coupon = total - discount        
-            grand_total = shipping_cost + total_with_coupon
+            grand_total = shipping_cost + total_with_coupon if shipping_id else default_shipping_cost + total_with_coupon
         else:
             coupon = None
             discount = 0

@@ -94,21 +94,19 @@
             </a>
             {% endif %}
 
-               <!-- shipping methods -->
-        <div class="row">
-            <div class="col">                
-                <!-- {% include "shipping/shipping.html" %}  -->
-                 
-                <form method="post" action="{% url 'shipping_options'%}">
+            <!-- shipping methods -->
+            <div class="row mt-4">
+                <div class="col shipping-form-wrapper">                 
+                    <form method="post" action="{% url 'shipping_options'%}">
                     {% csrf_token %}
                     <div class="apply-coupon">
                         {{ shipping_form }}                            
                         <input type="submit" value="Choose" class="btn float-right ml-1">
                     </div>
-                </form>
-                <p>Estimated Delivery: {{ shipping.estimated_delivery }}</p>                            
+                    </form>
+                    <p class="mt-1">Estimated Delivery: {{ shipping.estimated_delivery }}</p>                            
+                </div>
             </div>
-        </div>
         </div>
      
 
