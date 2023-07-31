@@ -112,11 +112,10 @@
                 </div>
             </div>
 
-
             <div class="row">
                 {% for product in products %}
                 <div class="col-sm-6 col-md-3 mt-2">
-                    <!-- card -->
+                    <!-- product card -->
                     <div class="card h-100 border-0">
                         {% if product.image %}
                                 <a href="">
@@ -139,30 +138,14 @@
                                     <p class="small font-weight-bold mb-0">Rating: {{ product.get_rating }}/5</p>
                                     {% endif %}
                                     <a href="{% url 'product_detail' product.id %}" class="card-link">
-                                        <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
-                                    </a>
-                                    <!-- {% if product.category %}
-                                    <p class="small mt-1 mb-0">
-                                        <a class="text-muted" href="{% url 'home' %}?category={{ product.category.name }}">
-                                            <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
-                                        </a>
-                                    </p>
-                                    {% endif %} -->
-                                    
-                                    {% if request.user.is_superuser %}
-                                    <small class="ml-3">
-                                        <a href="{% url 'edit_product' product.id %}">Edit</a> | 
-                                        <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                                    </small>
-                                {% endif %}
+                                        <p class="lead mb-0 text-right font-weight-bold">${{ product.price }}</p>
+                                    </a>                                  
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 {% endfor %}
-
             </div>
         </div>
     </div>
