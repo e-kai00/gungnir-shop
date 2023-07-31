@@ -37,17 +37,22 @@ def basket_contents(request):
 
     # shipping
     shipping_form = ShippingForm()
-    shipping_id = request.session.get('shipping_id')    
+    shipping_id = request.session.get('shipping_id')
+    shipping = None
+    shipping_cost = 0
+    default_shipping = None
+    default_shipping_cost = 0
+
     try:
         if shipping_id is not None:
             shipping = Shipping.objects.get(id=shipping_id)
             shipping_cost = shipping.price
         else:
-            shipping = None
-            shipping_cost = 0
+            default_shipping = Shipping.objects.first()
+            default_shipping_cost = default_shipping.price or 0
     except ObjectDoesNotExist:
-        shipping = None
-        shipping_cost = 0
+        default_shipping = Shipping.objects.first()
+        default_shipping_cost = default_shipping.price or 0
 
     # coupon
     apply_coupon_form = ApplyCouponForm()
@@ -61,26 +66,31 @@ def basket_contents(request):
         else:
             coupon = None
             discount = 0
-            grand_total = shipping_cost + total + discount
+            grand_total = shipping_cost + total + discount if shipping_id else default_shipping_cost + total + discount
     except ObjectDoesNotExist:
             coupon = None
             discount = 0
-            grand_total = shipping_cost + total + discount    
+            # grand_total = shipping_cost + total + discount    
+            grand_total = shipping_cost + total + discount if shipping else default_shipping_cost + total + discount
     
     
     context = {
         'basket_items': basket_items,
         'total': total,
         'product_count': product_count,
+        'shipping_form': shipping_form,
         'delivery': shipping_cost,
+        'shipping': shipping,
+        'default_shipping': default_shipping,
+        'default_shipping_cost': default_shipping_cost,
         # 'free_delivery_delta': free_delivery_delta,
         # 'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'coupon': coupon,
         'discount': discount,        
         'apply_coupon_form': apply_coupon_form,
-        'grand_total': grand_total,     
-        'shipping_form': shipping_form,
-        'shipping': shipping
+        'grand_total': grand_total,
+        'shipping_id': shipping_id,
+                
     }
 
     return context
