@@ -79,6 +79,10 @@ def update_announcement(new):
 
 def announcement(request):
 
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only shop owner can do this.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         new = request.POST.get('announcement', '')
         update_announcement(new)

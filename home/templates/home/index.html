@@ -20,7 +20,9 @@
         </div>
         <div class="col-12 col-sm-9 overflow-auto">           
                 <p class="">{{ announcement }}</p>
-                <a href="{% url 'announcement' %}">Update</a>        
+                {% if request.user.is_superuser %}
+                <a href="{% url 'announcement' %}">Update</a>
+                {% endif %}   
         </div>
     </div>
 
