@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<section class="container-fluid">
+    <!-- hero image -->
+    <div class="row">
+        <div class="col px-0">
+            <div id="hero-image"></div>
+        </div>
+    </div>
+
+    <!-- announcement -->
+    <div class="row my-4 announcement">
+        <div class="col-12 col-sm-3 ">            
+                <p class="text-center mb-0">Announcement</p> 
+                <p class="text-center small">Last updated on </p>            
+        </div>
+        <div class="col-12 col-sm-9 overflow-auto">           
+            <form method="post" action="{% url 'announcement' %}">
+                {% csrf_token %}
+                <label for="announcement">Update Announcement:</label>
+                <textarea id="announcement" name="announcement" cols="80" rows="4"></textarea>
+                <input type="submit" value="Update">
+            </form>      
+            {{announcement}}  
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}
+
+

@@ -48,14 +48,50 @@ def index(request):
 
     current_sorting = f'{sort}_{direction}'
 
+    announcement = get_announcement()
+
     context = {
         'products': products,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'announcement': announcement
     }
                 
 
     return render(request, 'home/index.html', context)
 
+
+def get_announcement():
+
+    try:
+        with open("data/announcement.txt", "r") as file:
+            return file.read()
+    except FileNotFoundError:
+        return "No announcement found."
+    
+
+def update_announcement(new):
+
+    with open("data/announcement.txt", "w") as file:
+            return file.write(new)
+    
+
+def announcement(request):
+
+    if request.method == 'POST':
+        new = request.POST.get('announcement', '')
+        update_announcement(new)
+        messages.success(request, 'Announcement has been updated.')
+        return redirect(reverse('home'))
+
+    announcement = get_announcement()
+    template = 'home/announcement.html'
+    context = {
+        'announcement': announcement
+    }
+
+    return render(request, template, context)
+
+    
  

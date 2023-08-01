@@ -13,16 +13,14 @@
     </div>
 
     <!-- announcement -->
-    <div class="row my-4">
-        <div class="col-3">
-            <div class="announcement">
-                <h4 class="logo-font my-1 text-left">Announcement</h4> <!-- will have CRUD functiomallity -->
-            </div>
+    <div class="row my-4 announcement">
+        <div class="col-12 col-sm-3 ">            
+                <p class="text-center mb-0">Announcement</p> <!-- will have CRUD functiomallity -->
+                <p class="text-center small">Last updated on </p>            
         </div>
-        <div class="col-9">
-            <div class="announcement text-left">
-                <p>Free shipping on orders over $50</p>
-            </div>
+        <div class="col-12 col-sm-9 overflow-auto">           
+                <p class="">{{ announcement }}</p>
+                <a href="{% url 'announcement' %}">Update</a>        
         </div>
     </div>
 
