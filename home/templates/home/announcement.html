@@ -22,11 +22,12 @@
             <form method="post" action="{% url 'announcement' %}">
                 {% csrf_token %}
                 <div class="form-group">
-
                     <textarea id="announcement" name="announcement" rows="3" class="form-control"></textarea><br>                    
+                    
                     <div class="container d-flex justify-content-center">
                         <input type="submit" value="Update" class="btn basket-btn rounded-pill">
                     </div>
+                    
                 </div>
             </form>
         </div>
