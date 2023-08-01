@@ -9,6 +9,7 @@ from django_countries.fields import CountryField
 from products.models import Product
 from profiles.models import UserProfile
 from coupons.models import Coupon
+from shipping.models import Shipping
 
 
 class Order(models.Model):
@@ -23,27 +24,34 @@ class Order(models.Model):
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     county = models.CharField(max_length=80, null=True, blank=True)
-    date = models.DateTimeField(auto_now_add=True)
-    delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
+    date = models.DateTimeField(auto_now_add=True)    
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     coupon = models.ForeignKey(Coupon, related_name='orders', on_delete=models.SET_NULL, null=True, blank=True)
     discount = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    shipping = models.ForeignKey(Shipping, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
+    shipping_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
 
     def _generate_order_number(self):
         return uuid.uuid4().hex.upper()
 
     def update_total(self):
       
-        # overide default behaviour - add a new field to the queryset called lineitem_total__sum.
+        # overide default behaviour - add a new field to the queryset "lineitem_total__sum".
         # Which we can then get and set the order total to that.
+
+        # self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        # if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
+        #     self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+        # else:
+        #     self.delivery_cost = 0
+        # self.grand_total = self.order_total + self.delivery_cost - (self.order_total * (self.discount / Decimal(100)))
+        # self.save()
+
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
-        if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
-            self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
-        else:
-            self.delivery_cost = 0
-        self.grand_total = self.order_total + self.delivery_cost - (self.order_total * (self.discount / Decimal(100)))
+        self.grand_total = self.order_total + self.shipping_cost - (self.order_total * (self.discount / Decimal(100)))
         self.save()
+
 
     def save(self, *args, **kwargs):
         

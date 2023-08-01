@@ -9,6 +9,7 @@ from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from basket.contexts import basket_contents
 from coupons.models import Coupon
+from shipping.models import Shipping
 import stripe
 # send confirmation email
 from django.core.mail import send_mail
@@ -34,6 +35,18 @@ def checkout(request):
         except ObjectDoesNotExist:
             coupon_id = None
 
+        shipping_id = request.session.get('shipping_id')
+        shipping = None        
+        default_shipping = None
+        try:
+            if shipping_id is not None:
+                shipping = Shipping.objects.get(id=shipping_id)                    
+            else:
+                default_shipping = Shipping.objects.first() if Shipping.objects.exists() else None            
+        except ObjectDoesNotExist:
+            default_shipping = Shipping.objects.first() if Shipping.objects.exists() else None
+        
+
         form_data = {            
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -48,11 +61,20 @@ def checkout(request):
         order_form = OrderForm(form_data)        
         if order_form.is_valid():
             order = order_form.save(commit=False)
+
+            if shipping:
+                order.shipping = shipping
+                order.shipping_cost = shipping.price
+            else:
+                order.shipping = default_shipping
+                order.shipping_cost = default_shipping.price
+
             if coupon:
                 order.coupon = coupon
                 order.discount = coupon.value
             order.save()
-            del request.session['coupon_id']
+            if coupon: 
+                del request.session['coupon_id']
             
             for item_id, quantity in basket.items():
                 try:
