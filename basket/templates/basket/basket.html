@@ -97,14 +97,18 @@
             <!-- shipping methods -->
             <div class="row mt-4">
                 <div class="col shipping-form-wrapper">                 
-                    <form method="post" action="{% url 'shipping_options'%}">
+                    <form method="post" action="{% url 'shipping_options'%}" id="shipping-form">
                     {% csrf_token %}
                     <div class="apply-coupon">
                         {{ shipping_form }}                            
                         <input type="submit" value="Choose" class="btn float-right ml-1">
                     </div>
                     </form>
-                    <p class="mt-1">Estimated Delivery: {{ shipping.estimated_delivery }}</p>                            
+                    {% if shipping %}
+                    <p class="mt-1">Estimated Delivery: {{ shipping.estimated_delivery }}</p>
+                    {% else %}  
+                    <p class="mt-1">Estimated Delivery: {{ default_shipping.estimated_delivery }}</p>   
+                    {% endif %}                      
                 </div>
             </div>
         </div>
@@ -117,7 +121,11 @@
                     <li class="list-group-item border-0 bg-light pt-4">
                         <h6><strong>Item(s) total: ${{ total|floatformat:2 }}</strong></h6>
                         <h6><strong>Shop discount: ${{ discount|floatformat:2 }}</strong></h6>
-                        <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
+                        {% if shipping %}
+                        <h6>Delivery: <span id="delivery">${{ shipping_cost|floatformat:2 }}</span></h6>
+                        {% else %}
+                        <h6>Delivery: <span id="delivery">${{ default_shipping_cost|floatformat:2 }}</span></h6>
+                        {% endif %}
                         <h5 class="mt-4"><strong>Grand total: ${{ grand_total|floatformat:2 }}</strong></h5>
                         {% if free_delivery_delta > 0 %}
                         <p class="mb-1 text-danger">
@@ -181,6 +189,34 @@
          .done(function() {
              location.reload();
          });
+
     });
+
+    
+        // shipping form
+        function setSelectedMethod(method) {
+           sessionStorage.setItem('shippingMethod', method) 
+        };
+
+        $(document).ready(function() {                         
+
+        function displayMethod() {  
+            const selectedMethod = sessionStorage.getItem('shippingMethod');                                             
+            const method = $('#id_shipping')                                      
+            if (selectedMethod) {
+                method.val(selectedMethod);
+            }
+        };
+
+        $('#shipping-form').submit(function() {  
+            const methodValue = $('#id_shipping').val()                     
+            setSelectedMethod(methodValue)
+        });
+
+        displayMethod();
+    });
+
+
+   
 </script>
 {% endblock %}

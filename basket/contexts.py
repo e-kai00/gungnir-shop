@@ -78,9 +78,10 @@ def basket_contents(request):
         'basket_items': basket_items,
         'total': total,
         'product_count': product_count,
+        'shipping_id': shipping_id,        
         'shipping_form': shipping_form,
-        'delivery': shipping_cost,
         'shipping': shipping,
+        'shipping_cost': shipping_cost,        
         'default_shipping': default_shipping,
         'default_shipping_cost': default_shipping_cost,
         # 'free_delivery_delta': free_delivery_delta,
@@ -89,7 +90,7 @@ def basket_contents(request):
         'discount': discount,        
         'apply_coupon_form': apply_coupon_form,
         'grand_total': grand_total,
-        'shipping_id': shipping_id,
+        
                 
     }
 
