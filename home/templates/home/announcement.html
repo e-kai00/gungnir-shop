@@ -16,7 +16,7 @@
     <div class="row my-4 announcement">
         <div class="col-12 col-sm-3 ">
             <p class="text-center mb-0">Announcement</p>
-            <p class="text-center small">Last updated on </p>
+            <p class="text-center small">Last updated on: <span id="last-update"></span></p>
         </div>
         <div class="col-12 col-sm-9 overflow-auto">
             <form method="post" action="{% url 'announcement' %}">
@@ -34,4 +34,22 @@
     </div>
 </section>
 
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+         // last updated
+        const now = new Date();
+        const year = now.getFullYear();
+        const month =  String(now.getMonth() +1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const today = `${day}-${month}-${year}`;
+      
+        $('#last-update').text(today);  
+        
+    });
+</script>
 {% endblock %}

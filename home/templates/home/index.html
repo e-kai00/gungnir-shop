@@ -15,13 +15,13 @@
     <!-- announcement -->
     <div class="row my-4 announcement">
         <div class="col-12 col-sm-3 ">            
-                <p class="text-center mb-0">Announcement</p> <!-- will have CRUD functiomallity -->
-                <p class="text-center small">Last updated on </p>            
+                <p class="text-center mb-0">Announcement</p> 
+                <p class="text-center small">Last updated on: <span id="last-update"></span></p>            
         </div>
-        <div class="col-12 col-sm-9 overflow-auto">           
-                <p class="">{{ announcement }}</p>
+        <div class="col-12 col-sm-9 overflow-auto test-class">           
+                <p id="announcement">{{ announcement }}</p>
                 {% if request.user.is_superuser %}
-                <a href="{% url 'announcement' %}">Update</a>
+                <a href="{% url 'announcement' %}" id="update-button">Update</a>
                 {% endif %}   
         </div>
     </div>
@@ -207,8 +207,38 @@
 
         $('.btt-button').click(function() {
             $("html, body").animate({ scrollTop: 0 }, "slow");
-        });
+        });     
         
+        // last updated
+    //     function getCurrentDate() {
+    //         const now = new Date();
+    //         const year = now.getFullYear();
+    //         const month = String(now.getMonth() + 1).padStart(2, '0');
+    //         const day = String(now.getDate()).padStart(2, '0');
+    //         const hours = String(now.getHours()).padStart(2, '0');
+    //         const minutes = String(now.getMinutes()).padStart(2, '0');
+    //         return `${day}-${month}-${year} ${hours}:${minutes}`;
+    //     }
+
+    //     function updateLastUpdated() {            
+    //         const currentDate = getCurrentDate();            
+    //         $('#last-update').text(currentDate);
+    //         console.log('updateLastUpdated() called')
+    //     };    
+
+    //     const announcementSection = $('.announcement')[0];
+    //     const observer = new MutationObserver(updateLastUpdated);        
+    //     observer.observe(announcementSection, { attributes: true, childList: true, subtree: true, characterData: true });
+
+    //     function setupMutationObserver() {
+    //         const announcementSection = $('.announcement')[0];
+    //         if (announcementSection) {
+    //             const observer = new MutationObserver(updateLastUpdated);
+    //             observer.observe(announcementSection, { attributes: true, childList: true, subtree: true, characterData: true });
+    //             }
+    //         }
+    // setupMutationObserver();
+                
     });
 </script>
 {% endblock %}
