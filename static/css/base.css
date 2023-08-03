@@ -50,7 +50,19 @@ body {
 }
 
 /* --------------------Buttons */
-/* Scroll-to-top */
+
+.basket-btn {
+    background-color: #800020;
+    color: #f6f6e1;
+}
+
+.basket-btn:hover {
+    background-color: white;
+    border-color: #800020 !important;
+    color: #222222;
+}
+
+/* Scroll-to-top button*/
 .btt-button {    
     display: none;
     position: fixed;
@@ -81,15 +93,6 @@ body {
     transform: scale(1.3);
   }
 
-.basket-btn {
-    background-color: #800020;
-    color: #f6f6e1;
-}
-.basket-btn:hover {
-    background-color: white;
-    border-color: #800020 !important;
-    color: #222222;
-}
 
 /* ------------------------------- Toasts */
 
@@ -115,6 +118,7 @@ body {
 }
 
 /* --------------------Home page */
+
 .card-link {
     color: #222222;
     text-decoration: none;    
@@ -125,8 +129,29 @@ body {
     color: #222222;
 }
 
+/* Announcement */
+.announcement {
+    height: calc(100vh / 8); 
+    
+}
+
+.announcement div:first-child {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.announcement div:last-child {
+    font-size: .9rem;   
+   
+}
+
+.announcement-update {
+    height: 100vh;
+}
+
 
 /* --------------------Product details */
+
 .product-price {
     font-size: 1.5rem;
 }
@@ -136,15 +161,58 @@ body {
     font-weight: bold;
 }
 
-
 .delivery-text {
     font-size: .8rem;    
     text-decoration: underline dashed #222222;
     text-decoration-thickness: .2px;
 }
 
+/* --------------------Basket */
+
+/* Coupon */
+.apply-coupon {    
+    display: flex;
+    flex-direction: row;    
+}
+
+.apply-coupon > .btn {
+    border: 1px solid #222222;
+    border-radius: 0;
+    font-size: .8rem;
+    
+}
+
+.apply-coupon > .btn:hover {
+    background-color: #222222;
+    color: #f6f6e1;
+    opacity:1;
+}
+
+.coupon_form {
+    border: 1px solid #222222;    
+}
+
+
+/* Shippig */
+.shipping-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.shipping-form-wrapper p {
+    font-size: .85rem;
+    font-weight: bold;
+}
+
+.shipping-form {
+    padding-left: 3rem;
+    padding-right: 3rem;   
+}
+
 
 /* --------------------User Profile */
+
 #profile-update-form .form-control {
     color: #222222;
 }
@@ -164,15 +232,15 @@ body {
 }
 
 
-
 /* --------------------Allauth */
+
 .allauth-form-inner-content label:not([for='id_remember']) {
     display: none;
 }
 
 .allauth-form-inner-content button,
 .allauth-form-inner-content input[type='submit'] {
-	/* btn */
+	
 	display: inline-block;    
     color: #fff;
     text-align: center;
@@ -197,19 +265,8 @@ color: #222222;
 }
 
 
-/* --------------------Footer */
-#footer-details {
-    font-size: smaller;
-    color: #f6f6e1;
-    background-color: #800020;
-}
-
-.socials {
-    color: #f6f6e1;
-}
-
-
 /* --------------------Image field on product form */
+
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -237,65 +294,14 @@ color: #222222;
 }
 
 
-/* --------------------Coupon */
-.apply-coupon {    
-    display: flex;
-    flex-direction: row;    
-}
+/* --------------------Footer */
 
-.apply-coupon > .btn {
-    border: 1px solid #222222;
-    border-radius: 0;
-    font-size: .8rem;
-    
-}
-
-.apply-coupon > .btn:hover {
-    background-color: #222222;
+#footer-details {
+    font-size: smaller;
     color: #f6f6e1;
-    opacity:1;
+    background-color: #800020;
 }
 
-.coupon_form {
-    border: 1px solid #222222;    
-}
-
-/* --------------------Shippig */
-
-.shipping-form-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-}
-
-.shipping-form-wrapper p {
-    font-size: .85rem;
-    font-weight: bold;
-}
-
-.shipping-form {
-    padding-left: 3rem;
-    padding-right: 3rem;   
-}
-
-
-/* --------------------Announcement */
-
-.announcement {
-    height: calc(100vh / 8); 
-    
-}
-
-.announcement div:first-child {
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-.announcement div:last-child {
-    font-size: .9rem;   
-   
-}
-
-.announcement-update {
-    height: 100vh;
+.socials {
+    color: #f6f6e1;
 }

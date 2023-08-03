@@ -2,7 +2,6 @@
 {% load static %}
 {% load basket_tools %}
 
-
 {% block content %}
 <hr class="wide-devider">
 <div class="container mb-2">
@@ -15,7 +14,6 @@
 
     <!-- product details -->
     <div class="row flex-column flex-lg-row">
-
         <div class="col col-lg-8">
             {% if basket_items %}
             <div class="table-responsive rounded">
@@ -53,7 +51,7 @@
                                 <div class="form-group text-center">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <button class="decrement-qty btn btn-black rounded-0"
+                                            <button class="decrement-qty btn rounded-0"
                                                 data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                                                 <span class="icon-btn hvr-grow">
                                                     <i class="fa-solid fa-minus"></i>
@@ -63,7 +61,7 @@
                                         <input class="form-control rounded-pill qty_input" type="number" name="quantity" value="{{ item.quantity }}"
                                             min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{item.item_id }}">
                                         <div class="input-group-append">
-                                            <button class="increment-qty btn btn-black rounded-0"
+                                            <button class="increment-qty btn rounded-0"
                                                 data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
                                                 <span class="icon-btn hvr-grow">
                                                     <i class="fa-solid fa-plus"></i>
@@ -85,8 +83,8 @@
                 </table>
             </div>
             {% else %}
-            <p class="lead mb-5">Your bag is empty.</p>
-            <a href="{% url 'home' %}" class="btn btn-outline-black rounded-0 btn-lg">
+            <p class="lead mb-5 text-center">Your bag is empty.</p>
+            <a href="{% url 'home' %}" class="btn btn-lg">
                 <span class="icon">
                     <i class="fas fa-chevron-left"></i>
                 </span>
@@ -111,8 +109,7 @@
                     {% endif %}                      
                 </div>
             </div>
-        </div>
-     
+        </div>     
 
         <!-- Checkout -->
         <div class="col col-lg-4 mt-3 mt-lg-0">            
@@ -122,17 +119,11 @@
                         <h6><strong>Item(s) total: ${{ total|floatformat:2 }}</strong></h6>
                         <h6><strong>Shop discount: ${{ discount|floatformat:2 }}</strong></h6>
                         {% if shipping %}
-                        <h6>Delivery: <span id="delivery">${{ shipping_cost|floatformat:2 }}</span></h6>
+                        <h6>Shipping: <span id="delivery">${{ shipping_cost|floatformat:2 }}</span></h6>
                         {% else %}
-                        <h6>Delivery: <span id="delivery">${{ default_shipping_cost|floatformat:2 }}</span></h6>
+                        <h6>Shipping: <span id="delivery">${{ default_shipping_cost|floatformat:2 }}</span></h6>
                         {% endif %}
-                        <h5 class="mt-4"><strong>Grand total: ${{ grand_total|floatformat:2 }}</strong></h5>
-                        {% if free_delivery_delta > 0 %}
-                        <p class="mb-1 text-danger">
-                            You could get free delivery by spending just <strong>${{ free_delivery_delta }}</strong>
-                            more!
-                        </p>
-                        {% endif %}
+                        <h5 class="mt-4"><strong>Grand total: ${{ grand_total|floatformat:2 }}</strong></h5>                                               
                     </li>
 
                     <!-- apply coupon -->
@@ -174,50 +165,47 @@
 {% include 'products/includes/quantity_input_script.html' %}
 
 <script type="text/javascript">
-    $('.update-link').click(function(e) {
-        var form = $(this).prev('.update-form');        
-        form.submit();
-    });
+// update basket items
+$('.update-link').click(function(e) {
+    var form = $(this).prev('.update-form');        
+    form.submit();
+});
 
-    $('.remove-item').click(function(e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];        
-        var url = `/basket/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken};
+// delete items from basket
+$('.remove-item').click(function(e) {
+    var csrfToken = "{{ csrf_token }}";
+    var itemId = $(this).attr('id').split('remove_')[1];        
+    var url = `/basket/remove/${itemId}/`;
+    var data = {'csrfmiddlewaretoken': csrfToken};
 
-        $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
-
-    });
-
-    
-        // display shipping method chosen by user
-        
-        function setSelectedMethod(method) {
-           sessionStorage.setItem('shippingMethod', method) 
-        };
-
-        $(document).ready(function() {                         
-
-        function displayMethod() {  
-            const selectedMethod = sessionStorage.getItem('shippingMethod');                                             
-            const method = $('#id_shipping')                                      
-            if (selectedMethod) {
-                method.val(selectedMethod);
-            }
-        };
-
-        $('#shipping-form').submit(function() {  
-            const methodValue = $('#id_shipping').val()                     
-            setSelectedMethod(methodValue)
-        });
-
-        displayMethod();
-    });
+    $.post(url, data)
+     .done(function() {
+         location.reload();
+     });
+});
 
 
-   
+// display shipping method chosen by user        
+function setSelectedMethod(method) {
+    sessionStorage.setItem('shippingMethod', method) 
+};
+
+$(document).ready(function() {       
+function displayMethod() {  
+    const selectedMethod = sessionStorage.getItem('shippingMethod');                                             
+    const method = $('#id_shipping')                                      
+    if (selectedMethod) {
+        method.val(selectedMethod);
+    }
+};
+
+$('#shipping-form').submit(function() {  
+    const methodValue = $('#id_shipping').val()                     
+    setSelectedMethod(methodValue)
+});
+
+displayMethod();
+
+});
 </script>
 {% endblock %}

@@ -26,14 +26,7 @@ def basket_contents(request):
             'item_id': item_id,
             'quantity': quantity,
             'product': product
-        })
-
-    # if total < settings.FREE_DELIVERY_THRESHOLD:
-    #     delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100) 
-    #     free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total        
-    # else:
-    #     delivery = 0
-    #     free_delivery_delta = 0
+        })  
 
     # shipping
     shipping_form = ShippingForm()
@@ -69,8 +62,7 @@ def basket_contents(request):
             grand_total = shipping_cost + total + discount if shipping_id else default_shipping_cost + total + discount
     except ObjectDoesNotExist:
             coupon = None
-            discount = 0
-            # grand_total = shipping_cost + total + discount    
+            discount = 0              
             grand_total = shipping_cost + total + discount if shipping else default_shipping_cost + total + discount
     
     
@@ -83,15 +75,11 @@ def basket_contents(request):
         'shipping': shipping,
         'shipping_cost': shipping_cost,        
         'default_shipping': default_shipping,
-        'default_shipping_cost': default_shipping_cost,
-        # 'free_delivery_delta': free_delivery_delta,
-        # 'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
+        'default_shipping_cost': default_shipping_cost,       
         'coupon': coupon,
         'discount': discount,        
         'apply_coupon_form': apply_coupon_form,
-        'grand_total': grand_total,
-        
-                
+        'grand_total': grand_total,                
     }
 
     return context
