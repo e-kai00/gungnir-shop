@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import redirect, reverse
 from django.contrib import messages
 from django.utils import timezone
 from .models import Coupon
@@ -6,6 +6,12 @@ from .forms import ApplyCouponForm
 
 
 def apply_coupon(request):
+    """
+    Apply coupon code to the current user's session.
+    If request method is POST, it validates submitted coupon code.
+    If request method is GET, it displays ApplyCouponForm to 
+    allow input coupon code.
+    """
 
     now = timezone.now()
 
@@ -23,9 +29,9 @@ def apply_coupon(request):
                 request.session['coupon_id'] = coupon.id
             except Coupon.DoesNotExist:
                 request.session['coupon_id'] = None
-                messages.info(request, 'This coupon code does not exist.')
-                
+                messages.info(request, 'This coupon code does not exist.')                
     else:
         coupon_form = ApplyCouponForm()
+
     return redirect(reverse('view_basket'))
 
