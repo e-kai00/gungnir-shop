@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -6,6 +6,7 @@ from products.models import Product, Category
 
 
 def index(request):
+    """ View all products. Sort and search queries """
 
     products = Product.objects.all()
     query = None
@@ -31,10 +32,8 @@ def index(request):
         # filter by category
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)
-            # display caregory name for user
+            products = products.filter(category__name__in=categories)            
             categories = Category.objects.filter(name__in=categories)
-
 
         # search site 
         if 'q' in request.GET:            
@@ -50,19 +49,20 @@ def index(request):
 
     announcement = get_announcement()
 
+    template = 'home/index.html'
     context = {
         'products': products,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
         'announcement': announcement
-    }
-                
+    }                
 
-    return render(request, 'home/index.html', context)
+    return render(request, template, context)
 
 
 def get_announcement():
+    """  Retrieve text announcement from 'data/announcement.txt' file """
 
     try:
         with open("data/announcement.txt", "r") as file:
@@ -72,12 +72,18 @@ def get_announcement():
     
 
 def update_announcement(new):
+    """ Update the announcement with the given text and save it to a file """
 
     with open("data/announcement.txt", "w") as file:
             return file.write(new)
     
 
 def announcement(request):
+    """ 
+    Update and display announcement on home page.
+    If the user is not a superuser (shop owner), they will be redirected 
+    to the home page.    
+    """
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only shop owner can do this.')
@@ -88,8 +94,9 @@ def announcement(request):
         update_announcement(new)
         messages.success(request, 'Announcement has been updated.')
         return redirect(reverse('home'))
-
+        
     announcement = get_announcement()
+
     template = 'home/announcement.html'
     context = {
         'announcement': announcement

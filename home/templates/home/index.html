@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block content %}
-
-<section class="container-fluid">
+<div class="container-fluid">
     <!-- hero image -->
     <div class="row">
         <div class="col px-0">
@@ -26,15 +24,13 @@
         </div>
     </div>
 
-    <!-- collections on smaller screens -->
+    <!-- collection list on mobile -->
     <div class="row d-lg-none">
         <div class="dropdown col-12 d-lg-none">
-
             <a class="btn btn-secondary dropdown-toggle w-100 text-left bg-white text-dark border border-dark rounded-pill" 
                 href="#" role="button" data-toggle="dropdown" aria-expanded="false" id="user-selection">
                 Collections        
-            </a>        
-
+            </a> 
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="{% url 'home' %}?category=wolf_mjolnir,raven_mjolnir,cross,mammen_axe,axe_amulet,wolf_cross,thors_hammer,rings">All</a>
                 <a class="dropdown-item" href="{% url 'home' %}?category=wolf_mjolnir">Wolf Mjolnir</a>
@@ -90,7 +86,7 @@
             </div>
         </div>
 
-        <!-- Products list -->
+        <!-- Products -->
         <div class="col-12 col-md-9">
             <!-- sort box -->
             <div class="row mt-1 mb-2">
@@ -112,17 +108,17 @@
                 </div>
             </div>
 
+            <!-- product list -->
             <div class="row">
                 {% for product in products %}
-                <div class="col-sm-6 col-md-3 mt-2">
-                    <!-- product card -->
+                <div class="col-sm-6 col-md-3 mt-2">                    
                     <div class="card h-100 border-0">
                         {% if product.image %}
-                                <a href="">
+                                <a href="{% url 'product_detail' product.id %}">
                                     <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
                                 {% else %}
-                                <a href="">
+                                <a href="{% url 'product_detail' product.id %}">
                                     <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                                 </a>
                                 {% endif %}
@@ -149,79 +145,17 @@
             </div>
         </div>
     </div>
-</section>
-<!-- Scroll to Top button -->
-<div class="btt-button shadow-sm">    
-    <button type="button" class="btn btn-light btt-dark border-dark btt-link"><i class="fas fa-arrow-up text-black mx-auto my-auto"></i></button>	
 </div>
 
+<!-- Scroll to Top button -->
+<div class="btt-button shadow-sm">    
+    <button type="button" class="btn btn-light btt-dark border-dark btt-link">
+        <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+    </button>	
+</div>
 {% endblock %}
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript">
-    
-    $(document).ready(function(){
-        // // Bootstrap
-        $('.dropdown-toggle').dropdown();
-
-        // product card border on hover
-        $('.card').hover(
-            function(){
-                $(this).removeClass('border-0').addClass('border');
-            },
-            function(){
-                $(this).removeClass('border').addClass('border-0');
-            }
-        );
-        
-        // code from CI walkthrough projekt to sort
-        $('#sort-selector').change(function() {
-            var selector = $(this);
-            var currentUrl = new URL(window.location);
-            var selectedVal = selector.val();
-
-            if (selectedVal != "reset") {
-                var sort = selectedVal.split("_")[0];
-                var direction = selectedVal.split("_")[1];
-
-                currentUrl.searchParams.set("sort", sort);
-                currentUrl.searchParams.set("direction", direction);
-                window.location.replace(currentUrl);
-
-            } else {
-                currentUrl.searchParams.delete("sort");
-                currentUrl.searchParams.delete("direction");
-                window.location.replace(currentUrl);
-            }
-        });
-
-        // scroll-to-top button
-        $(window).scroll(function(){
-            if ($(this).scrollTop() > 300) {
-                $('.btt-button').css('display', 'block');
-            } else {
-                $('.btt-button').css('display', 'none');
-            }
-        });
-
-        $('.btt-button').click(function() {
-            $("html, body").animate({ scrollTop: 0 }, "slow");
-        });     
-        
-        
-    // last updated     
-
-    function displayDate() {
-        const lastUpdate = localStorage.getItem('lastUpdated');
-        const updateField = $('#last-update');
-        if (lastUpdate) {
-            updateField.text(lastUpdate)
-        }
-    };
-
-    displayDate();
-                
-    });
-</script>
+<script type="text/javascript" src="{% static 'home/js/script.js' %}"></script>
 {% endblock %}

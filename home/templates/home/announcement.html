@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block content %}
-
 <section class="container-fluid announcement-update">
     <!-- hero image -->
     <div class="row">
@@ -33,15 +31,13 @@
         </div>
     </div>
 </section>
-
 {% endblock %}
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript">
-    
+<script type="text/javascript">    
     $(document).ready(function(){
-         // last updated
+         // store last updated date
         const now = new Date();
         const year = now.getFullYear();
         const month =  String(now.getMonth() +1).padStart(2, '0');
@@ -51,10 +47,8 @@
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const today = `${day}-${month}-${year} ${hours}:${minutes}`;
       
-        $('#last-update').text(today);        
-
-        localStorage.setItem('lastUpdated', today.toString())         
-        
+        $('#last-update').text(today);
+        localStorage.setItem('lastUpdated', today.toString())        
     });
 </script>
 {% endblock %}
