@@ -1,23 +1,26 @@
 Hello {{ order.full_name }}!
 
-This is a confirmation of your order at Gungnir. Your order information is below:
+Congratulations on your order at Gungnir! We're excited to confirm your purchase, and below are the order details:
 
 Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
 Order Total: ${{ order.order_total }}
 Shop Discount {{ order.discount }}%
-Delivery: ${{ order.shipping_cost }}
+Shipping cost: ${{ order.shipping_cost }}
 Grand Total: ${{ order.grand_total }}
 
-Your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
+Shipping Addres:
+{{ order.street_address1 }} 
+{{ order.town_or_city }}
+{{ order.country }}
 
-We've got your phone number on file as {{ order.phone_number }}.
+Contact Number: {{ order.phone_number }}
 
-If you have any questions, feel free to contact us at {{ contact_email }}.
+If you have any questions or need assistance, please don't hesitate to get in touch with us at gungnir@example.com. Our team is always ready to help.
 
-Thank you for your order!
+Thank you for choosing Gungnir for your purchase. We appreciate your business and hope you enjoy your products!
 
-Sincerely,
+Best Regards,
 
-Gungnir shop
+The Gungnir Shop Team
