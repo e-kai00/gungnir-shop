@@ -213,7 +213,7 @@
     // last updated     
 
     function displayDate() {
-        const lastUpdate = sessionStorage.getItem('lastUpdated');
+        const lastUpdate = localStorage.getItem('lastUpdated');
         const updateField = $('#last-update');
         if (lastUpdate) {
             updateField.text(lastUpdate)
