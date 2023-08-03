@@ -93,8 +93,12 @@ def submit_review(request, product_id):
     review = Reviews.objects.filter(created_by=user, product=product).first()
 
     if request.method == 'POST':
-        rating = request.POST.get('rating', 5)
+        rating = request.POST.get('rating')
         comment = request.POST.get('review', '')
+
+        if rating is None:
+            messages.error(request, 'Please provide a rating before submitting your review.')
+            return redirect(reverse('product_detail', args=[product_id]))
 
         if review:
             review.rating = rating
