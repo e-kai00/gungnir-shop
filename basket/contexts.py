@@ -11,6 +11,10 @@ from shipping.forms import ShippingForm
 
 
 def basket_contents(request):
+    """ 
+    Retrieve content of the user's shopping basket, calculate 
+    total cost, display shipping options and discount coupon form.
+    """
 
     # basket items
     basket_items = []
@@ -81,5 +85,4 @@ def basket_contents(request):
         'apply_coupon_form': apply_coupon_form,
         'grand_total': grand_total,                
     }
-
     return context
