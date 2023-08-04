@@ -2,12 +2,11 @@
 {% load static %}
 
 
-{% block content %}
-    <div class="overlay"></div>
+{% block content %}   
+    <hr class="wide-devider">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6">
-                <hr>
+            <div class="col-12 col-md-6">                
                 <h2 class="logo-font mb-4">Product Management</h2>
                 <h5 class="text-muted">Edit a Product</h5>
                 <hr>
@@ -26,8 +25,8 @@
                         {% endif %}
                     {% endfor %}                    
                     <div class="text-right">
-                        <a class="btn btn-outline-black rounded-0" href="{% url 'home' %}">Cancel</a>
-                        <button class="btn btn-black rounded-0" type="submit">Update Product</button>
+                        <a class="btn btn-custom" href="{% url 'home' %}">Cancel</a>
+                        <button class="btn btn-custom" type="submit">Update Product</button>
                     </div>
                 </form>
             </div>            
@@ -36,12 +35,11 @@
 {% endblock %}
 
 {% block postloadjs %}
-
+<!-- image field change -->
 <script type="text/javascript">
     $('#new-image').change(function(){
         var file = $('#new-image')[0].files[0];
         $('#filename').text(`Image will be set to ${file.name}.`);
     });
 </script>
-
 {% endblock %}

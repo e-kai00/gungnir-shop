@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Category(models.Model):
+
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -17,6 +18,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
@@ -31,10 +33,8 @@ class Product(models.Model):
     def get_rating(self):
         """ Calculate average product rating """
         total_rating = 0
-
         for review in self.reviews.all():
             total_rating += review.rating
-
         if total_rating > 0:
             return total_rating / self.reviews.count()
         else:
@@ -43,6 +43,7 @@ class Product(models.Model):
 
 
 class Reviews(models.Model):
+
     product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
     comment = models.TextField(max_length=500, null=True, blank=True)
     rating = models.IntegerField()

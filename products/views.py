@@ -6,19 +6,20 @@ from .forms import ProductForm
 
 
 def product_detail(request, product_id):
-    """ A view to show individual product details """
+    """ View single product details """
 
     product = get_object_or_404(Product, pk=product_id)
 
+    template = 'products/product_detail.html'
     context = {
         'product': product,
     }
-
-    return render(request, 'products/product_detail.html', context)
+    return render(request, template, context)
 
 @login_required
 def add_product(request):
-    """ Add a product to the store """
+    """ View for adding new product to the shop """
+
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only shop owner can do this.')
         return redirect(reverse('home'))
@@ -38,12 +39,12 @@ def add_product(request):
     context = {
         'form': form,
     }
-
     return render(request, template, context)
 
 
 @login_required
 def edit_product(request, product_id):
+    """ View for editing an existing product """
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only shop owner can do this.')
@@ -67,11 +68,12 @@ def edit_product(request, product_id):
         'form': form,
         'product': product,
     }
-
     return render(request, template, context)
+
 
 @login_required
 def delete_product(request, product_id):
+    """ View for deleting a product """
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only shop owner can do this.')
@@ -84,6 +86,15 @@ def delete_product(request, product_id):
 
 
 def submit_review(request, product_id):
+    """ 
+    View for submitting or updating product review.
+    Checks if user has already submitted review for the product. 
+    If review exists, it updates existing review. If no review 
+    exists, it creates new review.
+    Checks if user submitted rating. If rating submitted, it 
+    updates review or creates new review. If no rating is submitted, 
+    it displays an error message.
+    """
      
     if not request.user.is_authenticated:
         return redirect(reverse('account_login'))
@@ -97,7 +108,7 @@ def submit_review(request, product_id):
         comment = request.POST.get('review', '')
 
         if rating is None:
-            messages.error(request, 'Please provide a rating before submitting your review.')
+            messages.error(request, 'Please provide star rating before submitting your review.')
             return redirect(reverse('product_detail', args=[product_id]))
 
         if review:
@@ -120,8 +131,7 @@ def submit_review(request, product_id):
     template = 'products/product_detail.html'
     context = {
         'product': product,
-    }
-    
+    }    
     return render(request, template, context)
         
     

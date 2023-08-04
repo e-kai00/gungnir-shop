@@ -1,9 +1,9 @@
-/* hide radio buttons */
+/* --------------------Reviews section */
 
+/* hide radio buttons */
 .rate {
     display: inline-block;
     border: 0;
-
 }
 
 .rate > input {
