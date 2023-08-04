@@ -29,7 +29,7 @@ def apply_coupon(request):
                 request.session['coupon_id'] = coupon.id
             except Coupon.DoesNotExist:
                 request.session['coupon_id'] = None
-                messages.info(request, 'This coupon code does not exist.')                
+                messages.error(request, 'This coupon code does not exist.')                
     else:
         coupon_form = ApplyCouponForm()
 

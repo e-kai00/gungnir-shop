@@ -13,6 +13,7 @@ from shipping.models import Shipping
 
 
 class Order(models.Model):
+
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
@@ -33,46 +34,42 @@ class Order(models.Model):
     shipping_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
 
     def _generate_order_number(self):
+        """ Generate unique order number """
+
         return uuid.uuid4().hex.upper()
 
     def update_total(self):
-      
-        # overide default behaviour - add a new field to the queryset "lineitem_total__sum".
-        # Which we can then get and set the order total to that.
-
-        # self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
-        # if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
-        #     self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
-        # else:
-        #     self.delivery_cost = 0
-        # self.grand_total = self.order_total + self.delivery_cost - (self.order_total * (self.discount / Decimal(100)))
-        # self.save()
+        """ Update grand total each time line item is added """
 
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
         self.grand_total = self.order_total + self.shipping_cost - (self.order_total * (self.discount / Decimal(100)))
         self.save()
 
-
     def save(self, *args, **kwargs):
-        
+        """ Set order number if it hasn't been set already """
+
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
 
     def __str__(self):
+
         return self.order_number
 
 
 class OrderLineItem(models.Model):
+
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)    
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
     def save(self, *args, **kwargs):
-        
+        """ Set lineitem total and update order total """
+
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
+
         return f'SKU {self.product.sku} on order {self.order.order_number}'
