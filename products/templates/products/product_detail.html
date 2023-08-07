@@ -8,7 +8,7 @@
 {% block content %}
 <hr class="wide-devider">
 <div class="container-fluid">
-    <div class="row justify-content-around">        
+    <main aria-labelledby="product-details" class="row justify-content-around">        
         <div class="col-12 col-md-6 col-lg-6">
 
             <!-- admin edit/delete links -->            
@@ -43,7 +43,8 @@
         <!-- details -->
         <div class="col-12 col-md-6 col-lg-4">
             <div class="mb-5 mt-md-5">
-                <p class="mb-1 text-left font-weight-bold product-price">${{ product.price }}</p>
+                <h2 id="product-details" class="d-none">Product details</h2>
+                <h3 class="mb-1 text-left font-weight-bold product-page">${{ product.price }}</h3>
                 <p class="font-weight-bold mb-0">{{ product.name }}</p>               
 
                 {% if product.category %}
@@ -109,7 +110,7 @@
             <hr>
 
                <!-- estimated delivery info -->
-            <div class="row text-center mt-4 mb-4">            
+            <aside class="row text-center mt-4 mb-4">            
                 <div class="col-4">                
                     <span class="mb-3"><i class="far fa-credit-card"></i></span><br>
                     <span class="delivery-date">{% now "d M" %}</span><br>
@@ -133,14 +134,15 @@
                     {% endif %}
                     <spann class="delivery-text">Delivered!</spann>
                 </div>        
-            </div>
+            </aside>
         </div>
-    </div>
+    </main>
 
     <!-- Reviews -->
+    <main aria-labelledby="reviews">
     <div class="row ml-2">
         <div class="col-12 col-lg-7">
-            <h4 class="font-weight-bold">Customer Reviews</h4>
+            <h2 id="reviews" class="font-weight-bold product-page">Customer Reviews</h2>
             <form method="POST" action="{% url 'submit_review' product.id %}" class="form">
                 {% csrf_token %}
                 <div>                    
@@ -173,12 +175,17 @@
         {% for review in product.reviews.all %}
         <div class="col-12 col-lg-7">
             <strong>Ratings:</strong> {{ review.rating }}/5
-            <p class="pt-2">{{ review.comment }}</p>
-            <p class="small text-muted">{{ review.created_by }} <span class="pl-2">{{ review.created_on|date:"d M, Y" }}</span></p>
+            <article>
+                <p class="pt-2">{{ review.comment }}</p>
+                <footer>        
+                    <p class="small text-muted">Posted by: {{ review.created_by }} <span class="pl-2">{{ review.created_on|date:"d M, Y" }}</span></p>
+                </footer>         
+            </article>
             <hr>
         </div>
         {% endfor %}
     </div>   
+    </main>
 </div>
 
 <!-- modal: delete confirmation -->

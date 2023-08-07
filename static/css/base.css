@@ -13,6 +13,15 @@ body {
     color: #222222;
 }
 
+h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.1rem;    
+}
+
 .logo {
     color: #800020;
     text-transform: uppercase;
@@ -152,7 +161,7 @@ body {
 
 /* --------------------Product details */
 
-.product-price {
+.product-page {
     font-size: 1.5rem;
 }
 
@@ -168,6 +177,10 @@ body {
 }
 
 /* --------------------Basket */
+
+.grand-total {
+    font-size: 1.25rem;
+}
 
 /* Coupon */
 .apply-coupon {    

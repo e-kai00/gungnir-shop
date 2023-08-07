@@ -4,10 +4,10 @@
 
 {% block content %}
 <hr class="wide-devider">
-<div class="container mb-2">
+<main class="container mb-2">
     <div class="row">
         <div class="col">           
-            <h2 class="logo-font mb-4">Basket</h2>
+            <h2 class="logo-font mb-4" id="basket">Basket</h2>
             <hr>
         </div>
     </div>
@@ -17,7 +17,7 @@
         <div class="col col-lg-8">
             {% if basket_items %}
             <div class="table-responsive rounded">
-                <table class="table table-sm table-borderless">
+                <table class="table table-sm table-borderless" aria-labelledby="basket">
                     <thead class="text-black text-center">
                         <tr>
                             <th scope="col">Product Info</th>
@@ -112,23 +112,23 @@
         </div>     
 
         <!-- Checkout -->
-        <div class="col col-lg-4 mt-3 mt-lg-0">            
+        <section aria-label="checkout" class="col col-lg-4 mt-3 mt-lg-0">            
             <div class="checkout-wrapper">
                 <ul class="list-group">
                     <li class="list-group-item border-0 bg-light pt-4">
-                        <h6><strong>Item(s) total: ${{ total|floatformat:2 }}</strong></h6>
-                        <h6><strong>Shop discount: ${{ discount|floatformat:2 }}</strong></h6>
+                        <p>Item(s) total: ${{ total|floatformat:2 }}</p>
+                        <p>Shop discount: ${{ discount|floatformat:2 }}</p>
                         {% if shipping %}
-                        <h6>Shipping: <span id="delivery">${{ shipping_cost|floatformat:2 }}</span></h6>
+                        <p>Shipping: <span id="delivery">${{ shipping_cost|floatformat:2 }}</span></p>
                         {% else %}
-                        <h6>Shipping: <span id="delivery">${{ default_shipping_cost|floatformat:2 }}</span></h6>
+                        <p>Shipping: <span id="delivery">${{ default_shipping_cost|floatformat:2 }}</span></p>
                         {% endif %}
-                        <h5 class="mt-4"><strong>Grand total: ${{ grand_total|floatformat:2 }}</strong></h5>                                               
+                        <p class="mt-4 grand-total"><strong>Grand total: ${{ grand_total|floatformat:2 }}</strong></p>                                               
                     </li>
 
                     <!-- apply coupon -->
                     <li class="list-group-item border-0 bg-light pt-4">
-                        <h6><i class="fa-solid fa-tag fa-rotate-90 text-muted"></i> Apply shop coupon code</h6>
+                        <p><i class="fa-solid fa-tag fa-rotate-90 text-muted"></i> Apply shop coupon code</p>
                         <form method="post" action="{% url 'apply_coupon' %}">
                             {% csrf_token %}
                             <div class="apply-coupon">
@@ -155,9 +155,9 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </section>
     </div>
-</div>
+</main>
 {% endblock %}
 
 {% block postloadjs %}

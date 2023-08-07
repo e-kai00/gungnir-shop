@@ -2,12 +2,22 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-   
+  <head>   
     {% block meta %}
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" 
+            content="Explore our captivating collection of handmade jewelry, 
+            featuring unique pieces inspired by Norse designs such as Viking axe pendants and 
+            Thor's hammer necklaces. Discover the beauty of gemstone adornments, including Labradorite 
+            cross necklaces, Charoite wolf pendants, Specular Hematite pendants, and many others. 
+            Elevate your style with our meticulously handcrafted and truly unique jewelry.">
+        <meta name="keywords" 
+            content="Handmade jewelry online, handmade silver jewelry, unique mens jewelry, norse jewelry,
+            handmade silver cross necklace, viking axe pendant, thor's hammer pendant necklace, mjolnir pendant,
+            labradorite cress necklace, charoite wolf pendant, red jasper viking cross necklace, 
+            specular hematite pendants">
     {% endblock %}
 
     {% block extra_meta %}
@@ -39,21 +49,21 @@
   </head>
 
   <body>
-    <header class="container-fluid mb-3">
-      <!-- logo and navbar -->      
+    <header class="container-fluid mb-3">           
         <div class="row bg-white pt-lg-2 d-none d-lg-flex">
+            <!-- logo -->
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-                <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                    <span class="logo my-0"><strong>Gungnir</strong></span>
+                <a href="{% url 'home' %}" class="nav-link main-logo-link">                    
+                    <h1 class="logo my-0"><strong>Gungnir</strong></h1>
                 </a>
             </div>
             <!-- search bar -->
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                <form method="GET" action="{% url 'home' %}">
+                <form method="GET" action="{% url 'home' %}" role="search">
                     <div class="input-group w-100">
-                        <input class="form-control border border-black rounded-pill" type="text" name="q" placeholder="Search for anything">
+                        <input class="form-control border border-black rounded-pill" type="search" aria-label="search text" name="q" placeholder="Search for anything">
                         <div class="input-group-append">
-                            <button class="form-control btn btn-black border-0" type="submit">
+                            <button class="form-control btn border-0" type="submit">
                                 <span class="icon">
                                     <i class="fas fa-search"></i>
                                 </span>
@@ -62,9 +72,10 @@
                     </div>
                 </form>
             </div>
-            <!-- profile -->
-            <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+            
+            <nav class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+                    <!-- profile -->
                     <li class="list-inline-item dropdown">
                         <a class="text-dark nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
@@ -101,9 +112,10 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </nav>
         </div>
 
+        <!-- mobile nav -->
         <div class="row bg-white">
             <nav class="navbar navbar-expand-lg navbar-light w-100 d-lg-none">                
                 {% include 'includes/mobile-nav.html' %}                
@@ -143,8 +155,9 @@
             <div class="col-sm-4">
                 <h5 class="uppercase general-sub">About</h5>
                 <p class="inline-block">
-                    Seabreeze is a small business that specializes in creating handmade jewelry 
-                    inspired by the beauty of the sea, seashells, and everything related to the ocean. 
+                    We are a small business that specializes in creating handmade jewelry inspired by 
+                    the beauty of nature and the rich heritage of diverse cultures. Our passion for craftsmanship 
+                    and creativity drives us to design unique pieces that resonate with our customers on a profound level. 
                 </p>
             </div>
 
@@ -162,29 +175,17 @@
                 <h5 class="uppercase general-sub">Social</h5>
                 <ul class="list-inline">
                     <li class="list-inline-item">
-                        <a href="https://www.facebook.com/" target="_blank">
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener">
                             <i class="fa fa-facebook socials" aria-hidden="true"></i>
                             <span class="sr-only">Facebook</span>
                         </a>
                     </li>                    
                     <li class="list-inline-item">
-                        <a href="https://www.linkedin.com/" target="_blank">
-                            <i class="fa fa-linkedin socials" aria-hidden="true"></i>
-                            <span class="sr-only">LinkedIn</span>
+                        <a href="#" target="_blank" rel="noopener">
+                            <i class="fa-regular fa-envelope fa-lg" aria-hidden="true"></i>
+                            <span class="sr-only">Contact us</span>
                         </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://www.pinterest.com/" target="_blank">
-                            <i class="fa fa-pinterest socials" aria-hidden="true"></i>
-                            <span class="sr-only">Pinterest</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="https://www.twitter.com/" target="_blank">
-                            <i class="fa fa-twitter socials" aria-hidden="true"></i>
-                            <span class="sr-only">Twitter</span>
-                        </a>
-                    </li>                   
+                    </li>                                      
                 </ul>
             </div>
         </div>

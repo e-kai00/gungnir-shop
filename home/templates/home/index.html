@@ -11,9 +11,9 @@
     </div>
 
     <!-- announcement -->
-    <div class="row my-4 announcement">
+    <aside class="row my-4 announcement">
         <div class="col-12 col-sm-3 ">            
-                <p class="text-center mb-0">Announcement</p> 
+                <h2 class="text-center mb-0">Announcement</h2> 
                 <p class="text-center small">Last updated on: <span id="last-update"></span></p>            
         </div>
         <div class="col-12 col-sm-9 overflow-auto test-class">           
@@ -22,7 +22,7 @@
                 <a href="{% url 'announcement' %}" id="update-button">Update</a>
                 {% endif %}   
         </div>
-    </div>
+    </aside>
 
     <!-- collection list on mobile -->
     <div class="row d-lg-none">
@@ -45,14 +45,14 @@
         </div>
     </div>
 
-    <div class="row">
+    <main class="row">
         <!-- Collections list -->
-        <div class="col-12 col-md-3 d-none d-lg-block">
+        <aside class="col-12 col-md-3 d-none d-lg-block">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="section-heading uppercase">Collections</h3>
-                </div>
-            </div>
+                    <h2 class="section-heading uppercase">Collections</h2>                    
+                </div>                
+            </div>                      
             <div>
                 <ul class="nav flex-column">
                     <li class="nav-item">
@@ -84,10 +84,11 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </aside>
 
-        <!-- Products -->
+        <!-- Product section -->
         <div class="col-12 col-md-9">
+            <h2 class="d-none">Product list</h2>
             <!-- sort box -->
             <div class="row mt-1 mb-2">
                 <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
@@ -109,7 +110,7 @@
             </div>
 
             <!-- product list -->
-            <div class="row">
+            <div class="row">                
                 {% for product in products %}
                 <div class="col-sm-6 col-md-3 mt-2">                    
                     <div class="card h-100 border-0">
@@ -144,7 +145,7 @@
                 {% endfor %}
             </div>
         </div>
-    </div>
+    </main>
 </div>
 
 <!-- Scroll to Top button -->
