@@ -46,10 +46,11 @@ def basket_contents(request):
             shipping_cost = shipping.price
         else:
             default_shipping = Shipping.objects.first()
-            default_shipping_cost = default_shipping.price or 0
-    except ObjectDoesNotExist:
-        default_shipping = Shipping.objects.first()
-        default_shipping_cost = default_shipping.price or 0
+            if default_shipping:
+                default_shipping_cost = default_shipping.price or 0
+    except ObjectDoesNotExist as e:
+        print(f"An ObjectDoesNotExist exception: {e}")
+        pass
 
     # coupon
     apply_coupon_form = ApplyCouponForm()
