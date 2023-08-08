@@ -14,7 +14,7 @@ $(document).ready(function(){
     );
 
 
-    // sort products (code from CI walkthrough project)
+    // sort products 
     $('#sort-selector').change(function() {
         var selector = $(this);
         var currentUrl = new URL(window.location);

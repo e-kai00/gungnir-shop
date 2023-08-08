@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
-{% endblock %}
-
 {% block content %}
     <hr class="wide-devider">
     <div class="container-fluid mx-3">
@@ -69,20 +65,5 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<!-- country field styling -->
-<script type="text/javascript">
-    let countrySelected = $('#id_default_country').val();
-    if (!countrySelected) {
-        $('#id_default_country').css('color', '#6c757d');
-    };
-
-    $('#id_default_country').change(function() {
-        countrySelected = $(this).val();
-        if (!countrySelected) {
-        $(this).css('color', '#6c757d');
-    } else {
-        $(this).css('color', '#222222');
-    }
-    });
-</script>
+<script type="text/javascript" src="{% static 'profiles/js/script.js' %}"></script>
 {% endblock %}
