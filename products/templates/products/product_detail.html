@@ -93,14 +93,14 @@
                         </div>
 
                         <!-- basket button -->
-                        <div class="col-12">
-                            <a href="{% url 'home' %}" class="btn btn-outline-black rounded-0 mt-5">
+                        <div class="col-12 d-flex flex-column-reverse flex-lg-row">
+                            <a href="{% url 'home' %}" class="btn mt-3">
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
                                 </span>
                                 <span class="">Keep Shopping</span>
                             </a>
-                            <input type="submit" class="btn border rounded-pill py-2 px-5 mt-5 basket-btn" value="Add to Basket">
+                            <input type="submit" class="btn border rounded-pill py-2 px-5 mt-3 basket-btn" value="Add to Basket">
                         </div>
                         <!-- retrieve url -->
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
@@ -109,7 +109,7 @@
             </div>
             <hr>
 
-               <!-- estimated delivery info -->
+            <!-- estimated delivery info -->
             <aside class="row text-center mt-4 mb-4">            
                 <div class="col-4">                
                     <span class="mb-3"><i class="far fa-credit-card"></i></span><br>
@@ -208,7 +208,6 @@
       </div>
     </div>
   </div>
-
 {% endblock %}
 
 {% block postloadjs %}
