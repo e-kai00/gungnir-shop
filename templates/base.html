@@ -28,6 +28,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&display=swap">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}">
+        <!-- Mailchimp  -->
+        <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
     {% endblock %}
 
     {% block extra_css %}
@@ -161,14 +163,37 @@
                 </p>
             </div>
 
-            <!-- ??? -->
+            <!-- Mailchimp -->
             <div class="col-sm-4">
-                <h5 class="uppercase general-sub">About</h5>
-                <p class="inline-block">
-                    Seabreeze is a small business that specializes in creating handmade jewelry 
-                    inspired by the beauty of the sea, seashells, and everything related to the ocean. 
-                </p>
-            </div>
+                <h5 class="uppercase general-sub">Subscribe to our newsletter</h5>
+                <div id="mc_embed_shell">                  
+                    <div id="mc_embed_signup">
+                        <form action="https://herokuapp.us21.list-manage.com/subscribe/post?u=2cf46fcafb410b2f4f71b4f6d&amp;id=7c274dc354&amp;f_id=00c775e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate m-0" target="_blank">
+                            <!-- <div id="mc_embed_signup_scroll"><h2>Subscribe</h2> -->
+                            <!-- <div class="indicates-required"><span class="asterisk">*</span> indicates required</div> -->
+                            <div class="mc-field-group"><label for="mce-EMAIL"></label>
+                                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="" placeholder="Email Address">
+                                <span id="mce-EMAIL-HELPERTEXT" class="helper_text d-none"></span>
+                            </div>
+                            <div id="mce-responses" class="clear foot">
+                                <div class="response text-white font-weight-light font-italic" id="mce-error-response" style="display: none;"></div>
+                                <div class="response text-white font-weight-light font-italic" id="mce-success-response" style="display: none;"></div>
+                            </div>
+                            <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                                <input type="text" name="b_2cf46fcafb410b2f4f71b4f6d_7c274dc354" tabindex="-1" value="">
+                            </div>
+                            <div class="optionalParent">
+                                <div class="clear foot">
+                                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button bg-white text-dark" value="Subscribe">
+                                    <p style="margin: 0px auto;"><a href="http://eepurl.com/ixtvBI" title="Mailchimp - email marketing made easy and fun"><span style="display: inline-block; background-color: transparent; border-radius: 4px;"><img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg" alt="Intuit Mailchimp" style="width: 150px; height: 30px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a></p>
+                                </div>
+                            </div>                  
+                        </form>
+                    </div>  
+                </div>
+            </div>             
+            
 
             <!-- Social media -->
             <div class="col-sm-4">
@@ -195,7 +220,27 @@
     <script type="text/javascript">
         $('.toast').toast('show');
     </script>
-    {% endblock %}
-    
+    <!-- Mailchimps -->
+    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+    <script type="text/javascript">
+        (function($) {
+            window.fnames = new Array(); 
+            window.ftypes = new Array();
+            fnames[0]='EMAIL';
+            ftypes[0]='email';
+            fnames[1]='FNAME';
+            ftypes[1]='text';
+            fnames[2]='LNAME';
+            ftypes[2]='text';
+            fnames[3]='ADDRESS';
+            ftypes[3]='address';
+            fnames[4]='PHONE';
+            ftypes[4]='phone';
+            fnames[5]='BIRTHDAY';
+            ftypes[5]='birthday';}
+            (jQuery));
+        var $mcj = jQuery.noConflict(true);
+    </script>
+    {% endblock %}    
   </body>
 </html>

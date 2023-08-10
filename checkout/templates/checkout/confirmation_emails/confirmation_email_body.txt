@@ -17,7 +17,7 @@ Shipping Addres:
 
 Contact Number: {{ order.phone_number }}
 
-If you have any questions or need assistance, please don't hesitate to get in touch with us at gungnir@example.com. Our team is always ready to help.
+If you have any questions or need assistance, please don't hesitate to get in touch with us. Our team is always ready to help.
 
 Thank you for choosing Gungnir for your purchase. We appreciate your business and hope you enjoy your products!
 
