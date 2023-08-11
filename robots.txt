@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /accounts/
+Sitemap: https://gungnir-shop-d9723ee6b3ec.herokuapp.com/sitemap.xml
