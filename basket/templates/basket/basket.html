@@ -150,11 +150,19 @@
         </section>
     </div>
 </main>
+
+<!-- Scroll to Top button -->
+<div class="btt-button shadow-sm">    
+    <button type="button" class="btn btn-light btt-dark border-dark btt-link">
+        <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+    </button>	
+</div>
 {% endblock %}
 
 {% block postloadjs %}
 {{ block.super }}
 {% include 'products/includes/quantity_input_script.html' %}
+<script type="text/javascript" src="{% static 'basket/js/script.js' %}"></script>
 
 <script type="text/javascript">
 // update basket items
@@ -174,30 +182,6 @@ $('.remove-item').click(function(e) {
      .done(function() {
          location.reload();
      });
-});
-
-
-// display shipping method chosen by user        
-function setSelectedMethod(method) {
-    sessionStorage.setItem('shippingMethod', method) 
-};
-
-$(document).ready(function() {       
-function displayMethod() {  
-    const selectedMethod = sessionStorage.getItem('shippingMethod');                                             
-    const method = $('#id_shipping')                                      
-    if (selectedMethod) {
-        method.val(selectedMethod);
-    }
-};
-
-$('#shipping-form').submit(function() {  
-    const methodValue = $('#id_shipping').val()                     
-    setSelectedMethod(methodValue)
-});
-
-displayMethod();
-
 });
 </script>
 {% endblock %}
