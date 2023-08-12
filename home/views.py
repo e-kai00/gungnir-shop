@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from django.conf import settings
 from django.db.models import Q
 from django.db.models.functions import Lower
 from products.models import Product, Category
+import os
 
 
 def index(request):
@@ -64,8 +66,10 @@ def index(request):
 def get_announcement():
     """  Retrieve text announcement from 'data/announcement.txt' file """
 
+    announcement_path = os.path.join(settings.STATICFILES_DIRS[0], 'data', 'announcement.txt')
+
     try:
-        with open("data/announcement.txt", "r") as file:
+        with open(announcement_path, "r") as file:
             return file.read()
     except FileNotFoundError:
         return "No announcement found."
@@ -73,8 +77,10 @@ def get_announcement():
 
 def update_announcement(new):
     """ Update the announcement with the given text and save it to a file """
+    
+    announcement_path = os.path.join(settings.STATICFILES_DIRS[0], 'data', 'announcement.txt')
 
-    with open("data/announcement.txt", "w") as file:
+    with open(announcement_path, "w") as file:
             return file.write(new)
     
 
