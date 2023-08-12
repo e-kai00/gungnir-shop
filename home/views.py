@@ -64,7 +64,7 @@ def index(request):
 
 
 def get_announcement():
-    """  Retrieve text announcement from 'data/announcement.txt' file """
+    """  Retrieve text announcement from announcement.txt file """
 
     announcement_path = os.path.join(settings.STATICFILES_DIRS[0], 'data', 'announcement.txt')
 

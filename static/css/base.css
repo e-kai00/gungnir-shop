@@ -342,3 +342,12 @@ h3 {
 }
 
 
+@media (max-width: 575px) {
+    .nav-link {
+        padding: 0.15rem;
+    }
+
+    .main-logo-link {
+        margin-bottom: 1rem;
+    }
+}

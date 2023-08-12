@@ -1,6 +1,22 @@
 # Gungnir Shop
 The live link to the website - [Gungnir Shop](https://gungnir-shop-d9723ee6b3ec.herokuapp.com/)
 
+## Project Concept 
+
+### Business Model
+The necessity for the inclusion of an e-commerce business model, highlighting the purpose of the application as either B2B or B2C focused, and detailing the core business intents and marketing strategies for the application.
+
+### SEO
+keywords optimisation
+meta - include screens
+rel attributes on links to external resources
+A sitemap.xml file
+A robots.txt file
+
+### Web Marketng
+Facebook business page
+A newsletter signup form
+
 ## UX
 
 ### Color Scheme
