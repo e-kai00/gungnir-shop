@@ -1,0 +1,28 @@
+<form class="form update-form" method="POST" action="{% url 'update_basket' item.item_id %}">
+    {% csrf_token %}
+    <div class="form-group text-center">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <button class="decrement-qty btn rounded-0"
+                    data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                    <span class="icon-btn hvr-grow">
+                        <i class="fa-solid fa-minus"></i>
+                    </span>
+                </button>
+            </div>
+            <input class="form-control rounded-pill qty_input" type="number" name="quantity" value="{{ item.quantity }}"
+                min="1" max="99" data-item_id="{{ item.item_id }}" id="id_qty_{{item.item_id }}">
+            <div class="input-group-append">
+                <button class="increment-qty btn rounded-0"
+                    data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                    <span class="icon-btn hvr-grow">
+                        <i class="fa-solid fa-plus"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- update and remove -->
+<a class="update-link text-info cursor"><small>Update</small></a>
+<a class="remove-item text-danger float-right cursor" id="remove_{{ item.item_id }}"><small>Remove</small></a>

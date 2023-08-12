@@ -1,5 +1,5 @@
 # Gungnir Shop
-The live link to the website -
+The live link to the website - [Gungnir Shop](https://gungnir-shop-d9723ee6b3ec.herokuapp.com/)
 
 ## UX
 
@@ -37,7 +37,7 @@ The live link to the website -
 - [Heroku](https://www.heroku.com/) - used as app remote hosting platform
 - [Python](https://www.python.org/) - used as backend programming language
 - [ElephantSQL](https://www.elephantsql.com/) - remote PostgreSQL database
-- [Cloudinary](https://cloudinary.com/) - used for static files as remote storage <br><br>
+- [AWS](https://https://aws.amazon.com/) - used for static files as remote storage <br><br>
 
 ## Testing
 
