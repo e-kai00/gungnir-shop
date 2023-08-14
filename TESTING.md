@@ -226,19 +226,59 @@ clean
 |Sign out| Click Sign out link|Redirect to confirmation page|pass|
 | | Click Sign out button| Sign out and redirect to Log-in page|pass|
 |<br>||||
-|**View product details**| | | |
+|**View product**| | | |
+| Home page | Click product picture or product title| Redirect to produt details page| pass|
+|<br>||||
+|**Product details**| | | |
+| | Click "-" or "+" quantity button| Subtract or add quantity| pass|
+| | Click Add to basket button| Add product to basket| pass|
+| | Click Keep Shopping button| Redirect to home page| pass|
+|<br>||||
+|**View Basket**| | | |
+| | Click Basket icon| Redirect to basket page| pass|
+| | 1. Click "+" or "-"<br> 2. Click "Update" link| Update items quantity| pass|
+| | Click Remove link| Remove item| pass|
+| | 1. Choose Shipping option<br> 2. Click Choose button| Display shipping cost and add it to Grand total| pass|
+| | 1. Enter coupon code<br> 2. Click Apply button| Display discount applied and add it to Grand total| pass|
+|<br>||||
+|**Checkout**| | | |
+| | Click Back to Basket button| Redirect to basket page| pass|
+| | 1. Fill out form<br> 2. Click Complete Order button| 1. Order processed<br> 2. Redirect to Success page<br> 3. Receive confirmation email| pass|
+|<br>||||
+|**Reviews**| | | |
+| | Click star icons 1 through 5| Set rating 1 through 5| pass|
+| | Click Post your Review button| 1. Publish review<br> 2. Set raing on a product| pass|
+| | If product is already reviewed by the user and user submits the review again| Update review| pass|
+<br>||||
+|**Admin functionality**| | | |
+| Navbar| Choose Product Management| Redirect to Add Product page| pass|
+| Add Product page| Choose category from dropdown menu| Set category| pass|
+| | Click Select Image button| Open window to select image| pass|
+| | 1. Fill out form<br> 2. Click Add Product button| Add new product to the shop| pass|
+| | Click Cancel button| Redirect to home page| pass|
+| Product detail page| Click Edit link| Redirect to Edit Product page| pass|
+| |Click Select Image button| 1. Open window to select image<br> 2. Replace image| pass|
+| | Check Remove image| Remove image on submitting product update| pass|
+| | Click Update Product button| Update product| pass|
+| | Click Cancel button| 1. Discard changes<br> 2. Redirect to home page| pass|
+| Product detail page| Click Delete link| 1. Prompt to confirm delete action<br> 2. Delete product<br> 3. Redirect to home page| pass|
+| Home page, announcemetn section| Click Update link| Redirect to announcement page| pass|
+| | 1. Update text<br> 2. Click Update button| 1. Update announcement<br> 2. Redirect to home page| *pass|
 |<br>||||
 |**Sort products**| | | |
 ||Click sidebar category| | |
 ||Click 'sort by' dropdown |||
 |<br>||||
 |**Search product**| | | |
-|| Enter a word in seach bar|||
+|| Enter a word in seach bar| | |
 |<br>||||
-|**View product details**| | | |
+|**Scroll to top button**| | | |
+| Home page and basket| Scroll down| Button appear| pass|
+| | Click button| Scroll up| pass|
 |<br>||||
 |**View product details**| | | |
 
+<br>
 Back to [README.md](https://github.com/e-kai00/gungnir-shop#gungnir-shop)
 
 
