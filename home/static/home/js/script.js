@@ -55,9 +55,9 @@ $(document).ready(function(){
         const lastUpdate = localStorage.getItem('lastUpdated');
         const updateField = $('#last-update');
         if (lastUpdate) {
-            updateField.text(lastUpdate)
+            updateField.text(lastUpdate);
         }
-    };
+    }
 
     displayDate();
 

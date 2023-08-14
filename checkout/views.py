@@ -30,7 +30,7 @@ def checkout(request):
 
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    
+
     if request.method == 'POST':
         basket = request.session.get('basket', {})
         coupon_id = request.session.get('coupon_id')
@@ -44,17 +44,25 @@ def checkout(request):
             coupon_id = None
 
         shipping_id = request.session.get('shipping_id')
-        shipping = None        
+        shipping = None
         default_shipping = None
         try:
             if shipping_id is not None:
-                shipping = Shipping.objects.get(id=shipping_id)                    
+                shipping = Shipping.objects.get(id=shipping_id)
             else:
-                default_shipping = Shipping.objects.first() if Shipping.objects.exists() else None            
+                default_shipping = (
+                    Shipping.objects.first()
+                    if Shipping.objects.exists()
+                    else None
+                )
         except ObjectDoesNotExist:
-            default_shipping = Shipping.objects.first() if Shipping.objects.exists() else None        
+            default_shipping = (
+                Shipping.objects.first()
+                if Shipping.objects.exists()
+                else None
+            )
 
-        form_data = {            
+        form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
@@ -65,7 +73,7 @@ def checkout(request):
             'street_address2': request.POST['street_address2'],
             'county': request.POST['county'],
         }
-        order_form = OrderForm(form_data)        
+        order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
 
@@ -80,9 +88,9 @@ def checkout(request):
                 order.coupon = coupon
                 order.discount = coupon.value
             order.save()
-            if coupon: 
+            if coupon:
                 del request.session['coupon_id']
-            
+
             for item_id, quantity in basket.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -93,15 +101,20 @@ def checkout(request):
                     )
                     order_line_item.save()
                 except Product.DoesNotExist:
-                    messages.error(request, 'One of the product in your basket was not found.')
+                    messages.error(
+                        request,
+                        'One of the product in your basket was not found.'
+                    )
                     order.delete()
                     return redirect(reverse('view_basket'))
             request.session['save-info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))        
+            return redirect(
+                reverse('checkout_success', args=[order.order_number])
+            )
         else:
             messages.error(request, 'There was an error with your form. \
                            Please, check your information once again.')
-    
+
     else:
         basket = request.session.get('basket', {})
         if not basket:
@@ -110,7 +123,7 @@ def checkout(request):
 
         current_basket = basket_contents(request)
         total = current_basket['grand_total']
-        stripe_total = round(total *100)
+        stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
@@ -173,8 +186,8 @@ def send_confirmation_email(order):
 def checkout_success(request, order_number):
     """
     Checkout success page.
-    Retrieves order associated with given order number and 
-    attaches it to the user's profile if user is authenticated. 
+    Retrieves order associated with given order number and
+    attaches it to the user's profile if user is authenticated.
     If 'save info' option was checked during checkout,
     updates user's profile with order's delivery information.
     Sends order confirmation email.
@@ -182,9 +195,9 @@ def checkout_success(request, order_number):
 
     save_info = request.session.get('save-info')
     order = get_object_or_404(Order, order_number=order_number)
-    
+
     if request.user.is_authenticated:
-        profile = UserProfile.objects.get(user=request.user)        
+        profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
         order.save()
 
@@ -199,14 +212,19 @@ def checkout_success(request, order_number):
             'default_street_address2': order.street_address2,
             'default_county': order.county,
         }
-        # create instance of user profile form and populate it with profile data obtained
+        # create instance of user profile form and
+        # populate it with profile data obtained
         user_profile_form = UserProfileForm(profile_data, instance=profile)
         if user_profile_form.is_valid():
             user_profile_form.save()
 
-    messages.success(request, f"Your order has been processed successfully! \
-                     Your order number is {order_number}. Keep an eye on \
-                     your inbox, as we'll be sending a confirmation to {order.email}.")
+    messages.success(
+        request,
+        f"Your order has been processed successfully!"
+        f"Your order number is {order_number}."
+        f"Keep an eye on your inbox, as we'll be"
+        f"sending a confirmation to {order.email}."
+    )
 
     if 'basket' in request.session:
         del request.session['basket']
@@ -218,5 +236,3 @@ def checkout_success(request, order_number):
         'order': order,
     }
     return render(request, template, context)
-
-

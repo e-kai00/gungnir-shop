@@ -125,21 +125,21 @@
                     {% endif %}
                     <span class="delivery-text">Order dispatches</span> 
                 </div>
-                    <div class="col-4">
+                <div class="col-4">
                     <span class="mb-3"><i class="fas fa-gift"></i></span><br>
                     {% if shipping_id %}
                     <span class="delivery-date">{{ shipping.estimated_delivery }}</span><br>
                     {% else %}
                     <span class="delivery-date">{{ default_shipping.estimated_delivery }}</span><br>
                     {% endif %}
-                    <spann class="delivery-text">Delivered!</spann>
+                    <span class="delivery-text">Delivered!</span>
                 </div>        
             </aside>
         </div>
     </main>
 
     <!-- Reviews -->
-    <main aria-labelledby="reviews">
+    <section aria-labelledby="reviews">
     <div class="row ml-2">
         <div class="col-12 col-lg-7">
             <h2 id="reviews" class="font-weight-bold product-page">Customer Reviews</h2>
@@ -176,6 +176,7 @@
         <div class="col-12 col-lg-7">
             <strong>Ratings:</strong> {{ review.rating }}/5
             <article>
+                <h3 class="d-none">Review</h3>
                 <p class="pt-2">{{ review.comment }}</p>
                 <footer>        
                     <p class="small text-muted">Posted by: {{ review.created_by }} <span class="pl-2">{{ review.created_on|date:"d M, Y" }}</span></p>
@@ -185,7 +186,7 @@
         </div>
         {% endfor %}
     </div>   
-    </main>
+    </section>
 </div>
 
 <!-- modal: delete confirmation -->
@@ -202,8 +203,8 @@
           <p class="small">Are you sure you want to delete this product? This action cannot be undone.</p>
         </div>
         <div class="modal-footer">
-          <a type="button" class="btn btn-secondary" data-dismiss="modal" href="#">Cancel</a>
-          <a type="button" class="btn basket-btn" href="{% url 'delete_product' product.id %}">Delete</a>
+          <a class="btn btn-secondary" data-dismiss="modal" href="#">Cancel</a>
+          <a class="btn basket-btn" href="{% url 'delete_product' product.id %}">Delete</a>
         </div>
       </div>
     </div>

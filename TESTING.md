@@ -55,6 +55,29 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
 ### Validators
 
 - HTML
+
+Home page
+missing `<ul>` and duplicating 'id' in navbar
+
+Product page
+spelling mistakes `<span>`
+
+Add/ Edit product
+??
+
+Basket
+stray tag
+
+Checkout
+duplicated 'for label'
+
+Success page
+clean
+
+Profile
+clean
+*The type attribute is unnecessary for JavaScript resources
+
 - CSS
 - JavaScript
 - Python
