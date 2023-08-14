@@ -34,17 +34,21 @@ def index(request):
         # filter by category
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)            
+            products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
-        # search site 
-        if 'q' in request.GET:            
+        # search site
+        if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't eneter any search criteria!")
+                messages.error(
+                    request,
+                    "You didn't eneter any search criteria!"
+                )
                 return redirect(reverse('home'))
-            
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+
+            queries = (Q(name__icontains=query) |
+                       Q(description__icontains=query))
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -58,7 +62,7 @@ def index(request):
         'current_categories': categories,
         'current_sorting': current_sorting,
         'announcement': announcement
-    }                
+    }
 
     return render(request, template, context)
 
@@ -66,29 +70,33 @@ def index(request):
 def get_announcement():
     """  Retrieve text announcement from announcement.txt file """
 
-    announcement_path = os.path.join(settings.STATICFILES_DIRS[0], 'data', 'announcement.txt')
+    announcement_path = (
+        os.path.join(settings.STATICFILES_DIRS[0], 'data', 'announcement.txt')
+    )
 
     try:
         with open(announcement_path, "r") as file:
             return file.read()
     except FileNotFoundError:
         return "No announcement found."
-    
+
 
 def update_announcement(new):
     """ Update the announcement with the given text and save it to a file """
-    
-    announcement_path = os.path.join(settings.STATICFILES_DIRS[0], 'data', 'announcement.txt')
+
+    announcement_path = (
+        os.path.join(settings.STATICFILES_DIRS[0], 'data', 'announcement.txt')
+    )
 
     with open(announcement_path, "w") as file:
-            return file.write(new)
-    
+        return file.write(new)
+
 
 def announcement(request):
-    """ 
+    """
     Update and display announcement on home page.
-    If the user is not a superuser (shop owner), they will be redirected 
-    to the home page.    
+    If the user is not a superuser (shop owner), they will be redirected
+    to the home page.
     """
 
     if not request.user.is_superuser:
@@ -100,7 +108,7 @@ def announcement(request):
         update_announcement(new)
         messages.success(request, 'Announcement has been updated.')
         return redirect(reverse('home'))
-        
+
     announcement = get_announcement()
 
     template = 'home/announcement.html'
@@ -109,6 +117,3 @@ def announcement(request):
     }
 
     return render(request, template, context)
-
-    
- 

@@ -16,6 +16,7 @@ def product_detail(request, product_id):
     }
     return render(request, template, context)
 
+
 @login_required
 def add_product(request):
     """ View for adding new product to the shop """
@@ -31,7 +32,10 @@ def add_product(request):
             messages.success(request, 'Product added.')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to add product. Please ensure the form is valid.'
+            )
     else:
         form = ProductForm()
 
@@ -58,7 +62,10 @@ def edit_product(request, product_id):
             messages.success(request, 'Product updated.')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(
+                request,
+                'Failed to update product. Please ensure the form is valid.'
+            )
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
@@ -78,7 +85,7 @@ def delete_product(request, product_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only shop owner can do this.')
         return redirect(reverse('home'))
-    
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted.')
@@ -86,16 +93,16 @@ def delete_product(request, product_id):
 
 
 def submit_review(request, product_id):
-    """ 
+    """
     View for submitting or updating product review.
-    Checks if user has already submitted review for the product. 
-    If review exists, it updates existing review. If no review 
+    Checks if user has already submitted review for the product.
+    If review exists, it updates existing review. If no review
     exists, it creates new review.
-    Checks if user submitted rating. If rating submitted, it 
-    updates review or creates new review. If no rating is submitted, 
+    Checks if user submitted rating. If rating submitted, it
+    updates review or creates new review. If no rating is submitted,
     it displays an error message.
     """
-     
+
     if not request.user.is_authenticated:
         return redirect(reverse('account_login'))
 
@@ -108,7 +115,10 @@ def submit_review(request, product_id):
         comment = request.POST.get('review', '')
 
         if rating is None:
-            messages.error(request, 'Please provide star rating before submitting your review.')
+            messages.error(
+                request,
+                'Please provide star rating before submitting your review.'
+            )
             return redirect(reverse('product_detail', args=[product_id]))
 
         if review:
@@ -125,18 +135,11 @@ def submit_review(request, product_id):
                 created_by=user
             )
             messages.success(request, 'Thank you for your feedback!')
-        
+
         return redirect(reverse('product_detail', args=[product_id]))
-    
+
     template = 'products/product_detail.html'
     context = {
         'product': product,
-    }    
+    }
     return render(request, template, context)
-        
-    
-    
-    
-    
-   
-
