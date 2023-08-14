@@ -1,6 +1,6 @@
 # Gungnir Shop
 
-![Responsive website mockup](/README_docs/responsive.png)
+![Responsive website mockup](/README_docs/testing/responsive-home.png)
 
 ## Concept
 
@@ -108,19 +108,7 @@ I began with initial sketches on paper, which then transfer into wireframes for 
 
 ## Testing
 
-### Responsiveness
-### Browser Compatibility
-### Bugs
-### Lighthouse
-### Validators
-- HTML
-- CSS
-- JavaScript
-- Python
-### User Stories
-"As a User I want to be able to___________________"
-- [x] - *successfully implemented*
-- [ ] - *yet to be implemented*
+For an overview of all the testing conducted, please refer to the [TESTING.md](https://github.com/e-kai00/gungnir-shop/blob/main/TESTING.md) file.
 
 ## Deployment
 
