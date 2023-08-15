@@ -110,7 +110,6 @@ I began with initial sketches on paper, which then transfer into wireframes for 
 
 For an overview of all the testing conducted, please refer to the [TESTING.md](https://github.com/e-kai00/gungnir-shop/blob/main/TESTING.md) file.
 
-## Deployment
 
 ## Deployment
 
