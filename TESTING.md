@@ -34,12 +34,14 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
   - completing the checkout process, 
   - leaving and updating reviews.
 
+<br>
 
-| Browser | Screenshot |
-|:-------:|:-------:|
-| Chrome|![Chrome](/README_docs/testing/browser-chrome.jpeg)|
-| Mozilla Firefox| ![Firefox](/README_docs/testing/browser-fireFox.png)|
-| Microsoft Edge| ![Edge](/README_docs/testing/browser-edge.jpeg)|
+| Browser| Home page| Product Page| Basket|
+|:-------:|:-------:|:--------:|:-------:|
+| Chrome|![home](/README_docs/testing/browser-chrome-home.png)|![Chrome](/README_docs/testing/browser-chrome.jpeg)|![basket](/README_docs/testing/browser-chrome-basket.jpeg)|
+| Mozilla Firefox|![home](/README_docs/testing/browser-firefox-home.png)| ![Firefox](/README_docs/testing/browser-fireFox.png)| ![basket](/README_docs/testing/browser-firefox-basket.png)|
+| Microsoft Edge| ![home](/README_docs/testing/browser-edge-home.jpeg)|![Edge](/README_docs/testing/browser-edge.jpeg)| ![basket](/README_docs/testing/browser-edge-basket.jpeg)|
+ 
 
 
 ### Bugs
@@ -67,6 +69,7 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
 
   Unrecognized stray `<tr>` tag issue on [basket.html](#basket) page: while conducting browser page source code validation, I encountered "stray tag <tr>" error. Despite thorough code inspection, I could not pinpoint the source of these tags. I ran validation of source code, confirming its cleanliness (2 errors in report are due to the W3C not recognizing Django Templating). 
   While the origin of the "stray tag <tr>" issue remains unclear, it does not seem to impact user experience or page functionality.
+
 
 ##### Home page
 <details><summary>index.html</summary>
