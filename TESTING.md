@@ -44,13 +44,13 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
 
 ### Bugs
 
-| Description | Action | Status |
-|:-----|:------|:------:|
-|Error when connecting Elephantsql database:<br> *"django.db.utils.ProgrammingError: cannot cast type bigint to int4range"*<br> The root cause of the issue: initial model used fields that were not compatible with PostgreSQL. As a result, the initial migration file was generated based on these incompatible field types. Attempts to migrate to PostgreSQL kept referencing the initial migration file, causing a type mismatch during the migration process.| Reset migrations by dropping the database:<br> 1. remove all migrations files, except the `__init__.py`<br> 2. drop the current database<br> 3. create the initial migrations and generate the database schema using commands `python manage.py makemigrations` - `python manage.py migrate`| closed|
-|Error at calculating basket Grand total:<br> *"DoesNotExist" exception - the Coupon object you are trying to retrieve using the coupon_id does not exist in the database*<br> The root cause of the issue: code responsible for calculating the Grand Total of the basket handled existing coupon objects and ignored situations when coupon objects were not yet created| Use try-except block around the code| closed|
-|Error when updating items quantity in basket:<br> *"builtin_function_or_method' object is not subscriptable"*<br> The root cause of the issue: use of "[]" instead of "()" on `.pop()` method| Correct typo| closed|
-|The search product function within website demonstrates mostly accurate behavior; however, there are instances where certain search terms yield incorrect results. For example, the search term:<br> - *"ring"* yields 5 results instead of the expected 1,<br> - *"wolf"* produces 3 results instead of the anticipated 6,<br> - *"red"* retrieves 8 results instead of the intended 4.| This issue is yet to be investigated by looking into the search process, data storing, retrieving results | open|
-|The announcement section isn't behaving as intended. Specifically:<br> - *"last update date"* gets set correctly when the admin updates it, but it's not consistently displayed across all web browsers;<br> - when the announcement text is updated, it resets to the default text every time the Heroku dynos restart.<br> Currently, the "last updated date" is managed using localStorage, and the announcement text is stored in a file named [announcement.txt](https://github.com/e-kai00/gungnir-shop/tree/main/static/data) within the static folder. The file is processed by functions in [views.py](https://github.com/e-kai00/gungnir-shop/blob/main/home/views.py) of the home app.| The issue is yet to be solved. One potential improvement is to store the announcement data in a database. By doing so, I expect get better control of the announcement section functionality.| open|
+| # | Description | Action | Status |
+|--|:-----|:------|:------:|
+| 1|Error when connecting Elephantsql database:<br> *"django.db.utils.ProgrammingError: cannot cast type bigint to int4range"*<br> The root cause of the issue: initial model used fields that were not compatible with PostgreSQL. As a result, the initial migration file was generated based on these incompatible field types. Attempts to migrate to PostgreSQL kept referencing the initial migration file, causing a type mismatch during the migration process.| Reset migrations by dropping the database:<br> 1. remove all migrations files, except the `__init__.py`<br> 2. drop the current database<br> 3. create the initial migrations and generate the database schema using commands `python manage.py makemigrations` - `python manage.py migrate`| closed|
+| 2|Error at calculating basket Grand total:<br> *"DoesNotExist" exception - the Coupon object you are trying to retrieve using the coupon_id does not exist in the database*<br> The root cause of the issue: code responsible for calculating the Grand Total of the basket handled existing coupon objects and ignored situations when coupon objects were not yet created| Use try-except block around the code| closed|
+| 3|Error when updating items quantity in basket:<br> *"builtin_function_or_method' object is not subscriptable"*<br> The root cause of the issue: use of "[]" instead of "()" on `.pop()` method| Correct typo| closed|
+| 4|The search product function within website demonstrates mostly accurate behavior; however, there are instances where certain search terms yield incorrect results. For example, the search term:<br> - *"ring"* yields 5 results instead of the expected 1,<br> - *"wolf"* produces 3 results instead of the anticipated 6,<br> - *"red"* retrieves 8 results instead of the intended 4.| This issue is yet to be investigated by looking into the search process, data storing, retrieving results | open|
+| 5|The announcement section isn't behaving as intended. Specifically:<br> - *"last update date"* gets set correctly when the admin updates it, but it's not consistently displayed across all web browsers;<br> - when the announcement text is updated, it resets to the default text every time the Heroku dynos restart.<br> Currently, the "last updated date" is managed using localStorage, and the announcement text is stored in a file named [announcement.txt](https://github.com/e-kai00/gungnir-shop/tree/main/static/data) within the static folder. The file is processed by functions in [views.py](https://github.com/e-kai00/gungnir-shop/blob/main/home/views.py) of the home app.| The issue is yet to be solved. One potential improvement is to store the announcement data in a database. By doing so, I expect get better control of the announcement section functionality.| open|
 
 ### Lighthouse
 
@@ -60,131 +60,164 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
 ### Validators
 
 #### HTML
+- [W3C HTML Validator](https://validator.w3.org/)
 
-Home page
-missing `<ul>` and duplicating 'id' in navbar
+  Validation helped identify and rectify several issues. Specifically, missing `<ul>` and duplicating 'id' in navbar, spelling mistakes in one of the `<span> ` tag, duplicated 'for' attribute in labels (checkout page).
+  The validation report also highlighted that the 'type' attribute for JavaScript resources was unnecessary and removing it adheres to modern best practices: "Unnecessary 'type' Attribute for JavaScript Resources ".
 
-Product page
-spelling mistakes `<span>`
+  Unrecognized stray `<tr>` tag issue on [basket.html](#basket) page: while conducting browser page source code validation, I encountered "stray tag <tr>" error. Despite thorough code inspection, I could not pinpoint the source of these tags. I ran validation of source code, confirming its cleanliness (2 errors in report are due to the W3C not recognizing Django Templating). 
+  While the origin of the "stray tag <tr>" issue remains unclear, it does not seem to impact user experience or page functionality.
 
-Add/ Edit product
-??
+##### Home page
+<details><summary>index.html</summary>
+<img src="README_docs/testing/validators/w3c_html/home_html.png">
+</details>
 
-Basket
-stray tag
+##### Product page
+<details><summary>product_detail.html</summary>
+<img src="README_docs/testing/validators/w3c_html/product-detail_html.png">
+</details>
 
-Checkout
-duplicated 'for label'
+##### Basket
+<details><summary>basket.html (browser page source code)</summary>
+<img src="README_docs/testing/validators/w3c_html/basket_html.png">
+</details>
+<details><summary>basket.html (source code)</summary>
+<img src="README_docs/testing/validators/w3c_html/basket_local1_html.png">
+</details>
 
-Success page
-clean
+##### Checkout
+<details><summary>checkout.html</summary>
+<img src="README_docs/testing/validators/w3c_html/checkout_html.png">
+</details>
 
-Profile
-clean
-*The type attribute is unnecessary for JavaScript resources
+##### Success page
+<details><summary>success.html</summary>
+<img src="README_docs/testing/validators/w3c_html/success-page_html.png">
+</details>
+
+##### Profile
+<details><summary>profile.html</summary>
+<img src="README_docs/testing/validators/w3c_html/profile_html.png">
+</details>
+
+<br>
 
 #### CSS
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 
-<details><summary>base.css</summary>
-<img src="README_docs/testing/validators/w3c_css/base_css.png">
-</details>
+  No errors were found.
 
-<details><summary>checkout.css</summary>
-<img src="README_docs/testing/validators/w3c_css/checkout_css.png">
-</details>
+  <details><summary>base.css</summary>
+  <img src="README_docs/testing/validators/w3c_css/base_css.png">
+  </details>
 
-<details><summary>product-rating.css</summary>
-<img src="README_docs/testing/validators/w3c_css/product-rating_css.png">
-</details>
+  <details><summary>checkout.css</summary>
+  <img src="README_docs/testing/validators/w3c_css/checkout_css.png">
+  </details>
+
+  <details><summary>product-rating.css</summary>
+  <img src="README_docs/testing/validators/w3c_css/product-rating_css.png">
+  </details>
+
+<br>
 
 #### JavaScript
-<details><summary>home app / script.js</summary>
-<img src="README_docs/testing/validators/js_hint/home-script_js.png">
-</details>
-<details><summary>basket app / script.js</summary>
-<img src="README_docs/testing/validators/js_hint/basket-script_js.png">
-</details>
-<details><summary>checkout app / stripe_elements.js</summary>
-<img src="README_docs/testing/validators/js_hint/checkout-stripe-elemets_js.png">
-</details>
-<details><summary>profiles app / script.js</summary>
-<img src="README_docs/testing/validators/js_hint/profiles-script_js.png">
-</details>
+- [JShint](https://jshint.com/)
 
+  The validation results are positive, with no errors detected. Some minor warnings were issued regarding missing semicolons, which have been addressed and rectified.
+
+  <details><summary>home app / script.js</summary>
+  <img src="README_docs/testing/validators/js_hint/home-script_js.png">
+  </details>
+  <details><summary>basket app / script.js</summary>
+  <img src="README_docs/testing/validators/js_hint/basket-script_js.png">
+  </details>
+  <details><summary>checkout app / stripe_elements.js</summary>
+  <img src="README_docs/testing/validators/js_hint/checkout-stripe-elemets_js.png">
+  </details>
+  <details><summary>profiles app / script.js</summary>
+  <img src="README_docs/testing/validators/js_hint/profiles-script_js.png">
+  </details>
+
+<br>
 
 #### Python
+- [CI Python Linter](https://pep8ci.herokuapp.com/#)
 
-- **home app**
+  All .py files are compliant with the guidelines outlined in PEP8, exept one: built-in Django [settings.py](https://github.com/e-kai00/gungnir-shop/blob/main/gungnir_shop/settings.py): E501 line too long (91 > 79 characters) - AUTH_PASSWORD_VALIDATORS (x4)
 
-  <details><summary>views.py</summary>
-  <img src="README_docs/testing/validators/python_linter/home-views_py.png">
-  </details><br>
+  - **home app**
 
-- **basket app**
-
-  <details><summary>context.py</summary>
-  <img src="README_docs/testing/validators/python_linter/basket-context_py.png">
-  </details>
-  <details><summary>views.py</summary>
-  <img src="README_docs/testing/validators/python_linter/basket-views_py.png">
-  </details><br>
-
-- **checkout app**
-
-    <details><summary>forms.py</summary>
-    <img src="README_docs/testing/validators/python_linter/checkout-forms_py.png">
-    </details>
-    <details><summary>models.py</summary>
-    <img src="README_docs/testing/validators/python_linter/checkout-models_py.png">
-    </details>
     <details><summary>views.py</summary>
-    <img src="README_docs/testing/validators/python_linter/checkout-views_py.png">
+    <img src="README_docs/testing/validators/python_linter/home-views_py.png">
     </details><br>
 
-- **coupons app**
+  - **basket app**
 
-  <details><summary>models.py</summary>
-  <img src="README_docs/testing/validators/python_linter/coupons-models_py.png">
-  </details>
-  <details><summary>views.py</summary>
-  <img src="README_docs/testing/validators/python_linter/coupons-views_py.png">
-  </details><br>
-
-- **products app**
-
-    <details><summary>forms.py</summary>
-    <img src="README_docs/testing/validators/python_linter/products-forms_py.png">
-    </details>
-    <details><summary>models.py</summary>
-    <img src="README_docs/testing/validators/python_linter/products-models_py.png">
+    <details><summary>context.py</summary>
+    <img src="README_docs/testing/validators/python_linter/basket-context_py.png">
     </details>
     <details><summary>views.py</summary>
-    <img src="README_docs/testing/validators/python_linter/products-views_py.png">
+    <img src="README_docs/testing/validators/python_linter/basket-views_py.png">
     </details><br>
 
-- **profiles app**
+  - **checkout app**
 
-    <details><summary>forms.py</summary>
-    <img src="README_docs/testing/validators/python_linter/profiles-forms_py.png">
-    </details>
+      <details><summary>forms.py</summary>
+      <img src="README_docs/testing/validators/python_linter/checkout-forms_py.png">
+      </details>
+      <details><summary>models.py</summary>
+      <img src="README_docs/testing/validators/python_linter/checkout-models_py.png">
+      </details>
+      <details><summary>views.py</summary>
+      <img src="README_docs/testing/validators/python_linter/checkout-views_py.png">
+      </details><br>
+
+  - **coupons app**
+
     <details><summary>models.py</summary>
-    <img src="README_docs/testing/validators/python_linter/profiles-models_py.png">
+    <img src="README_docs/testing/validators/python_linter/coupons-models_py.png">
     </details>
     <details><summary>views.py</summary>
-    <img src="README_docs/testing/validators/python_linter/profiles-views_py.png">
+    <img src="README_docs/testing/validators/python_linter/coupons-views_py.png">
     </details><br>
 
-- **shipping app**
+  - **products app**
 
-    <details><summary>forms.py</summary>
-    <img src="README_docs/testing/validators/python_linter/shipping-forms_py.png">
-    </details>
-    <details><summary>models.py</summary>
-    <img src="README_docs/testing/validators/python_linter/shipping-modals_py.png">
-    </details>
-    <details><summary>views.py</summary>
-    <img src="README_docs/testing/validators/python_linter/shipping-views_py.png">
-    </details><br>
+      <details><summary>forms.py</summary>
+      <img src="README_docs/testing/validators/python_linter/products-forms_py.png">
+      </details>
+      <details><summary>models.py</summary>
+      <img src="README_docs/testing/validators/python_linter/products-models_py.png">
+      </details>
+      <details><summary>views.py</summary>
+      <img src="README_docs/testing/validators/python_linter/products-views_py.png">
+      </details><br>
+
+  - **profiles app**
+
+      <details><summary>forms.py</summary>
+      <img src="README_docs/testing/validators/python_linter/profiles-forms_py.png">
+      </details>
+      <details><summary>models.py</summary>
+      <img src="README_docs/testing/validators/python_linter/profiles-models_py.png">
+      </details>
+      <details><summary>views.py</summary>
+      <img src="README_docs/testing/validators/python_linter/profiles-views_py.png">
+      </details><br>
+
+  - **shipping app**
+
+      <details><summary>forms.py</summary>
+      <img src="README_docs/testing/validators/python_linter/shipping-forms_py.png">
+      </details>
+      <details><summary>models.py</summary>
+      <img src="README_docs/testing/validators/python_linter/shipping-modals_py.png">
+      </details>
+      <details><summary>views.py</summary>
+      <img src="README_docs/testing/validators/python_linter/shipping-views_py.png">
+      </details><br>
 
 ### User Stories
 
@@ -239,7 +272,7 @@ clean
 | |1. Click 'sort by' dropdown<br> 2. Choose sort method| Display items by chosen sort method| pass|
 |<br>||||
 |**Search product**| | | |
-| | Enter a word in seach bar| Display items with entered word| *pass|
+| | Enter a word in seach bar| Display items with entered word| *pass<br> *[bug #4](#bugs)*|
 |<br>||||
 |**Scroll to top button**| | | |
 | *Home page and basket*| Scroll down| Scroll-to-top button becomes visible| pass|
@@ -295,7 +328,7 @@ clean
 | | Click Cancel button| 1. Discard changes<br> 2. Redirect to home page| pass|
 | *Product detail page*| Click Delete link| 1. Prompt to confirm delete action<br> 2. Delete product<br> 3. Redirect to home page| pass|
 | *Home page, announcement section*| Click Update link| Redirect to announcement page| pass|
-| | 1. Update text<br> 2. Click Update button| 1. Update announcement<br> 2. Redirect to home page| *pass|
+| | 1. Update text<br> 2. Click Update button| 1. Update announcement<br> 2. Redirect to home page| *pass<br> *[bug #5](#bugs)*|
 
 <br>
 
