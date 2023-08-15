@@ -136,7 +136,7 @@ For an overview of all the testing conducted, please refer to the [TESTING.md](h
   - `python3 manage.py createsuperuser`
 
 After successfully completing the database migrations and setting up the superuser, the relational schema will be configured:
-![relational schema](/readme-img/design/model.png)
+![relational schema](/README_docs/ERD.png)
 
 
 **ElephantSQL Database**
