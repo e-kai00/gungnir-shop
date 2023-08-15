@@ -112,10 +112,130 @@ For an overview of all the testing conducted, please refer to the [TESTING.md](h
 
 ## Deployment
 
-The relational schema
+## Deployment
 
 ### Local Deployment
+ 
+**Clone the repositary:**
+- go to the [gungnir-shop](https://github.com/e-kai00/gungnir-shop) repositary
+- click on the "Code" button, located just above the file list
+- in the dropdown menu, click on the clipboard icon to copy the repository's URL
+- open the terminal in your code editor and navigate to the directory where you want to clone the repository
+- run the following command:
+  - `git clone https://github.com/e-kai00/gungnir-shop.git`
+- install packages from the [requirements.txt](https://github.com/e-kai00/gungnir-shop/blob/main/requirements.txt) file using this command:
+  - `pip3 install -r requirements.txt`
+- create a `.env` file for your own credentials
+- to launch the Django app, run command:
+  - `python3 manage.py runserver`
+- to stop the app:
+  - `CTRL+C`
+- make migrations to set up the database:
+  - `python3 manage.py makemigrations`
+  - `python3 manage.py migrate`  
+- create superuser to access the Django Admin Panel:
+  - `python3 manage.py createsuperuser`
+
+After successfully completing the database migrations and setting up the superuser, the relational schema will be configured:
+![relational schema](/readme-img/design/model.png)
+
+
+**ElephantSQL Database**
+
+To sign up with ElephantSQL and create a new database, you follow these steps:
+
+- go to the ElephantSQL  [ElephantSQL](https://www.elephantsql.com/) website
+- sign-up with your GitHub account
+- click **Create new instance**
+- enter a name and choose plan (recommended free Tiny Turtle)
+- select the region and data center closest to you
+- once created, click on the new database name to view the database URL
+- use the database URL as a credential in your `.env` file
+
+**AWS (Amazon Web Services)**
+
+- Sign-up or sign-in [AWS](https://aws.amazon.com/console/) 
+- Create Bucket. Options to choose:  
+  - Object Ownership: 
+    - ACLsenabled
+    - Bucket owner preferred
+    - Uncheck "Block all public access"
+- Set up bucket:
+  - Property tab:
+    - Choose "Static website hosting"
+  - Permission tab:
+    - Configurate CORS
+    - Add Bucket policy
+    - In "Access control list" section enable "List" for "Eceryone (public access")
+-  Identity and Access Management (IAM)
+  - Create group
+  - Create policy and attach it to the Group
+  - Create user
+  - Retrieve access key: 
+    - Go to IAM and select "Users"
+    - Select the user for whom you wish to create a CSV file.
+    - Select the "Security Credentials" tab
+    - Scroll to "Access Keys" and click "Create access key". Select "Application running outside AWS"
+    - You can leave the "Description tag" value blank. Click "Create Access Key"
+    - Downlod csv file
+- Connect Django and Bucket:
+  - `pip3 install boto3`  
+  - `pip3 install django-storages`  
+  - Django settings.py: 
+    - add 'storages' to the app list
+    - add following configurations
+    ``` 
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'gungnir-shop'
+    AWS_S3_REGION_NAME = 'eu-central-1'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+    ```
+
 ### Heroku Deployment
+
+This project is deployed on Heroku, a cloud platform. To deploy the project, follow these steps:
+
+- create a [Heroku](https://www.heroku.com/) account
+- click **Create New App**
+- choose name for your app and region
+- once app created, navigate to *Settings* and click **Reveal Config Vars**
+- set your environment variables:
+  | Key | Value |
+  |-----|-------|
+  | `SECRET_KEY`| *your_django_secret_key* |
+  |`DATABASE_URL`| *your ElephantSQL database URL*|
+  | `AWS_ACCESS_KEY_ID`| *your access key ID*|
+  |`AWS_SECRET_ACCESS_KEY`|*your secrete access key*|
+  |`STRIPE_PUBLIC_KEY`|*your Stripe public key*|
+  |`STRIPE_SECRET_KEY`|*your API Stripe secrete key*|
+  |`EMAIL_HOST_PASS`|*your host password*|
+  |`EMAIL_HOST_USER`|*your email address*|
+
+For proper deployment and execution of the application, Heroku needs *requirements.txt* and *Procfile*:
+- `pip3 install -r requirements.txt` - to install project's requirements.txt
+- `echo web: gunicorn tracker.wsgi > Procfile` - to create Procfile
+
+
+*The files for this project can be found here: [requirements.txt](https://github.com/e-kai00/gungnir-shop/blob/main/requirements.txt) and [Procfile](https://github.com/e-kai00/gungnir-shop/blob/main/Procfile)*
+  
+
+- Navigate to **Deploy** tab
+- Connect your GitHub account and choose needed repositary
+- Scroll down and click **Deploy Branch** (this project deployed from main branch)
+- Once succeesfully deployed, click **Open app** at the right top coner of the page <br><br>
+
 
 ## Credits
 
