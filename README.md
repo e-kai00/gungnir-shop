@@ -43,7 +43,7 @@ I also made sure that images have clear names and alt tags to help everyone see 
 - Technical foundations: robots.txt and sitemap.xml files are included into the project to guide search engine crawlers and contribute to the proper indexing of the website's content.
 
 
-## UX Design
+## Design
 
 I aimed to create a clean and simple design for the Gungnir Shop project, focusing on making the website easy to use. The interface has a simple layout with easy-to-understand navigation, so users can manage their shopping easily. The design is kept simple to prevent things from getting too crowded and to avoid any unnecessary distractions.
 
@@ -142,17 +142,17 @@ I used the Agile methodology for the management of this project. Below is an ove
 
 #### Footer
 
-Has an About Us section, subscribtion form that can be used  to send updates, newsletters, or notifications to customers, and Contact Information along with links to social networks.
+Has an About Us section, subscribtion form for newsletters, and Contact Information along with links to social networks.
 
   ![footer](/README_docs/features/feat-footer.png)
 
 #### Home page
 
-Serves as the central hub the shop, showcasing all products. It comes equipped with such features as *organizing products in Collections*, *sorting products by* price and names
+Serves as the central hub of the shop, showcasing all products. It comes equipped with such features as *organizing products in Collections* and *sorting products by* price and names
 
  ![](/README_docs/features/feat-home-sort-by.png)
 
-It also includes Announcement section, which is meant to be used for latest shop's news and updates.
+The home page includes Announcement section, which is meant to be used for the latest shop's news and updates (announcements are updated by admin).
   
 ![](/README_docs/features/feat-announcement-section.png)
   
@@ -160,7 +160,7 @@ It also includes Announcement section, which is meant to be used for latest shop
 
 Standard product page with product image and description, offering the following features:
 
-- Linked Collection, which displays the *collection tag* to which the product belongs (e.g. "Axe Amulet") and enables users to explore the entire collection with a single click. And *product rating*.
+- Linked Collection -  displays the *collection tag* to which the product belongs (e.g. "Axe Amulet") and enables users to explore the entire collection with a single click, and the *Product Rating* feature, which displays average product rating.
 
 ![product details](/README_docs/features/feat-product-page.png)
 
@@ -168,7 +168,7 @@ Standard product page with product image and description, offering the following
 
 ![product page](/README_docs/features/feat-product-page-quantity.png)
 
-- Estimated delivery information, which is based on chosen shipping option (if shipping option is not set by user, default shipping method, *Standard*, will be used to calculate delivery).
+- Estimated delivery information, which is based on chosen shipping method (if shipping method is not set by the user, default shipping method, *Standard*, will be used to calculate delivery).
 
 ![product page](/README_docs/features/feat-product-page-delivery.png)
 
@@ -186,7 +186,7 @@ Has the following features:
 
 ![basket](/README_docs/features/feat-basket.png)
 
-- Providing a dropdown menu to select preferred shipping methods.
+- Providing a dropdown menu to select preferred shipping methods and estimated delivery time.
 
 ![shipping](/README_docs/features/feat-basket-shipping.png)
 
@@ -236,12 +236,31 @@ The website employs a robust messaging system to efficiently communicate vital n
 
 #### Error page
 
-Has personalized 404 and 500 error pages that are integrated with the website design and theme.
+The website has personalized 404 and 500 error pages that are integrated with the website design and theme.
 
 ![404 page](/README_docs/features/feat-404.png)
 
 
 ### Features left to implement
+
+**User registration and authantication**
+
+- Enable users to change their password, email and delete their profile.
+- Password recovery
+- Sign up via social media platforms
+
+**Payment**
+
+- Implement Webhooks
+
+**Admin functionality**
+
+- add UI for managing Shipping methods (full CRUD cunctionality)
+- add UI for managing Coupon codes (full CRUD cunctionality)
+
+**Home page**
+
+- improve Announcement section (the issue with the section is described in [bug # 5](https://github.com/e-kai00/gungnir-shop/blob/main/TESTING.md#bugs) section)
 
 
 ## Technology 
