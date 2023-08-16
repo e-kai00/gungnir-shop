@@ -73,9 +73,62 @@ Three [Google Fonts](https://fonts.google.com/) were used for the website:
 
 ### Wireframes
 
-I began with initial sketches on paper, which then transfer into wireframes for both desktop and mobile layouts using [Balsamiq](https://balsamiq.com/) mockup tool. You'll find all wireframes located within the [wireframes](/README_docs/wireframes/) folder for this project.
+I began with initial sketches on paper, which then transfered into wireframes for both desktop and mobile layouts using [Balsamiq](https://balsamiq.com/) mockup tool.
+
+| home page | product details page |
+|:--:|:--:|
+|![home page](/README_docs/wireframes/home.png)|![product page](/README_docs/wireframes/product-detail.png)|
+
+| basket page | profile page |
+|:--:|:--:|
+|![basket](/README_docs/wireframes/basket.jpg)|![profile page](/README_docs/wireframes/profile.jpg)|
 
 ## Agile Development
+
+I used the Agile methodology for the management of this project. Below is an overview of how Agile principles were integrated into the management of this project.
+
+- **User Stories and Issues**
+
+  I utilized "Issues" functionality on GitHub to create user stories. Each user story represented a specific feature or functionality desired by the end-users. These user stories formed the foundation of the project's scope and guided the development process.
+
+  <details><summary>user stories</summary>
+  <img src="README_docs/agile/issues.png">
+  </details>
+
+<br>
+
+- **Epics, Stories, and Tasks**
+
+  In order to better organize and categorize the user stories, they were grouped into larger themes known as epics. Epics helped provide a high-level view of the project's goals and allowed for more effective management of related user stories. Each story was further broken down into individual tasks, ensuring better task tracking.
+
+  <details><summary>epics</summary>
+  <img src="README_docs/agile/epic.png">
+  </details>
+  <details><summary>tasks</summary>
+  <img src="README_docs/agile/card.png">
+  </details>
+
+<br>
+
+- **Kanban Board for Task Management**
+
+  Throughout the project, a [Kanban Board](https://github.com/users/e-kai00/projects/4/views/1) was utilized to visualize and manage tasks. The Kanban Board provided a clear visual representation of the project's workflow, from the initial backlog of user stories to the various stages of development.
+
+  <details><summary>Kanban board</summary>
+  <img src="README_docs/agile/kanban.png">
+  </details>
+
+<br> 
+
+  - **MoSCoW Prioritization**
+
+    To effectively manage and prioritize requirements, the MoSCoW Prioritization technique was employed. This method categorizes requirements into four distinct categories: Must-Have, Should-Have, Could-Have, and Won't-Have. 
+
+  <details><summary>MoSCoW prioritization</summary>
+  <img src="README_docs/agile/MoSCoW.png">
+  </details>
+
+
 
 ## Features
 
@@ -196,8 +249,7 @@ To sign up with ElephantSQL and create a new database, you follow these steps:
     STATICFILES_LOCATION = 'static'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'media'
-
-    # Override static and media URLs in production
+    
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
     ```
