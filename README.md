@@ -133,7 +133,116 @@ I used the Agile methodology for the management of this project. Below is an ove
 ## Features
 
 ### Existing Features
+
+#### Navbar
+
+  Has a distinctive *logo* that represents website, a simple menu featuring My Account and Basket displaying the total amount of items (if such were added), and an *interactive search bar* that allows users to quickly find relevant content or information within the website.
+
+  ![navbar](/README_docs/features/feat-navbar.png)
+
+#### Footer
+
+Has an About Us section, subscribtion form that can be used  to send updates, newsletters, or notifications to customers, and Contact Information along with links to social networks.
+
+  ![footer](/README_docs/features/feat-footer.png)
+
+#### Home page
+
+Serves as the central hub the shop, showcasing all products. It comes equipped with such features as *organizing products in Collections*, *sorting products by* price and names
+
+ ![](/README_docs/features/feat-home-sort-by.png)
+
+It also includes Announcement section, which is meant to be used for latest shop's news and updates.
+  
+![](/README_docs/features/feat-announcement-section.png)
+  
+#### Product detail
+
+Standard product page with product image and description, offering the following features:
+
+- Linked Collection, which displays the *collection tag* to which the product belongs (e.g. "Axe Amulet") and enables users to explore the entire collection with a single click. And *product rating*.
+
+![product details](/README_docs/features/feat-product-page.png)
+
+- Item *quantity buttons* and *add to Basket* button for a quick way to add product to the basket, and *Keep shopping* button, which returns user to the home page.
+
+![product page](/README_docs/features/feat-product-page-quantity.png)
+
+- Estimated delivery information, which is based on chosen shipping option (if shipping option is not set by user, default shipping method, *Standard*, will be used to calculate delivery).
+
+![product page](/README_docs/features/feat-product-page-delivery.png)
+
+- Customer review section: offers an interactive star-based rating where registered users can post and update their reviews.
+
+![ratings](/README_docs/features/feat-product-page-reviews.png)
+
+
+#### Basket
+
+Has the following features:
+
+- Displaying product image, price, and buttons to easily *adjust quantities* or *remove* items from the basket.
+*Grand total* section, which presents a clear overview of total cost of the purchase.
+
+![basket](/README_docs/features/feat-basket.png)
+
+- Providing a dropdown menu to select preferred shipping methods.
+
+![shipping](/README_docs/features/feat-basket-shipping.png)
+
+- Offering a space for users to input coupon codes. 
+
+![coupon](/README_docs/features/feat-basket-coupon.png)
+
+
+#### Checkout and seccess page
+
+The Checkout page features a straightforward form that users complete to finalize their orders. Seamlessly integrated with Stripe payment, this page ensures secure and convenient transactions.
+
+![payment](/README_docs/features/feat-checkout-payment.png)
+
+Once the order is successfully placed, users are redirected to the Success page, confirming their purchase.
+
+![sucess page](/README_docs/features/feat-success-page.png)
+
+
+#### Profile
+
+Stores *saved Delivery info* and allows to update it.
+
+![delivery address](/README_docs/features/feat-profile-delivery-details.png)
+
+Stores *Order history* and allows to access completed orders details by clickng an order number.
+
+![order history](/README_docs/features/feat-profile-order-history.png)
+
+
+#### Admin functionality
+
+The admin toolkit allows to add a new product, edit and delete existing products. A delete confirmation window pops up to ensure intentional actions.
+
+![delete confirmation](/README_docs/features/feat-delete-confirmation.png)
+
+
+#### User registration and authantication
+
+Offers a seamless user experience with registration and authentication features. Users can efficiently create an account, log in and log out.
+
+#### Messages
+
+The website employs a robust messaging system to efficiently communicate vital notifications regarding users' actions. The *success messages* offer an additional functionality of displaying the current basket's content, enhancing the user experience.
+
+![success message](/README_docs/features/feat-success-message.png)
+
+#### Error page
+
+Has personalized 404 and 500 error pages that are integrated with the website design and theme.
+
+![404 page](/README_docs/features/feat-404.png)
+
+
 ### Features left to implement
+
 
 ## Technology 
 
