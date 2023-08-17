@@ -2,18 +2,44 @@
 
 ![Responsive website mockup](/README_docs/testing/responsive-home.png)
 
+The live link to the website - [Gungnir Shop](https://gungnir-shop-d9723ee6b3ec.herokuapp.com/)
+
+<br> 
+
+## Table of Contents
+
+- [Concept](#concept)
+  - [Business Model](#business-model)
+  - [Core Business Intents](#core-business-intents)
+  - [Marketing Strategies](#marketing-strategies)
+  - [SEO](#seo)
+- [Design](#design)
+  - [Color Scheme](#color-scheme)
+  - [Typography](#typography)
+  - [Icons](#icons)
+  - [Wireframes](#wireframes)
+- [Agile Development](#agile-development)
+- [Features](#features)
+  - [Existing Features](#existing-features)
+  - [Features left to implement](#features-left-to-implement)
+- [Technology](#technology)
+- [Testing](#testing)
+- [Deployment](#deployment)
+  - [Local Deployment](#local-deployment)
+  - [Heroku Deployment](#heroku-deployment)
+- [Credits](#credits)
+  - [Content](#content)
+  - [Code](#code)
+
 ## Concept
 
 ### Business Model
 Gungnir Shop is a customer-centric (B2C) e-commerce  venture that sells unique handcrafted jewelry. By bringing unique creations online, the business connects with a global audience that appreciates the artistry and dedication behind each piece.
 
-The live link to the website - [Gungnir Shop](https://gungnir-shop-d9723ee6b3ec.herokuapp.com/)
-
-
 ### Core Business Intents:
 - Offer unique handmade jewelry -  presents a curated collection of handmade jewelry that exemplify artistry and originality.
 
-- Showcase the artist's craftsmanship - highlighs the artisan's craftsmanship. Every piece of the collection showcases the artist's meticulous attention to detail, allowing customers to appreciate the journey from concept to creation.
+- Showcase the artist's craftsmanship - highlights the artisan's craftsmanship. Every piece of the collection showcases the artist's meticulous attention to detail, allowing customers to appreciate the journey from concept to creation.
 
 - Provide exceptional customer experience - offers customers an exceptional online shopping experience. The website features intuitive navigation, comprehensive product details, vibrant imagery, and a hassle-free checkout process.
 
@@ -21,9 +47,9 @@ The live link to the website - [Gungnir Shop](https://gungnir-shop-d9723ee6b3ec.
 
 To assist with business promotion the following strategies have been put in place:
 
-- Facebook Page linked to the site. It can serve as an online gallery of jewelry creations. Regular posts featuring high-quality images, behind-the-scenes glimpses into the creative process, customesrs review will help to foster a community that shares a passion for artisanal jewelry. The page can be found here - [Gungnir Shop Facebook page](https://www.facebook.com/people/Gungnir-Shop/61550019187443/).
+- Facebook Page linked to the site. It can serve as an online gallery of jewelry creations. Regular posts featuring high-quality images, behind-the-scenes glimpses into the creative process, customers review will help to foster a community that shares a passion for artisanal jewelry. The page can be found here - [Gungnir Shop Facebook page](https://www.facebook.com/people/Gungnir-Shop/61550019187443/).
 
-  <details><summary>Gungnir Shop Facebook page (screenshort)</summary>
+  <details><summary>Gungnir Shop Facebook page (screenshot)</summary>
   <img src="README_docs/FB.png">
   </details>
 
@@ -39,19 +65,31 @@ To assist with business promotion the following strategies have been put in plac
 The website's SEO strategy focuses on maximizing visibility and accessibility:
 
 - Keyword strategy: a combination of short-tail and long-tail keywords specific to this business were chosen and integrated into meta tags. 
-I also made sure that images have clear names and alt tags to help everyone see and understand them better.
+I also made sure that images have clear names and alt tags.
 
 ![Meta tags](/README_docs/seo-meta.png)
 
 
 - Semantic HTML: the website content is organized with appropriate tags, adhering to best practices. I limited the use of `<h>` tags solely to hierarchical structure rather than stylistic purposes. In instances where the `<section>` tag was used, I linked it via aria-labeledby or area-labeled (aligning with the guidelines of [W3C(WAI)](https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/)).
 
-- Technical foundations: robots.txt and sitemap.xml files are included into the project to guide search engine crawlers and contribute to the proper indexing of the website's content.
+- Technical foundations: *robots.txt* and *sitemap.xml* files are included into the project to guide search engine crawlers and contribute to the proper indexing of the website's content.
+
+<br> 
+
+The live link to the website - [Gungnir Shop](https://gungnir-shop-d9723ee6b3ec.herokuapp.com/)
+
+If you would like to test website functionality:
+
+- to test the "Apply coupon code" functionality, you can use the following code: 
+  - coupon10
+- to test payment functionality, you can use Stripe test card number:
+  -  4242 4242 4242 4242
+  - along with a valid future date, any three-digit for CVC and any value you like for other form fields.
 
 
 ## Design
 
-I aimed to create a clean and simple design for the Gungnir Shop project, focusing on making the website easy to use. The interface has a simple layout with easy-to-understand navigation, so users can manage their shopping easily. The design is kept simple to prevent things from getting too crowded and to avoid any unnecessary distractions.
+I aimed to create a clean and simple design for this project, focusing on making the website easy to use. The interface has a simple layout with easy-to-understand navigation, so users can manage their shopping easily. The design is kept simple to prevent things from getting too crowded and to avoid any unnecessary distractions.
 
 ### Color Scheme
 
@@ -79,7 +117,7 @@ Three [Google Fonts](https://fonts.google.com/) were used for the website:
 
 ### Wireframes
 
-I began with initial sketches on paper, which then transfered into wireframes for both desktop and mobile layouts using [Balsamiq](https://balsamiq.com/) mockup tool.
+I began with initial sketches on paper, which then transferred into wireframes for both desktop and mobile layouts using [Balsamiq](https://balsamiq.com/) mockup tool.
 
 | home page | product details page |
 |:--:|:--:|
@@ -142,7 +180,7 @@ I used the Agile methodology for the management of this project. Below is an ove
 
 #### Navbar
 
-  Has a distinctive *logo* that represents website, a simple menu featuring My Account and Basket displaying the total amount of items (if such were added), and an *interactive search bar* that allows users to quickly find relevant content or information within the website.
+  Has a distinctive *logo* that represents the shop, a simple menu featuring *My Account* and *Basket* displaying the total amount of items (if such were added), and an *interactive search bar* that allows users to quickly find relevant content or information within the website.
 
   ![navbar](/README_docs/features/feat-navbar.png)
 
@@ -150,7 +188,7 @@ I used the Agile methodology for the management of this project. Below is an ove
 
 #### Footer
 
-Has an About Us section, subscribtion form for newsletters, and Contact Information along with links to social networks.
+Has an *About Us* section, *subscription form* for newsletters, and *Contact information* along with links to *social networks*.
 
   ![footer](/README_docs/features/feat-footer.png)
 
@@ -158,25 +196,25 @@ Has an About Us section, subscribtion form for newsletters, and Contact Informat
 
 #### Home page
 
-Serves as the central hub of the shop, showcasing all products. It comes equipped with such features as *organizing products in Collections* and *sorting products by* price and names
+Serves as the central hub of the shop, showcasing all products. It is equipped with such features as organizing products in *Collections* and *sorting products by* price and names.
 
  ![](/README_docs/features/feat-home-sort-by.png)
 
-The home page includes Announcement section, which is meant to be used for the latest shop's news and updates (announcements are updated by admin).
+The home page includes the *Announcement section*, which is meant to be used for the latest shop's news and updates (announcements are updated by admin).
   
 ![](/README_docs/features/feat-announcement-section.png)
 
 <br>
   
-#### Product detail
+#### Product detail page
 
 Standard product page with product image and description, offering the following features:
 
-- Linked Collection -  displays the *collection tag* to which the product belongs (e.g. "Axe Amulet") and enables users to explore the entire collection with a single click, and the *Product Rating* feature, which displays average product rating.
+- Linked Collection -  displays the *collection tag* to which the product belongs (e.g. "Axe Amulet") and enables users to explore the entire collection with a single click. The *Product Rating* feature displays average product rating.
 
 ![product details](/README_docs/features/feat-product-page.png)
 
-- Item *quantity buttons* and *add to Basket* button for a quick way to add product to the basket, and *Keep shopping* button, which returns user to the home page.
+- Item *quantity buttons* and *add to Basket* button for a quick way to add product to the basket. The *Keep shopping* button returns user to the home page.
 
 ![product page](/README_docs/features/feat-product-page-quantity.png)
 
@@ -190,7 +228,7 @@ Standard product page with product image and description, offering the following
 
 <br>
 
-#### Basket
+#### Basket page
 
 Has the following features:
 
@@ -209,7 +247,7 @@ Has the following features:
 
 <br>
 
-#### Checkout and seccess page
+#### Checkout and Success page
 
 The Checkout page features a straightforward form that users complete to finalize their orders. Seamlessly integrated with Stripe payment, this page ensures secure and convenient transactions.
 
@@ -221,7 +259,7 @@ Once the order is successfully placed, users are redirected to the Success page,
 
 <br>
 
-#### Profile
+#### Profile page
 
 Stores *saved Delivery info* and allows to update it.
 
@@ -235,13 +273,13 @@ Stores *Order history* and allows to access completed orders details by clickng 
 
 #### Admin functionality
 
-The admin toolkit allows to add a new product, edit and delete existing products. A delete confirmation window pops up to ensure intentional actions.
+The admin toolkit allows to add a new product, edit and delete existing products. On deleting a product, a delete confirmation window pops up to ensure intentional actions.
 
 ![delete confirmation](/README_docs/features/feat-delete-confirmation.png)
 
 <br>
 
-#### User registration and authantication
+#### User registration and authentication
 
 Offers a seamless user experience with registration and authentication features. Users can efficiently create an account, log in and log out.
 
@@ -265,7 +303,7 @@ The website has personalized 404 and 500 error pages that are integrated with th
 
 ### Features left to implement
 
-**User registration and authantication**
+**User registration and authentication**
 
 - Enable users to change their password, email and delete their profile.
 - Password recovery
@@ -288,7 +326,7 @@ The website has personalized 404 and 500 error pages that are integrated with th
 **Review Section**
 
   -  when user updates their existing comment, instead of encountering a blank textarea, the user's previous comment will be pre-filled in the textarea. This improvement eliminates the need for users to retype their entire comment.
-  - prevent page reloads when a review is submitted without a rating. Presently, when a review is submitted without a rating, it triggers a page reload, leaving the textarea empty, which might be fraustrating for users. 
+  - prevent page reloads when a review is submitted without a rating. Presently, when a review is submitted without a rating, it triggers a page reload, leaving the textarea empty, which might be frustrating for users. 
  
 
 
@@ -326,8 +364,8 @@ For an overview of all the testing conducted, please refer to the [TESTING.md](h
 
 ### Local Deployment
  
-**Clone the repositary:**
-- go to the [gungnir-shop](https://github.com/e-kai00/gungnir-shop) repositary
+**Clone the repository:**
+- go to the [gungnir-shop](https://github.com/e-kai00/gungnir-shop) repository
 - click on the "Code" button, located just above the file list
 - in the dropdown menu, click on the clipboard icon to copy the repository's URL
 - open the terminal in your code editor and navigate to the directory where you want to clone the repository
@@ -376,7 +414,7 @@ To sign up with ElephantSQL and create a new database, you follow these steps:
   - Permission tab:
     - Configurate CORS
     - Add Bucket policy
-    - In "Access control list" section enable "List" for "Eceryone (public access")
+    - In "Access control list" section enable "List" for "Everyone (public access")
 -  Identity and Access Management (IAM)
   - Create group
   - Create policy and attach it to the Group
@@ -387,7 +425,7 @@ To sign up with ElephantSQL and create a new database, you follow these steps:
     - Select the "Security Credentials" tab
     - Scroll to "Access Keys" and click "Create access key". Select "Application running outside AWS"
     - You can leave the "Description tag" value blank. Click "Create Access Key"
-    - Downlod csv file
+    - Download csv file
 - Connect Django and Bucket:
   - `pip3 install boto3`  
   - `pip3 install django-storages`  
@@ -441,18 +479,18 @@ For proper deployment and execution of the application, Heroku needs *requiremen
   
 
 - Navigate to **Deploy** tab
-- Connect your GitHub account and choose needed repositary
+- Connect your GitHub account and choose needed repository
 - Scroll down and click **Deploy Branch** (this project deployed from main branch)
-- Once succeesfully deployed, click **Open app** at the right top coner of the page <br><br>
+- Once successfully deployed, click **Open app** at the right top corner of the page <br><br>
 
 
 ## Credits
 
 ### Content
 
-- All product images and descriptions originate from Yachur Shop, a shop owned jointly by my husband and myself.
+- All product images and descriptions originate from Yachur Shop, a shop owned jointly by my husband and myself. The use of these materials has been approved by all relevant parties involved.
 - The comments within the Reviews section was written by myself.
-- The layout design of the shop draws inspiration from the Etsy marketplace. Additionally, concepts such as incorporating estimated delivery information on the product page have been influenced by elements found on the marketplace.
+- The layout design of the shop draws inspiration from the Etsy marketplace. Some concepts such as incorporating estimated delivery information on the product page have been influenced by elements found on the marketplace.
 - Favicon: [Spear icon by Icons8](https://icons8.com/icon/kOTdncKshxcE/spear)
 
 ### Code
@@ -462,11 +500,11 @@ For proper deployment and execution of the application, Heroku needs *requiremen
 - CSS-Tricks: [Simple Styles for `<hr>`'s](https://css-tricks.com/examples/hrs/) - code is used to style wide `<hr>` element.
 
 - YouTube:
-  - [Django - Foreign Keys](https://www.youtube.com/watch?v=zJWhizYFKP0)  and [Basic Data Connection with Foreign Keys](https://www.youtube.com/watch?v=3VTeia-AoLo) tutorials helped in understaning "related_name" concept.
+  - [Django - Foreign Keys](https://www.youtube.com/watch?v=zJWhizYFKP0)  and [Basic Data Connection with Foreign Keys](https://www.youtube.com/watch?v=3VTeia-AoLo) tutorials helped in understanding "related_name" concept.
    
   - [Review and Rating System | Interactive Stars](https://www.youtube.com/watch?v=eIN1nZCt7Ww) - code for interactive stars in Reviews section was taken from this tutorial and adapted to the project needs.
 
-  - [Coupons - How to build an E-commerce website](https://www.youtube.com/watch?v=5GqKN7xnJhw) tutorial gave idea of essential model fields requirede for the projects's Coupon app.
+  - [Coupons - How to build an E-commerce website](https://www.youtube.com/watch?v=5GqKN7xnJhw) tutorial gave idea of essential model fields required for the projects's Coupon app.
   - [HTML section elements](https://www.youtube.com/watch?v=ULdkpU51hTQ) - helped deepen understanding of semantic HTML, an important aspect for optimizing websites effectively.
   - [CSS Before and After pseudo elements explained](https://www.youtube.com/watch?v=djbtPnNmc0I) - clarified the usage of CSS pseudo-elements. These concepts were utilized in the CSS of the project.
   
@@ -474,7 +512,7 @@ For proper deployment and execution of the application, Heroku needs *requiremen
 
 - Stack Overflow discussions:
   - [Detect paragraph element change with JQuery](https://stackoverflow.com/questions/27541004/detect-paragraph-element-change-with-jquery) discussion on `MutationObserver` constructor. While initially intending to implement it within the Announcement section of the project, I eventually opted not to utilize it for this project. Nonetheless, I aim to retain this knowledge for future projects.
-  - [Save and load date localstorage](https://stackoverflow.com/questions/12661293/save-and-load-date-localstorage) - used insights from this discussion to implement a date display feature within the announcement section.
+  - [Save and load date localstorage](https://stackoverflow.com/questions/12661293/save-and-load-date-localstorage) - used insights from this discussion to implement a date display feature within the Announcement section.
   - [Reset migrations](https://stackoverflow.com/questions/28404461/can-i-delete-the-django-migration-files-inside-migrations-directory) discussion improved my understanding of issues related to database migrations.
 
 <br>
@@ -484,6 +522,8 @@ For proper deployment and execution of the application, Heroku needs *requiremen
 - Blog post: [Let’s build a movie review django app](https://blog.devgenius.io/lets-build-a-movie-review-django-app-47658f8e3751) - derived ideas for implementing customer reviews feature.
 
 - The WHATWG community: [The `<article>` element](https://html.spec.whatwg.org/multipage/sections.html#the-article-element) - deepened understanding of semantic HTML, to improve  website optimization.
+
+
 
 
 

@@ -10,7 +10,7 @@
 
 ### Responsiveness
 
-Testing confirms that the website adapts to different devices and screen dimensions. From larger desktop monitors to smaller mobile screens, the website seamlessly adjusts its layout and elements to ensure a consistent and engaging user experience.
+Testing confirmed that the website adapts to different devices and screen dimensions. From larger desktop monitors to smaller mobile screens, the website seamlessly adjusts its layout and elements to ensure a consistent and engaging user experience.
 
 | Page| Screenshort|
 |:-------:|:-------:|
@@ -21,8 +21,6 @@ Testing confirms that the website adapts to different devices and screen dimensi
 <br>
 
 ### Browser Compatibility
-
-**Browser Compatibility Testing:**
 
 Testing has been conducted, focusing on key browsers such as Chrome, Edge, and Firefox. The outcome demonstrates that the website functions as anticipated across these platforms. This includes:
 - correct display of information, 
@@ -51,8 +49,8 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
 | 1|Error when connecting Elephantsql database:<br> *"django.db.utils.ProgrammingError: cannot cast type bigint to int4range"*<br> The root cause of the issue: initial model used fields that were not compatible with PostgreSQL. As a result, the initial migration file was generated based on these incompatible field types. Attempts to migrate to PostgreSQL kept referencing the initial migration file, causing a type mismatch during the migration process.| Reset migrations by dropping the database:<br> 1. remove all migrations files, except the `__init__.py`<br> 2. drop the current database<br> 3. create the initial migrations and generate the database schema using commands `python manage.py makemigrations` - `python manage.py migrate`| closed|
 | 2|Error at calculating basket Grand total:<br> *"DoesNotExist" exception - the Coupon object you are trying to retrieve using the coupon_id does not exist in the database*<br> The root cause of the issue: code responsible for calculating the Grand Total of the basket handled existing coupon objects and ignored situations when coupon objects were not yet created| Use try-except block around the code| closed|
 | 3|Error when updating items quantity in basket:<br> *"builtin_function_or_method' object is not subscriptable"*<br> The root cause of the issue: use of "[]" instead of "()" on `.pop()` method| Correct typo| closed|
-| 4|The search product function within website demonstrates mostly accurate behavior; however, there are instances where certain search terms yield incorrect results. For example, the search term:<br> - *"ring"* yields 5 results instead of the expected 1,<br> - *"wolf"* produces 3 results instead of the anticipated 6,<br> - *"red"* retrieves 8 results instead of the intended 4.| This issue is yet to be investigated by looking into the search process, data storing, retrieving results | open|
-| 5|The announcement section isn't behaving as intended. Specifically:<br> - *"last update date"* gets set correctly when the admin updates it, but it's not consistently displayed across all web browsers;<br> - when the announcement text is updated, it resets to the default text every time the Heroku dynos restart.<br> Currently, the "last updated date" is managed using localStorage, and the announcement text is stored in a file named [announcement.txt](https://github.com/e-kai00/gungnir-shop/tree/main/static/data) within the static folder. The file is processed by functions in [views.py](https://github.com/e-kai00/gungnir-shop/blob/main/home/views.py) of the home app.| The issue is yet to be solved. One potential improvement is to store the announcement data in a database. By doing so, I expect get better control of the announcement section functionality.| open|
+| 4|The *search product* function within website demonstrates mostly accurate behavior; however, there are instances where certain search terms yield incorrect results. For example, the search term:<br> - *"ring"* yields 5 results instead of the expected 1,<br> - *"wolf"* produces 3 results instead of the anticipated 6,<br> - *"red"* retrieves 8 results instead of the intended 4.| This issue is yet to be investigated by looking into the search process, data storing, retrieving results | open|
+| 5|The announcement section isn't behaving as intended. Specifically:<br> - *"last update date"* gets set correctly when the admin updates it, but it's not consistently displayed across all web browsers;<br> - when the announcement text is updated, it resets to the default text every time the Heroku dynos restart.<br> Currently, the "last updated date" is managed using localStorage, and the announcement text is stored in a file named [announcement.txt](https://github.com/e-kai00/gungnir-shop/tree/main/static/data) within the static folder. The file is processed by functions in [views.py](https://github.com/e-kai00/gungnir-shop/blob/main/home/views.py) of the home app.| The issue is yet to be solved. One potential improvement is to store the announcement data in a database. By doing so, I expect to get better control its functionality.| open|
 
 ### Lighthouse
 
@@ -65,44 +63,50 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
 - [W3C HTML Validator](https://validator.w3.org/)
 
   Validation helped identify and rectify several issues. Specifically, missing `<ul>` and duplicating 'id' in navbar, spelling mistakes in one of the `<span> ` tag, duplicated 'for' attribute in labels (checkout page).
-  The validation report also highlighted that the 'type' attribute for JavaScript resources was unnecessary and removing it adheres to modern best practices: "Unnecessary 'type' Attribute for JavaScript Resources ".
+  The validation report also highlighted that the 'type' attribute for JavaScript resources was unnecessary and removing it adheres to modern best practices: "Unnecessary 'type' Attribute for JavaScript Resources ". So I removed the  'type' attribute.
 
   Unrecognized stray `<tr>` tag issue on [basket.html](#basket) page: while conducting browser page source code validation, I encountered "stray tag <tr>" error. Despite thorough code inspection, I could not pinpoint the source of these tags. I ran validation of source code, confirming its cleanliness (2 errors in report are due to the W3C not recognizing Django Templating). 
   While the origin of the "stray tag <tr>" issue remains unclear, it does not seem to impact user experience or page functionality.
 
 
 ##### Home page
-<details><summary>index.html</summary>
-<img src="README_docs/testing/validators/w3c_html/home_html.png">
-</details>
+- 
+  <details><summary>index.html</summary>
+  <img src="README_docs/testing/validators/w3c_html/home_html.png">
+  </details>
 
 ##### Product page
-<details><summary>product_detail.html</summary>
-<img src="README_docs/testing/validators/w3c_html/product-detail_html.png">
-</details>
+- 
+  <details><summary>product_detail.html</summary>
+  <img src="README_docs/testing/validators/w3c_html/product-detail_html.png">
+  </details>
 
-##### Basket
-<details><summary>basket.html (browser page source code)</summary>
-<img src="README_docs/testing/validators/w3c_html/basket_html.png">
-</details>
-<details><summary>basket.html (source code)</summary>
-<img src="README_docs/testing/validators/w3c_html/basket_local1_html.png">
-</details>
+##### Basket page
+- 
+  <details><summary>basket.html (browser page source code)</summary>
+  <img src="README_docs/testing/validators/w3c_html/basket_html.png">
+  </details>
+  <details><summary>basket.html (source code)</summary>
+  <img src="README_docs/testing/validators/w3c_html/basket_local1_html.png">
+  </details>
 
-##### Checkout
-<details><summary>checkout.html</summary>
-<img src="README_docs/testing/validators/w3c_html/checkout_html.png">
-</details>
+##### Checkout page
+- 
+  <details><summary>checkout.html</summary>
+  <img src="README_docs/testing/validators/w3c_html/checkout_html.png">
+  </details>
 
 ##### Success page
-<details><summary>success.html</summary>
-<img src="README_docs/testing/validators/w3c_html/success-page_html.png">
-</details>
+- 
+  <details><summary>success.html</summary>
+  <img src="README_docs/testing/validators/w3c_html/success-page_html.png">
+  </details>
 
-##### Profile
-<details><summary>profile.html</summary>
-<img src="README_docs/testing/validators/w3c_html/profile_html.png">
-</details>
+##### Profile page
+- 
+  <details><summary>profile.html</summary>
+  <img src="README_docs/testing/validators/w3c_html/profile_html.png">
+  </details>
 
 <br>
 
@@ -128,7 +132,7 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
 #### JavaScript
 - [JShint](https://jshint.com/)
 
-  The validation results are positive, with no errors detected. Some minor warnings were issued regarding missing semicolons, which have been addressed and rectified.
+  The validation results were positive, with no errors detected. Some minor warnings were issued regarding missing semicolons, which have been addressed and rectified.
 
   <details><summary>home app / script.js</summary>
   <img src="README_docs/testing/validators/js_hint/home-script_js.png">
@@ -148,7 +152,7 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
 #### Python
 - [CI Python Linter](https://pep8ci.herokuapp.com/#)
 
-  All .py files are compliant with the guidelines outlined in PEP8, exept one: built-in Django [settings.py](https://github.com/e-kai00/gungnir-shop/blob/main/gungnir_shop/settings.py): E501 line too long (91 > 79 characters) - AUTH_PASSWORD_VALIDATORS (x4)
+  All .py files are compliant with the guidelines outlined in PEP8, except one: built-in Django [settings.py](https://github.com/e-kai00/gungnir-shop/blob/main/gungnir_shop/settings.py): E501 line too long (91 > 79 characters) - AUTH_PASSWORD_VALIDATORS (x4)
 
   - **home app**
 
@@ -275,14 +279,14 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
 | |1. Click 'sort by' dropdown<br> 2. Choose sort method| Display items by chosen sort method| pass|
 |<br>||||
 |**Search product**| | | |
-| | Enter a word in seach bar| Display items with entered word| *pass<br> *[bug #4](#bugs)*|
+| | Enter a word in search bar| Display items with entered word| *pass<br> *[bug #4](#bugs)*|
 |<br>||||
 |**Scroll to top button**| | | |
 | *Home page and basket*| Scroll down| Scroll-to-top button becomes visible| pass|
 | | Click button| Page scrolls back to the top| pass|
 |<br>||||
 |**View product**| | | |
-| *Home page* | Click product picture or product title| Redirect to produt details page| pass|
+| *Home page* | Click product picture or product title| Redirect to product details page| pass|
 |<br>||||
 |**Product details**| | | |
 | | Click "-" or "+" quantity button| Subtract or add quantity| pass|
@@ -303,11 +307,11 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
 |**Profile page**||||
 | *Navbar*| Click My Profile| Redirect to Profile page| pass|
 | | Click Order Number| Redirect to Success checkout page with order details| pass|
-| | Click Update Information button| Update Delivery information form with new detils| pass|
+| | Click Update Information button| Update Delivery information form with new details| pass|
 |<br>||||
 |**Reviews**| | | |
 | | Click star icons 1 through 5| Set rating 1 through 5| pass|
-| | Click Post your Review button| 1. Publish review<br> 2. Set raing on a product| pass|
+| | Click Post your Review button| 1. Publish review<br> 2. Set rating on a product| pass|
 | | If product is already reviewed by the user and user submits the review again| Update review| pass|
 |<br>||||
 |**Subscribe to the newsletter**| | | |
