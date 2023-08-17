@@ -57,7 +57,7 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
 ### Lighthouse
 
 ![Lighthouse test](/README_docs/testing/lighthouse.png)
-![Lighthouse test](/README_docs/testing/lighthouse2.png)
+
 
 ### Validators
 

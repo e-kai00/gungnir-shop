@@ -124,11 +124,11 @@ I used the Agile methodology for the management of this project. Below is an ove
 
     To effectively manage and prioritize requirements, the MoSCoW Prioritization technique was employed. This method categorizes requirements into four distinct categories: Must-Have, Should-Have, Could-Have, and Won't-Have. 
 
-  <details><summary>MoSCoW prioritization</summary>
-  <img src="README_docs/agile/MoSCoW.png">
-  </details>
+    <details><summary>MoSCoW prioritization</summary>
+    <img src="README_docs/agile/MoSCoW.png">
+    </details>
 
-
+<br>
 
 ## Features
 
@@ -140,11 +140,15 @@ I used the Agile methodology for the management of this project. Below is an ove
 
   ![navbar](/README_docs/features/feat-navbar.png)
 
+<br>
+
 #### Footer
 
 Has an About Us section, subscribtion form for newsletters, and Contact Information along with links to social networks.
 
   ![footer](/README_docs/features/feat-footer.png)
+
+<br>
 
 #### Home page
 
@@ -155,6 +159,8 @@ Serves as the central hub of the shop, showcasing all products. It comes equippe
 The home page includes Announcement section, which is meant to be used for the latest shop's news and updates (announcements are updated by admin).
   
 ![](/README_docs/features/feat-announcement-section.png)
+
+<br>
   
 #### Product detail
 
@@ -176,6 +182,7 @@ Standard product page with product image and description, offering the following
 
 ![ratings](/README_docs/features/feat-product-page-reviews.png)
 
+<br>
 
 #### Basket
 
@@ -194,6 +201,7 @@ Has the following features:
 
 ![coupon](/README_docs/features/feat-basket-coupon.png)
 
+<br>
 
 #### Checkout and seccess page
 
@@ -205,6 +213,7 @@ Once the order is successfully placed, users are redirected to the Success page,
 
 ![sucess page](/README_docs/features/feat-success-page.png)
 
+<br>
 
 #### Profile
 
@@ -216,6 +225,7 @@ Stores *Order history* and allows to access completed orders details by clickng 
 
 ![order history](/README_docs/features/feat-profile-order-history.png)
 
+<br>
 
 #### Admin functionality
 
@@ -223,10 +233,13 @@ The admin toolkit allows to add a new product, edit and delete existing products
 
 ![delete confirmation](/README_docs/features/feat-delete-confirmation.png)
 
+<br>
 
 #### User registration and authantication
 
 Offers a seamless user experience with registration and authentication features. Users can efficiently create an account, log in and log out.
+
+<br>
 
 #### Messages
 
@@ -234,12 +247,15 @@ The website employs a robust messaging system to efficiently communicate vital n
 
 ![success message](/README_docs/features/feat-success-message.png)
 
+<br>
+
 #### Error page
 
 The website has personalized 404 and 500 error pages that are integrated with the website design and theme.
 
 ![404 page](/README_docs/features/feat-404.png)
 
+<br>
 
 ### Features left to implement
 
@@ -255,12 +271,19 @@ The website has personalized 404 and 500 error pages that are integrated with th
 
 **Admin functionality**
 
-- add UI for managing Shipping methods (full CRUD cunctionality)
-- add UI for managing Coupon codes (full CRUD cunctionality)
+- introduce a user-friendly interface that enables admins to perform full CRUD operations on shipping methods
+- introduce a user-friendly interface for admins to perform full CRUD functionality on coupon codes management
 
 **Home page**
 
-- improve Announcement section (the issue with the section is described in [bug # 5](https://github.com/e-kai00/gungnir-shop/blob/main/TESTING.md#bugs) section)
+- improve Announcement section (the issue with the section described in [bugs # 5](https://github.com/e-kai00/gungnir-shop/blob/main/TESTING.md#bugs) section)
+
+
+**Review Section**
+
+  -  when user updates their existing comment, instead of encountering a blank textarea, the user's previous comment will be pre-filled in the textarea. This improvement eliminates the need for users to retype their entire comment.
+  - prevent page reloads when a review is submitted without a rating. Presently, when a review is submitted without a rating, it triggers a page reload, leaving the textarea empty, which might be fraustrating for users. 
+ 
 
 
 ## Technology 
@@ -419,5 +442,43 @@ For proper deployment and execution of the application, Heroku needs *requiremen
 ## Credits
 
 ### Content
+
+- All product images and descriptions originate from Yachur Shop, a business owned jointly by my husband and myself.
+- The comments within the Reviews section was written myself.
+- Favicon: [Spear icon by Icons8](https://icons8.com/icon/kOTdncKshxcE/spear)
+
 ### Code
-### Acknowledgment
+
+- The *"Boutique Ado"* walkthrough project by Code Institute provided the basic framework of this project.
+
+- CSS-Tricks: [Simple Styles for `<hr>`'s](https://css-tricks.com/examples/hrs/) - code is used to style wide `<hr>` element.
+
+- YouTube:
+  - [Django - Foreign Keys](https://www.youtube.com/watch?v=zJWhizYFKP0)  and [Basic Data Connection with Foreign Keys](https://www.youtube.com/watch?v=3VTeia-AoLo) tutorials helped in understaning "related_name" concept.
+   
+  - [Review and Rating System | Interactive Stars](https://www.youtube.com/watch?v=eIN1nZCt7Ww) - code for interactive stars in Reviews section was taken from this tutorial and adapted to the project needs.
+
+  - [Coupons - How to build an E-commerce website](https://www.youtube.com/watch?v=5GqKN7xnJhw) tutorial gave idea of essential model fields requirede for the projects's Coupon app.
+  - [HTML section elements](https://www.youtube.com/watch?v=ULdkpU51hTQ) - helped deepen understanding of semantic HTML, an important aspect for optimizing websites effectively.
+  - [CSS Before and After pseudo elements explained](https://www.youtube.com/watch?v=djbtPnNmc0I) - clarified the usage of CSS pseudo-elements. These concepts were utilized in the CSS of the project.
+  
+  <br>
+
+- Stack Overflow discussions:
+  - [Detect paragraph element change with JQuery](https://stackoverflow.com/questions/27541004/detect-paragraph-element-change-with-jquery) discussion on `MutationObserver` constructor. While initially intending to implement it within the Announcement section of the project, I eventually opted not to utilize it for this project. Nonetheless, I aim to retain this knowledge for future projects.
+  - [Save and load date localstorage](https://stackoverflow.com/questions/12661293/save-and-load-date-localstorage) - used insights from this discussion to implement a date display feature within the announcement section.
+  - [Reset migrations](https://stackoverflow.com/questions/28404461/can-i-delete-the-django-migration-files-inside-migrations-directory) discussion improved my understanding of issues related to database migrations.
+
+<br>
+
+- LinkedIn newsletter by Nitin Raturi: [Reset Django Migration](https://www.linkedin.com/pulse/how-do-i-reset-django-migration-nitin-raturi/) - followed these instructions to troubleshoot the migration issue (reported in [bugs # 1](https://github.com/e-kai00/gungnir-shop/blob/main/TESTING.md#bugs)).
+
+- Blog post: [Let’s build a movie review django app](https://blog.devgenius.io/lets-build-a-movie-review-django-app-47658f8e3751) - derived ideas for implementing customer reviews feature.
+
+- The WHATWG community: [The `<article>` element](https://html.spec.whatwg.org/multipage/sections.html#the-article-element) - deepened understanding of semantic HTML, to improve  website optimization.
+
+
+
+
+
+
