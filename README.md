@@ -21,7 +21,13 @@ The live link to the website - [Gungnir Shop](https://gungnir-shop-d9723ee6b3ec.
 
 To assist with business promotion the following strategies have been put in place:
 
-- Facebook Page linked to the site. It can serve as an online gallery of jewelry creations. Regular posts featuring high-quality images, behind-the-scenes glimpses into the creative process, customesrs review will help to foster a community that shares a passion for artisanal jewelry.
+- Facebook Page linked to the site. It can serve as an online gallery of jewelry creations. Regular posts featuring high-quality images, behind-the-scenes glimpses into the creative process, customesrs review will help to foster a community that shares a passion for artisanal jewelry. The page can be found here - [Gungnir Shop Facebook page](https://www.facebook.com/people/Gungnir-Shop/61550019187443/).
+
+  <details><summary>Gungnir Shop Facebook page (screenshort)</summary>
+  <img src="README_docs/FB.png">
+  </details>
+
+<br>
 
 - Newsletter subscription (via Mailchimp). Customers have the opportunity to subscribe to the newsletter, which allows them to gain exclusive access to new jewelry releases and upcoming promotions. This subscription-based communication will help to deepen the connection with the audience.
 
@@ -300,6 +306,7 @@ The website has personalized 404 and 500 error pages that are integrated with th
 - [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/) - used as frontend framework
 - [FontAwesome](https://fontawesome.com/) - used as icon library
 - [Google Fonts](https://fonts.google.com/) - used for project fonts
+- [Stripe](https://stripe.com/en-de) - used to make secured payments
 
 
 ### Back-End
@@ -443,8 +450,9 @@ For proper deployment and execution of the application, Heroku needs *requiremen
 
 ### Content
 
-- All product images and descriptions originate from Yachur Shop, a business owned jointly by my husband and myself.
-- The comments within the Reviews section was written myself.
+- All product images and descriptions originate from Yachur Shop, a shop owned jointly by my husband and myself.
+- The comments within the Reviews section was written by myself.
+- The layout design of the shop draws inspiration from the Etsy marketplace. Additionally, concepts such as incorporating estimated delivery information on the product page have been influenced by elements found on the marketplace.
 - Favicon: [Spear icon by Icons8](https://icons8.com/icon/kOTdncKshxcE/spear)
 
 ### Code
