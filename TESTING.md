@@ -65,7 +65,7 @@ Testing has been conducted, focusing on key browsers such as Chrome, Edge, and F
   Validation helped identify and rectify several issues. Specifically, missing `<ul>` and duplicating 'id' in navbar, spelling mistakes in one of the `<span> ` tag, duplicated 'for' attribute in labels (checkout page).
   The validation report also highlighted that the 'type' attribute for JavaScript resources was unnecessary and removing it adheres to modern best practices: "Unnecessary 'type' Attribute for JavaScript Resources ". So I removed the  'type' attribute.
 
-  Unrecognized stray `<tr>` tag issue on [basket.html](#basket) page: while conducting browser page source code validation, I encountered "stray tag <tr>" error. Despite thorough code inspection, I could not pinpoint the source of these tags. I ran validation of source code, confirming its cleanliness (2 errors in report are due to the W3C not recognizing Django Templating). 
+  Unrecognized stray `<tr>` tag issue on [basket.html](#basket-page) page: while conducting browser page source code validation, I encountered "stray tag <tr>" error. Despite thorough code inspection, I could not pinpoint the source of these tags. I ran validation of source code, confirming its cleanliness (2 errors in report are due to the W3C not recognizing Django Templating). 
   While the origin of the "stray tag <tr>" issue remains unclear, it does not seem to impact user experience or page functionality.
 
 
