@@ -25,7 +25,7 @@ The live link to the website - [Gungnir Shop](https://gungnir-shop-d9723ee6b3ec.
 - [Technology](#technology)
 - [Testing](#testing)
 - [Deployment](#deployment)
-  - [Local Deployment, EDR](#local-deployment)
+  - [Local Deployment, ERD](#local-deployment)
   - [Heroku Deployment](#heroku-deployment)
 - [Credits](#credits)
   - [Content](#content)
