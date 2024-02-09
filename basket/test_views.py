@@ -33,12 +33,10 @@ class BasketTest(TestCase):
         # set up session
         middleware = SessionMiddleware()
         middleware.process_request(request)
-        request.session.save()
-        # set up user
         request.user = self.user
-
         middleware_message = MessageMiddleware()
         middleware_message.process_request(request)
+        request.session.save()
 
         response = add_to_basket(request, self.product.pk)        
 
@@ -65,17 +63,15 @@ class BasketTest(TestCase):
 
         session_middleware = SessionMiddleware()
         session_middleware.process_request(request)
-        request.session.save()
-
         request.user = self.user
-
         message_middleware = MessageMiddleware()
         message_middleware.process_request(request)
+        request.session.save()
 
         response = update_basket(request, self.product.pk)
 
         messages = list(get_messages(request))
-        expected_redirect_url = reverse('view_basket')  
+        expected_redirect_url = reverse('view_basket')
         session_data = dict(request.session)
 
         # print(f'Session structure: {session_data}')
@@ -98,15 +94,12 @@ class BasketTest(TestCase):
        
         session_middlewar = SessionMiddleware()
         session_middlewar.process_request(request)
-        request.session.save()
-
         # attach product
         request.session['basket'] = {self.product.pk: 1}
-
         request.user = self.user
-
         message_middleware = MessageMiddleware()
         message_middleware.process_request(request)
+        request.session.save()
 
         response = remove_from_basket(request, self.product.pk)
 
