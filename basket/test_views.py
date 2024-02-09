@@ -9,6 +9,11 @@ from django.urls import reverse
 
 
 class BasketTest(TestCase):
+    """
+    Test cases for the basket functionality.
+
+    This class provides test methods to verify the behavior of the basket-related functions: adding, updating, and removing items from the basket.
+    """
     def setUp(self):
         self.factory = RequestFactory()
         self.user = User.objects.create_user(
@@ -18,7 +23,7 @@ class BasketTest(TestCase):
 
 
     def test_add_to_basket(self):
-      
+              
         request = self.factory.post(
             reverse('add_to_basket', args=[self.product.pk]),
             {'quantity': 2, 'redirect_url': '/'}

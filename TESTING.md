@@ -1,5 +1,6 @@
 ## Table of Contents
 
+- [Unit Tests](#unit-tests)
 - [Responsiveness](#responsiveness)
 - [Browser Compatibility](#browser-compatibility)
 - [Bugs](#bugs)
@@ -7,6 +8,21 @@
 - [Validators](#validators)
 - [User Stories](#user-stories)
 - [Features](#features) <br><br>
+
+
+### Unit Tests
+
+The application includes a set of unit tests designed to validate the functionality of its components.
+Below is a synopsis of the unit test outcomes:
+
+Basket Functionality
+
+- test_add_to_basket: Ensures successful addition of a product to the basket.
+- test_update_basket: Validates the updating of the basket with the correct quantity.
+- test_remove_from_basket: Verifies the removal of a product from the basket.
+
+All tests passed successfully.<br>
+To run the unit tests locally, use the following command: `python manage.py test`
 
 ### Responsiveness
 
