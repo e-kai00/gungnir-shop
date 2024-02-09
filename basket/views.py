@@ -69,9 +69,10 @@ def remove_from_basket(request, item_id):
         basket = request.session.get('basket', {})
         basket.pop(item_id)
         messages.success(request, f'{product.name} removed from basket')
-
         request.session['basket'] = basket
         return HttpResponse(status=200)
+    
     except Exception as e:
-        messages.error(f'Error removing item: {e}')
+        print("Error:", e)  
+        messages.error(request, f'Error removing item: {e}')
         return HttpResponse(status=500)
