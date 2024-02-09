@@ -27,6 +27,7 @@ def apply_coupon(request):
                     active=True
                 )
                 request.session['coupon_id'] = coupon.id
+                
             except Coupon.DoesNotExist:
                 request.session['coupon_id'] = None
                 messages.error(request, 'This coupon code does not exist.')

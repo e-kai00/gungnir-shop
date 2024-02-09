@@ -12,7 +12,9 @@ class BasketTest(TestCase):
     """
     Test cases for the basket functionality.
 
-    This class provides test methods to verify the behavior of the basket-related functions: adding, updating, and removing items from the basket.
+    This class provides test methods to verify the behavior 
+    of the basket-related functions: adding, updating, and 
+    removing items from the basket.
     """
     def setUp(self):
         self.factory = RequestFactory()
