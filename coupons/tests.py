@@ -9,6 +9,17 @@ from django.utils import timezone
 
 
 class CouponTest(TestCase):
+    """
+    Test case for the coupon functionality.
+
+    This test case verifies the behavior of the coupon-related views and logic.
+    Methods:        
+        1. test_apply_coupon: Test the application of a valid coupon code. It simulates 
+        the application of a valid coupon code and verifies the expected behavior.
+        2. test_apply_invalid_coupon: Test the handling of an invalid coupon code. 
+        It simulates the application of an invalid coupon code and verifies the expected 
+        error message.
+    """
 
     def setUp(self):
         self.factory = RequestFactory()
@@ -38,7 +49,7 @@ class CouponTest(TestCase):
 
         response = apply_coupon(request)
 
-        print(request.session['coupon_id'])
+        # print(request.session['coupon_id'])
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('view_basket'))
@@ -70,15 +81,5 @@ class CouponTest(TestCase):
         self.assertEqual(response.url, reverse('view_basket'))
         self.assertEqual(messages[0].level, 40) # ERROR
         self.assertIn(f'This coupon code does not exist.', messages[0].message)
+               
         
-        
-    # def test_apply_invalid_coupon_raises_exception(self):
-    #     data = {'code': 'INVALIDCODE'}
-    #     request = self.factory.post(reverse('apply_coupon'), data)
-
-    #     self.session_middleware.process_request(request)
-    #     self.message_middleware.process_request(request)
-    #     request.session.save()
-
-    #     with self.assertRaises(Coupon.DoesNotExist):
-    #         apply_coupon(request)

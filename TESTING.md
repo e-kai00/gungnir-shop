@@ -15,11 +15,18 @@
 The application includes a set of unit tests designed to validate the functionality of its components.
 Below is a synopsis of the unit test outcomes:
 
-Basket Functionality
+**Basket Functionality**
 
-- test_add_to_basket: Ensures successful addition of a product to the basket.
-- test_update_basket: Validates the updating of the basket with the correct quantity.
-- test_remove_from_basket: Verifies the removal of a product from the basket.
+- test_add_to_basket: ensures successful addition of a product to the basket.
+- test_update_basket: validates the updating of the basket with the correct quantity.
+- test_remove_from_basket: verifies the removal of a product from the basket.
+
+**Coupon Codes Functionality**
+
+- test_apply_coupon: test the application of a valid coupon code. 
+- test_apply_invalid_coupon: test the handling of an invalid coupon code.         
+
+<br> 
 
 All tests passed successfully.<br>
 To run the unit tests locally, use the following command: `python manage.py test`
